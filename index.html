@@ -363,8 +363,32 @@ footer{
   .hero-title{font-size:1.85rem}
   .hero-title .highlight{text-shadow:0 0 4px rgba(125,166,255,.18)}
   .hero img{margin:20px auto 0;max-width:260px}
-  .tabs{width:100%;justify-content:space-between}
-  .tab{padding:12px 16px;font-size:.8rem}
+ .tabs {
+  display: flex;
+  gap: 12px;
+  padding: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.tab {
+  flex-shrink: 0;
+  white-space: nowrap;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-size: 14px;
+}
+
+.tab.active {
+  background: #fff;
+  color: #000;
+}
+
   .grid{column-count:1}
   .grid-wrap{padding:20px;border-radius:20px}
   .ambient-layer{display:none}
@@ -400,7 +424,7 @@ footer{
         <span class="highlight">A portfolio</span> of visual systems built to scale.
       </h1>
       <p>Lead Graphic Designer working across brand, marketing, and digital campaigns.</p>
-      <a href="https://ik.imagekit.io/Chan/CN_CV.pdf" target="_blank">Download Resume</a>
+      <a href="https://ik.imagekit.io/Chan/GD_CV%20Updated1.pdf" target="_blank">Download Resume</a>
     </div>
     <img src="https://ik.imagekit.io/Chan/Website%20hero%20image-22.png">
   </div>
@@ -412,14 +436,6 @@ footer{
     <strong>My design toolkit:</strong>
     <div class="track-wrap">
       <div class="track">
-       <div class="tool"><img src="https://ik.imagekit.io/Chan/Web%20icons-05.jpg"><div>Illustrator</div></div>
-        <div class="tool"><img src="https://ik.imagekit.io/Chan/Web%20icons-06.jpg"><div>Photoshop</div></div>
-        <div class="tool"><img src="https://ik.imagekit.io/Chan/Web%20icons-07.jpg"><div>Corel Draw</div></div>
-        <div class="tool"><img src="https://ik.imagekit.io/Chan/Website-08.png"><div>Premiere Pro</div></div>
-        <div class="tool"><img src="https://ik.imagekit.io/Chan/Website-09.png"><div>Figma</div></div>
-        <div class="tool"><img src="https://ik.imagekit.io/Chan/Web%20icons-10.jpg"><div>HTML</div></div>
-        <div class="tool"><img src="https://ik.imagekit.io/Chan/Web%20icons-11.jpg"><div>MidJourney</div></div>
-
         <div class="tool"><img src="https://ik.imagekit.io/Chan/Web%20icons-05.jpg"><div>Illustrator</div></div>
         <div class="tool"><img src="https://ik.imagekit.io/Chan/Web%20icons-06.jpg"><div>Photoshop</div></div>
         <div class="tool"><img src="https://ik.imagekit.io/Chan/Web%20icons-07.jpg"><div>Corel Draw</div></div>
