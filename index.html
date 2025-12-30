@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chandrashekar — AI-Powered Design Systems</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Chandrashekar – AI-Powered Design Systems</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -23,6 +23,8 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -31,9 +33,11 @@ body {
   color: var(--text);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  width: 100%;
+  max-width: 100vw;
+  position: relative;
 }
 
-/* Navigation */
 nav {
   position: fixed;
   top: 0;
@@ -75,25 +79,23 @@ nav {
   color: var(--text);
 }
 
-/* Hero Section */
 .hero-section {
   height: 100vh;
+  min-height: 100vh;
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
 .hero-video {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   z-index: 0;
 }
@@ -112,6 +114,7 @@ nav {
   text-align: center;
   padding: 0 24px;
   max-width: 1200px;
+  width: 100%;
 }
 
 .hero-badge {
@@ -194,7 +197,6 @@ nav {
   box-shadow: 0 20px 40px rgba(0, 255, 136, 0.4);
 }
 
-/* AI Badge Section */
 .ai-badge-section {
   padding: 150px 48px;
   background: linear-gradient(180deg, #000 0%, #0a0a0a 100%);
@@ -263,7 +265,6 @@ nav {
   line-height: 1.7;
 }
 
-/* Stats Section */
 .stats-section {
   padding: 100px 48px;
   background: #000;
@@ -316,7 +317,6 @@ nav {
   line-height: 1.6;
 }
 
-/* Featured Work Section */
 .featured-work-section {
   padding: 150px 0;
   background: #000;
@@ -343,7 +343,6 @@ nav {
   margin: 0 auto;
 }
 
-/* Bento Grid Layout */
 .bento-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -371,7 +370,6 @@ nav {
   z-index: 10;
 }
 
-/* Bento sizes */
 .bento-large {
   grid-column: span 8;
   min-height: 600px;
@@ -442,7 +440,6 @@ nav {
   line-height: 1.6;
 }
 
-/* View Full Button */
 .view-full {
   display: inline-flex;
   align-items: center;
@@ -464,7 +461,6 @@ nav {
   box-shadow: 0 4px 20px rgba(0, 255, 136, 0.4);
 }
 
-/* Modal for full view */
 .work-modal {
   position: fixed;
   inset: 0;
@@ -512,7 +508,6 @@ nav {
   transform: rotate(90deg);
 }
 
-/* Horizontal Scroll Gallery */
 .horizontal-section {
   position: relative;
   background: #0a0a0a;
@@ -576,7 +571,6 @@ nav {
   transform: scale(1.05);
 }
 
-/* Navigation Arrows */
 .gallery-nav {
   display: flex;
   justify-content: center;
@@ -616,7 +610,6 @@ nav {
   pointer-events: none;
 }
 
-/* Progress Indicator */
 .gallery-progress {
   display: flex;
   justify-content: center;
@@ -638,7 +631,6 @@ nav {
   border-radius: 4px;
 }
 
-/* Toolkit Section */
 .toolkit-section {
   padding: 150px 48px;
   background: #000;
@@ -720,7 +712,6 @@ nav {
   letter-spacing: -0.3px;
 }
 
-/* About Section */
 .about-section {
   padding: 150px 48px;
   background: #0a0a0a;
@@ -815,7 +806,6 @@ nav {
   transform: translateY(-4px);
 }
 
-/* Footer */
 footer {
   padding: 120px 48px 48px;
   background: #000;
@@ -856,7 +846,36 @@ footer {
   color: var(--text-muted);
 }
 
-/* Mobile Responsive */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.loading-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loading-text {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent);
+  animation: loadPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes loadPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
 @media (max-width: 1024px) {
   .stats-grid {
     grid-template-columns: 1fr;
@@ -888,36 +907,119 @@ footer {
 
 @media (max-width: 768px) {
   nav {
-    padding: 20px 24px;
+    padding: 16px 20px;
+  }
+  
+  .nav-logo {
+    font-size: 12px;
   }
   
   .nav-menu {
-    gap: 24px;
+    gap: 16px;
   }
   
   .nav-menu a {
-    font-size: 11px;
+    font-size: 10px;
   }
   
-  .hero-section,
+  .hero-section {
+    padding: 20px;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+  
+  .hero-video {
+    object-position: center;
+  }
+  
+  .hero-content {
+    padding: 0 20px;
+  }
+  
+  .hero-badge {
+    font-size: 9px;
+    padding: 8px 16px;
+    letter-spacing: 1.5px;
+  }
+  
+  .hero-title {
+    font-size: clamp(36px, 12vw, 52px);
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+  }
+  
+  .hero-subtitle {
+    font-size: clamp(14px, 4vw, 18px);
+    margin-bottom: 32px;
+  }
+  
+  .cta-button {
+    padding: 14px 28px;
+    font-size: 13px;
+  }
+  
   .ai-badge-section,
   .stats-section {
-    padding-left: 24px;
-    padding-right: 24px;
+    padding: 80px 20px;
+  }
+  
+  .ai-badge-large {
+    padding: 16px 24px;
+    gap: 12px;
+    flex-direction: column;
+  }
+  
+  .ai-icon {
+    font-size: 28px;
+  }
+  
+  .ai-badge-text {
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  .ai-title {
+    font-size: clamp(28px, 8vw, 48px);
+    letter-spacing: -2px;
+  }
+  
+  .ai-description {
+    font-size: 16px;
+  }
+  
+  .stat-item {
+    padding: 32px 20px;
+  }
+  
+  .stat-number {
+    font-size: 48px;
+  }
+  
+  .stat-label {
+    font-size: 16px;
   }
   
   .featured-work-section,
   .horizontal-section,
   .toolkit-section,
-  .about-section,
+  .about-section {
+    padding: 80px 20px;
+  }
+  
   footer {
-    padding-left: 24px;
-    padding-right: 24px;
+    padding: 80px 20px 40px;
+  }
+  
+  .section-header,
+  .gallery-header {
+    margin-bottom: 40px;
+    padding: 0 20px;
   }
   
   .bento-grid {
     grid-template-columns: 1fr;
-    padding: 0 24px;
+    padding: 0 20px;
+    gap: 16px;
   }
   
   .bento-large,
@@ -925,65 +1027,109 @@ footer {
   .bento-small,
   .bento-wide {
     grid-column: span 1;
-    min-height: 350px;
+    min-height: 300px;
+  }
+  
+  .bento-overlay {
+    padding: 24px;
+    opacity: 1;
+    background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.95) 100%);
+  }
+  
+  .bento-title {
+    font-size: 22px;
+  }
+  
+  .bento-description {
+    font-size: 14px;
   }
   
   .horizontal-wrapper {
-    padding: 0 24px;
+    padding: 0 20px;
   }
   
   .gallery-item {
-    width: 320px;
-    height: 420px;
+    width: 280px;
+    height: 380px;
   }
   
   .nav-arrow {
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
+    font-size: 18px;
+  }
+  
+  .tool-item {
+    width: 140px;
+    padding: 24px 16px;
+  }
+  
+  .tool-icon {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .about-container {
+    gap: 40px;
+  }
+  
+  .social-links {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  
+  .social-link {
+    padding: 12px 24px;
+    font-size: 12px;
+  }
+  
+  .footer-title {
+    font-size: clamp(28px, 8vw, 48px);
+  }
+  
+  .footer-email {
+    font-size: 18px;
+    margin-bottom: 60px;
+    word-break: break-all;
+  }
+  
+  .modal-close {
+    width: 40px;
+    height: 40px;
     font-size: 20px;
+  }
+  
+  .work-modal {
+    padding: 20px;
+  }
+  
+  .work-modal img {
+    max-width: 95%;
   }
 }
 
-/* Loading Screen */
-.loading-screen {
-  position: fixed;
-  inset: 0;
-  background: #000;
-  z-index: 10000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.6s ease, visibility 0.6s ease;
-}
-
-.loading-screen.hidden {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.loading-text {
-  font-size: 14px;
-  font-weight: 800;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--accent);
-  animation: loadPulse 1.5s ease-in-out infinite;
-}
-
-@keyframes loadPulse {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 1; }
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: clamp(32px, 10vw, 44px);
+  }
+  
+  .gallery-item {
+    width: 240px;
+    height: 320px;
+  }
+  
+  .tool-item {
+    width: 120px;
+  }
 }
 </style>
 </head>
 <body>
 
-<!-- Loading Screen -->
 <div class="loading-screen" id="loadingScreen">
   <div class="loading-text">MADE WITH INTENT...</div>
 </div>
 
-<!-- Navigation -->
 <nav id="nav">
   <div class="nav-logo">CHANDRASHEKAR</div>
   <div class="nav-menu">
@@ -993,9 +1139,8 @@ footer {
   </div>
 </nav>
 
-<!-- Hero Section -->
 <section class="hero-section">
-  <video class="hero-video" autoplay muted loop playsinline>
+  <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="https://ik.imagekit.io/Chan/Website%2004.png">
     <source src="https://ik.imagekit.io/Chan/Social%20Media/Whisk_0i2mkrjmifmmymgztewz3gtl3ktz00injntztug_2.mp4?updatedAt=1766744929961" type="video/mp4">
   </video>
   <div class="hero-content">
@@ -1016,7 +1161,6 @@ footer {
   </div>
 </section>
 
-<!-- AI Integration Section -->
 <section class="ai-badge-section">
   <div class="ai-container">
     <div class="ai-badge-large">
@@ -1032,30 +1176,25 @@ footer {
   </div>
 </section>
 
-<!-- Stats Section -->
 <section class="stats-section">
   <div class="stats-container">
     <div class="stats-grid">
       <div class="stat-item">
         <div class="stat-number">Clarity</div>
         <div class="stat-label">Turning complexity into clear, usable design.</div>
-        
       </div>
       <div class="stat-item">
         <div class="stat-number">Structure</div>
         <div class="stat-label">Systems that scale without losing consistency or intent.</div>
-        
       </div>
       <div class="stat-item">
         <div class="stat-number">Impact</div>
-        <div class="stat-label">Work that drives outcomes — not just attention.</div>
-       
+        <div class="stat-label">Work that drives outcomes – not just attention.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Featured Work Section -->
 <section class="featured-work-section" id="work">
   <div class="section-header">
     <h2 class="section-title">Featured Work</h2>
@@ -1063,7 +1202,6 @@ footer {
   </div>
   
   <div class="bento-grid">
-    <!-- Large Hero Item -->
     <div class="bento-item bento-large" data-image="https://ik.imagekit.io/Chan/Firefly_Enhance%20only%20the%20background%20behind%20the%20dual-form%20depiction%20of%20Lord%20Shiva,%20keeping%20the%20496643.png">
       <img src="https://ik.imagekit.io/Chan/Firefly_Enhance%20only%20the%20background%20behind%20the%20dual-form%20depiction%20of%20Lord%20Shiva,%20keeping%20the%20496643.png" alt="Lord Shiva AI Art">
       <div class="bento-overlay">
@@ -1074,7 +1212,6 @@ footer {
       </div>
     </div>
 
-    <!-- Medium Item -->
     <div class="bento-item bento-medium" data-image="https://ik.imagekit.io/Chan/Firefly_Enhance%20the%20existing%20close-up%20split%20face%20portrait%20_%20left%20half%20inspired%20by%20Spider-Man,%20954623.png">
       <img src="https://ik.imagekit.io/Chan/Firefly_Enhance%20the%20existing%20close-up%20split%20face%20portrait%20_%20left%20half%20inspired%20by%20Spider-Man,%20954623.png" alt="Spider-Man Split Portrait">
       <div class="bento-overlay">
@@ -1085,7 +1222,6 @@ footer {
       </div>
     </div>
 
-    <!-- Small Items Row -->
     <div class="bento-item bento-small" data-image="https://ik.imagekit.io/Chan/Whisk_480b7193e6c1340ad6f4e6ba91d1148ddr.jpeg?updatedAt=1766845579398">
       <img src="https://ik.imagekit.io/Chan/Whisk_480b7193e6c1340ad6f4e6ba91d1148ddr.jpeg?updatedAt=1766845579398" alt="Namma Ooru">
       <div class="bento-overlay">
@@ -1116,7 +1252,6 @@ footer {
       </div>
     </div>
 
-    <!-- Wide Items -->
     <div class="bento-item bento-wide" data-image="https://ik.imagekit.io/Chan/Whisk_8222ae2b7b7b63eaebc4f483e10b4ea7dr.jpeg?updatedAt=1766845579714">
       <img src="https://ik.imagekit.io/Chan/Whisk_8222ae2b7b7b63eaebc4f483e10b4ea7dr.jpeg?updatedAt=1766845579714" alt="Google Ads">
       <div class="bento-overlay">
@@ -1137,7 +1272,6 @@ footer {
       </div>
     </div>
 
-    <!-- More Small Items -->
     <div class="bento-item bento-small" data-image="https://ik.imagekit.io/Chan/Whisk_a675877dc7d4ee9b60c4817909eceeacdr.jpeg">
       <img src="https://ik.imagekit.io/Chan/Whisk_a675877dc7d4ee9b60c4817909eceeacdr.jpeg" alt="Creative Work">
       <div class="bento-overlay">
@@ -1167,17 +1301,14 @@ footer {
         <div class="view-full">View Full →</div>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- Modal for full view -->
 <div class="work-modal" id="workModal">
   <div class="modal-close" id="modalClose">×</div>
   <img id="modalImage" src="" alt="Full view">
 </div>
 
-<!-- Horizontal Scroll Gallery -->
 <section class="horizontal-section">
   <div class="gallery-header">
     <h2 class="gallery-title">More Work</h2>
@@ -1260,17 +1391,14 @@ footer {
     </div>
   </div>
   
-  <!-- Navigation Controls -->
   <div class="gallery-nav">
     <div class="nav-arrow" id="prevBtn">←</div>
     <div class="nav-arrow" id="nextBtn">→</div>
   </div>
   
-  <!-- Progress Dots -->
   <div class="gallery-progress" id="progressDots"></div>
 </section>
 
-<!-- Toolkit Section -->
 <section class="toolkit-section">
   <div class="toolkit-container">
     <h2 class="toolkit-title">The Arsenal</h2>
@@ -1330,67 +1458,11 @@ footer {
           </div>
           <div class="tool-name">Firefly</div>
         </div>
-        <!-- Duplicate for seamless loop -->
-        <div class="tool-item">
-          <div class="tool-icon">
-            <img src="https://ik.imagekit.io/Chan/Web%20icons-05.jpg?updatedAt=1765348130469" alt="Illustrator">
-          </div>
-          <div class="tool-name">Illustrator</div>
-        </div>
-        <div class="tool-item">
-          <div class="tool-icon">
-            <img src="https://ik.imagekit.io/Chan/Web%20icons-06.jpg?updatedAt=1765348132940" alt="Photoshop">
-          </div>
-          <div class="tool-name">Photoshop</div>
-        </div>
-        <div class="tool-item">
-          <div class="tool-icon">
-            <img src="https://ik.imagekit.io/Chan/Web%20icons-07.jpg?updatedAt=1765348131586" alt="CorelDRAW">
-          </div>
-          <div class="tool-name">CorelDRAW</div>
-        </div>
-        <div class="tool-item">
-          <div class="tool-icon">
-            <img src="https://ik.imagekit.io/Chan/Web%20icons-08.jpg?updatedAt=1765348130457" alt="Premiere Pro">
-          </div>
-          <div class="tool-name">Premiere Pro</div>
-        </div>
-        <div class="tool-item">
-          <div class="tool-icon">
-            <img src="https://ik.imagekit.io/Chan/Web%20icons-09.jpg?updatedAt=1765348132639" alt="Figma">
-          </div>
-          <div class="tool-name">Figma</div>
-        </div>
-        <div class="tool-item">
-          <div class="tool-icon">
-            <img src="https://ik.imagekit.io/Chan/Web%20icons-10.jpg?updatedAt=1765348132704" alt="HTML">
-          </div>
-          <div class="tool-name">HTML/CSS</div>
-        </div>
-        <div class="tool-item">
-          <div class="tool-icon">
-            <img src="https://ik.imagekit.io/Chan/Web%20icons-11.jpg?updatedAt=1765348132963" alt="MidJourney">
-          </div>
-          <div class="tool-name">MidJourney</div>
-        </div>
-        <div class="tool-item">
-          <div class="tool-icon">
-            <img src="https://ik.imagekit.io/Chan/Web%20icons-12.jpg?updatedAt=1765348132967" alt="Veo">
-          </div>
-          <div class="tool-name">Veo AI</div>
-        </div>
-        <div class="tool-item">
-          <div class="tool-icon">
-            <img src="https://ik.imagekit.io/Chan/Web%20icons-13.jpg?updatedAt=1765348132911" alt="Firefly">
-          </div>
-          <div class="tool-name">Firefly</div>
-        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- About Section -->
 <section class="about-section" id="about">
   <div class="about-container">
     <div class="about-text">
@@ -1410,7 +1482,6 @@ footer {
   </div>
 </section>
 
-<!-- Footer -->
 <footer>
   <div class="footer-container">
     <h2 class="footer-title">Let's build something<br>extraordinary together.</h2>
@@ -1422,14 +1493,24 @@ footer {
 </footer>
 
 <script>
-// ===== LOADING SCREEN =====
 window.addEventListener('load', () => {
   setTimeout(() => {
     document.getElementById('loadingScreen').classList.add('hidden');
   }, 1500);
 });
 
-// ===== MODAL FOR FULL VIEW =====
+const heroVideo = document.querySelector('.hero-video');
+if (heroVideo) {
+  heroVideo.play().catch(err => {
+    console.log('Video autoplay prevented:', err);
+  });
+  
+  document.addEventListener('touchstart', function playVideo() {
+    heroVideo.play();
+    document.removeEventListener('touchstart', playVideo);
+  }, { once: true });
+}
+
 const bentoItems = document.querySelectorAll('.bento-item');
 const galleryItems = document.querySelectorAll('.gallery-item');
 const modal = document.getElementById('workModal');
@@ -1474,19 +1555,17 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// ===== HORIZONTAL SCROLL WITH ARROWS =====
 const horizontalTrack = document.getElementById('horizontalTrack');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
 const progressDots = document.getElementById('progressDots');
 
 let currentIndex = 0;
-const itemWidth = 550 + 32; // width + gap
+const itemWidth = 550 + 32;
 const totalItems = document.querySelectorAll('.gallery-item').length;
 const itemsToShow = Math.floor(window.innerWidth / itemWidth);
 const maxIndex = Math.max(0, totalItems - itemsToShow);
 
-// Create progress dots
 for (let i = 0; i <= maxIndex; i++) {
   const dot = document.createElement('div');
   dot.classList.add('progress-dot');
@@ -1498,12 +1577,10 @@ function updateGallery() {
   const translateX = -currentIndex * itemWidth;
   horizontalTrack.style.transform = `translateX(${translateX}px)`;
   
-  // Update dots
   document.querySelectorAll('.progress-dot').forEach((dot, i) => {
     dot.classList.toggle('active', i === currentIndex);
   });
   
-  // Update button states
   prevBtn.classList.toggle('disabled', currentIndex === 0);
   nextBtn.classList.toggle('disabled', currentIndex >= maxIndex);
 }
@@ -1522,7 +1599,6 @@ nextBtn.addEventListener('click', () => {
   }
 });
 
-// Keyboard navigation
 document.addEventListener('keydown', (e) => {
   if (!modal.classList.contains('active')) {
     if (e.key === 'ArrowLeft') {
@@ -1533,7 +1609,6 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// Update on window resize
 window.addEventListener('resize', () => {
   const newItemsToShow = Math.floor(window.innerWidth / itemWidth);
   const newMaxIndex = Math.max(0, totalItems - newItemsToShow);
@@ -1545,7 +1620,6 @@ window.addEventListener('resize', () => {
 
 updateGallery();
 
-// ===== BENTO GRID ANIMATIONS =====
 const bentoObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry, index) => {
     if (entry.isIntersecting) {
@@ -1565,7 +1639,6 @@ bentoItems.forEach(item => {
   bentoObserver.observe(item);
 });
 
-// ===== STATS ANIMATION =====
 const statItems = document.querySelectorAll('.stat-item');
 
 const statsObserver = new IntersectionObserver((entries) => {
@@ -1587,7 +1660,6 @@ statItems.forEach(item => {
   statsObserver.observe(item);
 });
 
-// ===== SECTION ANIMATIONS =====
 const sections = document.querySelectorAll('.ai-container, .about-container');
 
 const sectionObserver = new IntersectionObserver((entries) => {
@@ -1607,7 +1679,6 @@ sections.forEach(section => {
   sectionObserver.observe(section);
 });
 
-// ===== SMOOTH SCROLL FOR LINKS =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
     e.preventDefault();
@@ -1621,7 +1692,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// ===== PARALLAX HERO =====
 const heroContent = document.querySelector('.hero-content');
 
 window.addEventListener('scroll', () => {
@@ -1634,6 +1704,8 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 console.log('%c🚀 PORTFOLIO LOADED', 'font-size: 24px; font-weight: bold; color: #00ff88; background: #000; padding: 12px 24px; border-radius: 8px;');
+console.log('%cChandrashekar - AI-Powered Design Systems', 'font-size: 16px; color: #00ff88;');
+console.log('%cPortfolio © 2025', 'font-size: 12px; color: #999;');
 </script>
 
 </body>
