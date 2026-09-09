@@ -1002,6 +1002,98 @@ body.lightbox-open{overflow:hidden}
   .hero-ticker{margin-top:3rem}
 }
 
+
+/* ==========================================================
+   V15 — MOBILE CALM + SMOOTH MOTION
+   ========================================================== */
+@media (max-width: 700px){
+  html{scroll-behavior:smooth;scroll-padding-top:76px}
+  body{font-size:15px}
+  .wrap{padding-left:18px;padding-right:18px}
+
+  /* Give every section more breathing room; mobile should feel editorial, not stacked. */
+  section{padding-top:clamp(4.5rem,16vw,6rem);padding-bottom:clamp(4.5rem,16vw,6rem)}
+
+  /* Hero: one clear message, then one visual. */
+  #intro{min-height:auto;padding-top:6.7rem;padding-bottom:0;justify-content:flex-start;overflow:hidden}
+  .hero-grid{display:flex;flex-direction:column;gap:2.2rem;align-items:stretch}
+  .hero-kicker{margin-bottom:1rem;font-size:.62rem;gap:.55rem}
+  .hero-kicker-line{width:25px}
+  .intro-headline{font-size:clamp(2.85rem,13.8vw,4.25rem);line-height:.98;letter-spacing:-.058em;max-width:9.8ch}
+  .hero-deck{font-size:.98rem;line-height:1.55;margin-top:1.25rem;max-width:34ch}
+  .intro-sub{margin-top:1.35rem}
+  .intro-name{font-size:1.05rem}
+  .intro-meta{font-size:.77rem;line-height:1.5}
+  .hero-actions{margin-top:1.5rem;gap:.8rem;align-items:stretch}
+  .hero-actions .cta{width:100%;justify-content:center}
+  .hero-aside{font-size:.62rem;line-height:1.5;text-align:center}
+
+  .hero-panel{order:2;min-height:295px;height:295px;max-width:none;margin:0;transform:none!important;box-shadow:9px 11px 0 var(--blue-soft);border-radius:3px}
+  .hero-panel:hover{transform:none!important;box-shadow:9px 11px 0 var(--blue-soft)}
+  .hero-panel::before{inset:9px}
+  .hero-panel-core{gap:1.45rem;padding:3rem 1.25rem}
+  .hero-ring{width:116px;font-size:.52rem}
+  .hero-ring::before{inset:15px}.hero-ring::after{inset:31px}
+  .hero-ring i{width:5px;height:5px;top:10px;right:23px}
+  .hero-panel-copy{max-width:230px}
+  .hero-panel-copy strong{font-size:1.35rem}
+  .hero-panel-copy small{font-size:.64rem;margin-top:.55rem}
+  .hero-panel-top,.hero-panel-bottom{left:.85rem;right:.85rem;font-size:.49rem}
+  .hero-panel-top{top:.85rem}.hero-panel-bottom{bottom:.85rem}
+  .hero-panel-mark{font-size:5rem;right:.5rem}
+
+  .hero-ticker{position:relative;left:auto;right:auto;margin-top:2.8rem;height:34px;padding:0 18px;font-size:.5rem;gap:.8rem}
+
+  /* Work cards: no forced desktop-height feeling. */
+  .project-grid{grid-template-columns:1fr!important;gap:1px}
+  .project-card{min-width:0}
+  .project-figure{min-height:0!important;height:auto!important;aspect-ratio:4/3}
+  .project-figure img,.project-figure video{object-fit:contain!important;padding:10px}
+  .project-card:hover .project-figure img{transform:none;filter:none}
+  .media-index,.view-full{opacity:1;transform:none}
+  .view-full{font-size:.5rem;bottom:.55rem;right:.55rem}
+
+  /* Project detail becomes a clean reading block instead of a dense wall. */
+  .project-info,.detail-grid{gap:1.25rem!important}
+  .detail-grid{grid-template-columns:1fr!important}
+  .detail-grid > div{padding-top:.75rem}
+
+  /* Toolkit: compact rows, not tall cards. */
+  .tool-grid{grid-template-columns:1fr!important;gap:1px!important}
+  .tool-card{min-height:92px!important;padding:1rem!important}
+  .toolkit-head{margin-bottom:1.8rem!important;gap:1rem!important}
+  .toolkit-title{font-size:2.25rem!important}
+  .toolkit-footnote{gap:.65rem!important}
+
+  /* HR cards: horizontal rhythm, fewer oversized blocks. */
+  .hr-title{font-size:clamp(2.2rem,11vw,3rem)!important;line-height:1!important}
+  .quip-grid{gap:1px!important}
+  .quip{min-height:0!important;padding:1.25rem!important}
+  .quip .line .who{min-width:5.2rem;font-size:.48rem}
+  .quip .line .txt{font-size:.88rem}
+  .quip .note{padding-top:1.3rem;font-size:.56rem}
+
+  /* Lightbox uses almost the whole screen while keeping a safe frame. */
+  #image-lightbox .lightbox-shell{width:100vw;height:100svh;padding:10px}
+  #image-lightbox .lightbox-top{padding:0 2px .55rem;font-size:.5rem}
+  #image-lightbox .lightbox-media{padding:.35rem;min-height:0}
+  #image-lightbox .lightbox-hint{padding:.45rem 2px 0;font-size:.48rem}
+}
+
+/* Scroll-in motion: restrained, smooth, and disabled for reduced-motion users. */
+@media (prefers-reduced-motion:no-preference){
+  .mobile-reveal{opacity:0;transform:translate3d(0,22px,0);transition:opacity .75s cubic-bezier(.16,.8,.24,1),transform .85s cubic-bezier(.16,.8,.24,1)}
+  .mobile-reveal.is-visible{opacity:1;transform:none}
+  .hero-panel{animation:heroBreath 7s ease-in-out infinite}
+  @keyframes heroBreath{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+  @media(max-width:700px){
+    .hero-panel{animation:heroBreathMobile 7s ease-in-out infinite!important}
+    @keyframes heroBreathMobile{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+    .hero-ring{animation:ringFloatMobile 6s ease-in-out infinite}
+    @keyframes ringFloatMobile{50%{transform:translateY(-5px) rotate(1deg)}100%{transform:none}}
+  }
+}
+
 </style>
 </head>
 <body>
@@ -2242,6 +2334,33 @@ const CATEGORY_LABELS = {
   });
 })();
 
+
+
+/* ============================================================
+   V15 — MOBILE REVEAL ENGINE
+   ============================================================ */
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var mobile=window.matchMedia('(max-width: 700px)').matches;
+  if(!mobile) return;
+  var selectors=[
+    '#intro .hero-kicker','#intro .intro-headline','#intro .hero-deck','#intro .intro-sub','#intro .hero-actions','#intro .hero-aside','#intro .hero-panel',
+    '#work .section-heading','.project-card','#about .section-heading','#about .about-grid','.quip','#ai .section-heading','.ai-grid',
+    '.toolkit-section .toolkit-head','.tool-card','.ending-contact'
+  ];
+  var els=[];
+  selectors.forEach(function(sel){document.querySelectorAll(sel).forEach(function(el){if(els.indexOf(el)<0){el.classList.add('mobile-reveal');els.push(el)}})});
+  els.forEach(function(el,i){el.style.transitionDelay=Math.min((i%5)*70,280)+'ms'});
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  },{rootMargin:'0px 0px -10% 0px',threshold:.08});
+  els.forEach(function(el){io.observe(el)});
+})();
 </script>
 </body>
 </html>
