@@ -2,1746 +2,2246 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-<title>Chandrashekar – AI-Powered Design Systems</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chandrashekar — Lead Designer. You have an interview.</title>
+<meta name="description" content="Chandrashekar, Lead Designer — 8 years in brand, campaigns, visual systems, digital, motion and AI-assisted creative. This portfolio is also, unfortunately, an interview.">
+
+<meta property="og:title" content="Chandrashekar — Lead Designer">
+<meta property="og:description" content="You have an interview. Unfortunately, you're interviewing me.">
+<meta property="og:type" content="website">
+
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* Inlined from css/style.css */
+/* ==========================================================
+   THE DESIGN INTERVIEW — Chandrashekar
+   ========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root{
+  /* -- palette -- */
+  --paper:      #F5F4EF;
+  --paper-deep: #E9E6DE;
+  --ink:        #17160F;
+  --ink-70:     rgba(23,22,15,.7);
+  --ink-45:     rgba(23,22,15,.45);
+  --line:       #D8D4C6;
+  --line-strong:#B9B4A2;
+  --accent:     #2563EB;
+  --accent-ink: #FFFFFF;
+
+  /* -- type -- */
+  --serif: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --sans:  'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* -- scale -- */
+  --step--1: clamp(.8125rem, .78rem + .15vw, .875rem);
+  --step-0:  clamp(1rem, .96rem + .2vw, 1.0625rem);
+  --step-1:  clamp(1.25rem, 1.15rem + .5vw, 1.5rem);
+  --step-2:  clamp(1.75rem, 1.5rem + 1vw, 2.25rem);
+  --step-3:  clamp(2.5rem, 2rem + 2vw, 3.75rem);
+  --step-4:  clamp(3.25rem, 2.4rem + 3.5vw, 5.5rem);
+
+  --edge: clamp(1.25rem, 4vw, 4rem);
+  --maxw: 1240px;
+
+  --dur-s: 180ms;
+  --dur-m: 420ms;
+  --dur-l: 900ms;
+  --ease: cubic-bezier(.16,.8,.24,1);
 }
 
-:root {
-  --bg: #000000;
-  --text: #ffffff;
-  --text-muted: #999999;
-  --accent: #00ff88;
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
-html {
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-  width: 100%;
-}
-
-body {
-  font-family: 'Inter', -apple-system, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  overflow-x: hidden;
+*{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+body{
+  margin:0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: var(--step-0);
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  width: 100%;
-  max-width: 100vw;
-  position: relative;
+  overflow-x: hidden;
+}
+body.lock{ overflow: hidden; }
+
+img{ max-width:100%; display:block; }
+a{ color: inherit; text-decoration: none; }
+button{ font-family: inherit; cursor: pointer; }
+
+::selection{ background: var(--accent); color: var(--accent-ink); }
+
+:focus-visible{
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  padding: 24px 48px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+.wrap{
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--edge);
 }
 
-.nav-logo {
-  font-size: 14px;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-}
-
-.nav-menu {
-  display: flex;
-  gap: 40px;
-  align-items: center;
-}
-
-.nav-menu a {
-  color: var(--text-muted);
-  text-decoration: none;
-  font-size: 13px;
+.eyebrow{
+  font-family: var(--sans);
+  font-size: var(--step--1);
+  letter-spacing: .04em;
+  color: var(--ink-45);
   font-weight: 500;
-  letter-spacing: 0.5px;
-  transition: color 0.3s;
-  text-transform: uppercase;
 }
 
-.nav-menu a:hover {
-  color: var(--text);
-}
+.serif{ font-family: var(--serif); }
 
-.hero-section {
-  height: 100vh;
-  min-height: 100vh;
+/* ==========================================================
+   LOADER
+   ========================================================== */
+#loader{
+  position: fixed; inset: 0; z-index: 300;
+  background: var(--ink);
+  color: var(--paper);
+  display: flex; flex-direction: column;
+  align-items: flex-start; justify-content: center;
+  padding: var(--edge);
+  transition: opacity var(--dur-l) var(--ease), visibility var(--dur-l) var(--ease);
+}
+#loader.hidden{ opacity: 0; visibility: hidden; pointer-events: none; }
+#loader .loader-line{
+  font-family: var(--sans);
+  font-size: var(--step--1);
+  color: rgba(245,244,239,.6);
+  margin: 0 0 1rem;
+  min-height: 1.2em;
+}
+#loader .loader-bar{
+  width: min(320px, 60vw);
+  height: 2px;
+  background: rgba(245,244,239,.18);
   position: relative;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
+}
+#loader .loader-bar::after{
+  content:"";
+  position: absolute; left:0; top:0; bottom:0;
+  width: 40%;
+  background: var(--accent);
+  animation: loaderMove 1.1s var(--ease) infinite;
+}
+@keyframes loaderMove{
+  0%{ left:-40%; }
+  100%{ left:100%; }
 }
 
-.hero-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
+/* ==========================================================
+   NAV
+   ========================================================== */
+#site-nav{
+  position: fixed; top:0; left:0; right:0; z-index: 100;
+  background: rgba(245,244,239,.86);
+  backdrop-filter: saturate(140%) blur(10px);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--dur-m) var(--ease), transform var(--dur-m) var(--ease);
 }
-
-.hero-section::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 100%);
-  z-index: 1;
+#site-nav.scrolled{ border-bottom-color: var(--line); }
+.nav-inner{
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 1.1rem var(--edge);
 }
-
-.hero-content {
+.nav-mark{
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: .01em;
+}
+.nav-links{
+  display:flex; gap: clamp(1.25rem, 3vw, 2.25rem);
+  align-items:center;
+}
+.nav-links a{
+  font-size: var(--step--1);
+  color: var(--ink-70);
+  transition: color var(--dur-s) var(--ease);
   position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: 0 24px;
-  max-width: 1200px;
-  width: 100%;
 }
-
-.hero-badge {
-  display: inline-block;
-  padding: 10px 24px;
-  background: rgba(0, 255, 136, 0.15);
-  border: 1px solid var(--accent);
-  border-radius: 50px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 32px;
-  animation: fadeInUp 1s ease 0.2s backwards;
-  box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+.nav-links a::after{
+  content:"";
+  position:absolute; left:0; right:100%; bottom:-4px;
+  height:1px; background: var(--ink);
+  transition: right var(--dur-m) var(--ease);
 }
+.nav-links a:hover, .nav-links a:focus-visible{ color: var(--ink); }
+.nav-links a:hover::after, .nav-links a:focus-visible::after{ right:0; }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* progress rail — desktop only */
+#progress-rail{
+  position: fixed;
+  right: clamp(.75rem, 2vw, 1.75rem);
+  top: 50%; transform: translateY(-50%);
+  z-index: 90;
+  display: flex; flex-direction: column; gap: 1.1rem;
 }
-
-.hero-title {
-  font-size: clamp(52px, 10vw, 130px);
-  font-weight: 900;
-  line-height: 0.9;
-  letter-spacing: -4px;
-  margin-bottom: 32px;
-  animation: fadeInUp 1s ease 0.4s backwards;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+.progress-item{
+  display:flex; align-items:center; gap:.6rem;
+  cursor:pointer; background:none; border:none; padding:0;
+  color: var(--ink-45);
 }
-
-.hero-title .gradient-text {
-  background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.progress-item .dot{
+  width:6px; height:6px; border-radius:50%;
+  background: var(--line-strong);
+  transition: background var(--dur-s) var(--ease), transform var(--dur-s) var(--ease);
 }
+.progress-item .label{
+  font-size: .6875rem; letter-spacing:.06em;
+  font-weight:600;
+  max-width:0; overflow:hidden; white-space:nowrap;
+  opacity:0; transition: max-width var(--dur-m) var(--ease), opacity var(--dur-s) var(--ease);
+}
+.progress-item:hover .label{ max-width: 140px; opacity:1; }
+.progress-item.active .dot{ background: var(--accent); transform: scale(1.5); }
+.progress-item.active{ color: var(--ink); }
+@media (max-width: 900px){ #progress-rail{ display:none; } }
 
-.hero-subtitle {
-  font-size: clamp(18px, 2.5vw, 28px);
+/* ==========================================================
+   SECTION SHELL
+   ========================================================== */
+section{
+  position: relative;
+  padding: clamp(5rem, 10vw, 8.5rem) 0;
+}
+.section-tight{ padding: clamp(3.5rem, 7vw, 6rem) 0; }
+.divider{
+  border:none; border-top: 1px solid var(--line);
+  margin:0;
+}
+.deep{ background: var(--paper-deep); }
+
+/* interview Q/A block, reused everywhere */
+.qa{
+  max-width: 720px;
+}
+.qa .q{
+  display:flex; gap: .75rem; align-items:flex-start;
+  margin-bottom: 1.1rem;
+}
+.qa .q .who{
+  font-size: var(--step--1);
+  color: var(--ink-45);
+  padding-top: .35em;
+  white-space: nowrap;
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+.qa .q .line{
+  font-family: var(--serif);
+  font-size: var(--step-2);
   font-weight: 400;
-  color: #e0e0e0;
-  max-width: 800px;
-  margin: 0 auto 48px;
-  line-height: 1.6;
-  animation: fadeInUp 1s ease 0.6s backwards;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+  font-style: italic;
+  line-height: 1.25;
+}
+.qa .a{
+  display:flex; gap:.75rem; align-items:flex-start;
+}
+.qa .a .who{
+  font-size: var(--step--1);
+  color: var(--accent);
+  padding-top: .35em;
+  white-space:nowrap;
+  font-weight:600;
+  letter-spacing:.02em;
+}
+.qa .a .line{
+  font-size: var(--step-1);
+  line-height: 1.45;
+  max-width: 34ch;
+}
+.qa .a .line small,
+.small-note{
+  display:block;
+  font-family: var(--sans);
+  font-size: var(--step--1);
+  color: var(--ink-45);
+  font-weight: 400;
+  margin-top:.6rem;
 }
 
-.hero-cta {
-  animation: fadeInUp 1s ease 0.8s backwards;
+.typed::after{
+  content:"";
+  display:inline-block;
+  width: .09em; height: .9em;
+  background: currentColor;
+  margin-left: .08em;
+  vertical-align: -0.05em;
+  animation: caret 1s steps(1) infinite;
 }
+.typed.done::after{ display:none; }
+@keyframes caret{ 50%{ opacity:0; } }
 
-.cta-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  padding: 18px 40px;
+.cta{
+  display:inline-flex; align-items:center; gap:.5rem;
+  margin-top: 2.25rem;
+  font-size: var(--step--1);
+  font-weight:600; letter-spacing:.02em;
+  padding: .95rem 1.6rem;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+  transition: background var(--dur-s) var(--ease), color var(--dur-s) var(--ease), transform var(--dur-s) var(--ease), border-color var(--dur-s) var(--ease);
+}
+.cta:hover, .cta:focus-visible{
+  background: transparent;
+  color: var(--ink);
+}
+.cta.ghost{
+  background: transparent;
+  color: var(--ink);
+}
+.cta.ghost:hover, .cta.ghost:focus-visible{
+  background: var(--ink);
+  color: var(--paper);
+}
+.cta:active{ transform: translateY(1px); }
+
+/* ==========================================================
+   INTRO
+   ========================================================== */
+#intro{
+  min-height: 100svh;
+  display:flex; flex-direction:column; justify-content:center;
+  padding-top: clamp(6rem,12vw,9rem);
+}
+.intro-line{
+  font-family: var(--sans);
+  font-size: var(--step--1);
+  letter-spacing:.04em;
+  color: var(--ink-45);
+  margin: 0 0 .5rem;
+}
+.intro-headline{
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: var(--step-4);
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+.intro-headline .flip{
+  font-style: italic;
+  color: var(--accent);
+}
+.intro-sub{
+  margin-top: 2.25rem;
+  max-width: 30ch;
+}
+.intro-name{
+  font-family: var(--serif);
+  font-size: var(--step-2);
+  margin: 0 0 .2rem;
+}
+.intro-role{
+  color: var(--ink-70);
+  font-size: var(--step-0);
+}
+.intro-meta{
+  font-size: var(--step--1);
+  color: var(--ink-45);
+  margin-top: .45rem;
+}
+.intro-foot{
+  margin-top: 2.5rem;
+  font-size: var(--step--1);
+  color: var(--ink-45);
+  font-style: italic;
+}
+.scroll-cue{
+  position:absolute; left: var(--edge); bottom: 2.25rem;
+  display:flex; align-items:center; gap: .6rem;
+  font-size: .6875rem; letter-spacing:.06em; color: var(--ink-45);
+}
+.scroll-cue .stem{
+  width:1px; height:34px; background: var(--line-strong);
+  position: relative; overflow:hidden;
+}
+.scroll-cue .stem::after{
+  content:""; position:absolute; left:0; top:-100%; width:100%; height:100%;
   background: var(--accent);
-  color: #000;
-  font-size: 15px;
-  font-weight: 700;
-  text-decoration: none;
-  border-radius: 50px;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
+  animation: stemDrop 1.8s var(--ease) infinite;
+}
+@keyframes stemDrop{
+  0%{ top:-100%; } 60%{ top:100%; } 100%{ top:100%; }
 }
 
-.cta-button:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0, 255, 136, 0.4);
+/* ==========================================================
+   GENERIC TWO-COL Q/CONTENT LAYOUT
+   ========================================================== */
+.qa-section .wrap{
+  display:grid;
+  grid-template-columns: minmax(0,1fr);
+  gap: 3rem;
 }
+.qa-cluster + .qa-cluster{ margin-top: 3rem; }
 
-.ai-badge-section {
-  padding: 150px 48px;
-  background: linear-gradient(180deg, #000 0%, #0a0a0a 100%);
-  position: relative;
+/* ==========================================================
+   WORK — ACT 2
+   ========================================================== */
+.category-block{ padding: clamp(4rem,8vw,6.5rem) 0; }
+.category-block + .category-block{ border-top: 1px solid var(--line); }
+.category-head{
+  display:flex; justify-content:space-between; align-items:flex-end;
+  gap: 2rem; flex-wrap: wrap;
+  margin-bottom: 3rem;
 }
-
-.ai-badge-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+.category-head .q{
+  font-family: var(--serif); font-style: italic; font-weight:400;
+  font-size: var(--step-3);
+  line-height:1.08;
+  max-width: 14ch;
 }
-
-.ai-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  text-align: center;
+.category-head .sub{
+  max-width: 32ch;
+  color: var(--ink-70);
+  font-size: var(--step-0);
 }
-
-.ai-badge-large {
-  display: inline-flex;
-  align-items: center;
-  gap: 20px;
-  padding: 24px 48px;
-  background: rgba(0, 255, 136, 0.08);
-  border: 2px solid var(--accent);
-  border-radius: 100px;
-  margin-bottom: 48px;
-  animation: pulse 3s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(0, 255, 136, 0.3); }
-  50% { transform: scale(1.02); box-shadow: 0 0 40px rgba(0, 255, 136, 0.5); }
-}
-
-.ai-icon {
-  font-size: 36px;
-}
-
-.ai-badge-text {
-  font-size: 18px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+.category-tag{
+  display:inline-block;
+  font-size: var(--step--1);
   color: var(--accent);
+  font-weight:600;
+  letter-spacing:.03em;
+  margin-bottom:.75rem;
 }
 
-.ai-title {
-  font-size: clamp(36px, 6vw, 72px);
-  font-weight: 900;
-  letter-spacing: -3px;
-  margin-bottom: 24px;
-  line-height: 1.1;
+.project-grid{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.5rem, 3vw, 3rem);
+}
+@media (max-width: 720px){
+  .project-grid{ grid-template-columns: 1fr; }
 }
 
-.ai-description {
-  font-size: 20px;
-  color: var(--text-muted);
-  max-width: 900px;
-  margin: 0 auto;
-  line-height: 1.7;
-}
-
-.stats-section {
-  padding: 100px 48px;
-  background: #000;
-}
-
-.stats-container {
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 60px;
-}
-
-.stat-item {
-  text-align: center;
-  padding: 40px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 20px;
-  transition: all 0.4s ease;
-}
-
-.stat-item:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: var(--accent);
-  transform: translateY(-8px);
-}
-
-.stat-number {
-  font-size: 72px;
-  font-weight: 900;
-  color: var(--accent);
-  line-height: 1;
-  margin-bottom: 16px;
-}
-
-.stat-label {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 12px;
-  letter-spacing: -0.5px;
-}
-
-.stat-description {
-  font-size: 14px;
-  color: var(--text-muted);
-  line-height: 1.6;
-}
-
-.featured-work-section {
-  padding: 150px 0;
-  background: #000;
-  overflow: hidden;
-}
-
-.section-header {
-  text-align: center;
-  margin-bottom: 80px;
-  padding: 0 48px;
-}
-
-.section-title {
-  font-size: clamp(48px, 7vw, 96px);
-  font-weight: 900;
-  letter-spacing: -4px;
-  margin-bottom: 20px;
-}
-
-.section-subtitle {
-  font-size: 18px;
-  color: var(--text-muted);
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.bento-grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 24px;
-  max-width: 1600px;
-  margin: 0 auto;
-  padding: 0 48px;
-}
-
-.bento-item {
-  position: relative;
-  border-radius: 24px;
-  overflow: hidden;
+.project-card{
   cursor: pointer;
-  background: #111;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  min-height: 400px;
+}
+.project-figure{
+  aspect-ratio: 4/3;
+  background: var(--paper-deep);
+  border: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+}
+.project-figure img{
+  width:100%; height:100%; object-fit: cover;
+  clip-path: inset(0 0 0 0);
+}
+.project-figure .ph{
+  position:absolute; inset:0;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:.5rem; text-align:center; padding: 1.5rem;
+  border: 1px dashed var(--line-strong);
+  margin: 10px;
+}
+.project-figure .ph .ph-label{
+  font-size: .6875rem; letter-spacing:.06em; color: var(--ink-45);
+  font-weight:600;
+}
+.project-figure .ph .ph-path{
+  font-family: monospace, monospace;
+  font-size: .6875rem; color: var(--ink-45);
+  word-break: break-all;
+}
+.project-figure .hover-note{
+  position:absolute; right: .85rem; bottom: .85rem;
+  background: var(--ink); color: var(--paper);
+  font-size: .6875rem; letter-spacing:.03em; font-weight:600;
+  padding: .4rem .7rem;
+  opacity:0; transform: translateY(6px);
+  transition: opacity var(--dur-s) var(--ease), transform var(--dur-s) var(--ease);
+}
+.project-card:hover .hover-note{ opacity:1; transform: translateY(0); }
+.project-card:hover .project-figure img{ transform: scale(1.02); }
+.project-figure img{ transition: transform var(--dur-l) var(--ease); }
+
+.project-meta{
+  margin-top: 1.1rem;
+  display:flex; justify-content:space-between; align-items:baseline; gap:1rem;
+}
+.project-meta .name{
+  font-family: var(--serif); font-size: var(--step-1);
+}
+.project-meta .yr{
+  font-size: var(--step--1); color: var(--ink-45);
+}
+.project-desc{
+  margin-top:.35rem;
+  color: var(--ink-70);
+  font-size: var(--step--1);
+  max-width: 46ch;
 }
 
-.bento-item:hover {
-  transform: translateY(-12px);
-  border-color: var(--accent);
-  box-shadow: 0 30px 80px rgba(0, 255, 136, 0.3);
-  z-index: 10;
+/* project detail (expanded) */
+.project-detail{
+  display:none;
+  margin-top: 2.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--line);
+}
+.project-detail.open{ display:block; }
+.detail-q{
+  font-family: var(--serif); font-style:italic; font-size: var(--step-1);
+  color: var(--ink-70); margin-bottom: 1.5rem;
+}
+.detail-grid{
+  display:grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem;
+  margin-bottom: 2.25rem;
+}
+@media (max-width: 720px){ .detail-grid{ grid-template-columns:1fr; } }
+.detail-field .label{
+  font-size: .6875rem; letter-spacing:.08em; color: var(--ink-45); font-weight:600; margin-bottom:.4rem;
+}
+.detail-field .value{ font-size: var(--step--1); color: var(--ink); }
+.detail-field .value em{ color: var(--ink-45); font-style: normal; }
+.detail-gallery{
+  display:grid; grid-template-columns: repeat(2,1fr); gap: 1.25rem;
+}
+.detail-gallery .project-figure{ aspect-ratio: 3/2; }
+
+.scroll-nudge{
+  font-family: var(--serif); font-style: italic;
+  font-size: var(--step-0);
+  color: var(--ink-45);
+  text-align: right;
+  margin-top: 3rem;
+  line-height: 1.4;
 }
 
-.bento-large {
-  grid-column: span 8;
-  min-height: 600px;
+/* selected work strip */
+#selected-work .wrap{ padding-top: clamp(4rem,8vw,6.5rem); }
+.selected-grid{
+  display:grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+@media (max-width: 900px){ .selected-grid{ grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 480px){ .selected-grid{ grid-template-columns: 1fr; } }
+.selected-grid .project-figure{ aspect-ratio: 1/1; }
+.selected-grid .project-meta .name{ font-size: var(--step-0); }
+
+/* ==========================================================
+   PERSONALITY — ACT 3
+   ========================================================== */
+#personality{ background: var(--ink); color: var(--paper); }
+#personality .eyebrow{ color: rgba(245,244,239,.5); }
+.quip-grid{
+  display:grid; grid-template-columns: repeat(3,1fr); gap: 3rem;
+  margin-top: 3rem;
+}
+@media (max-width: 900px){ .quip-grid{ grid-template-columns:1fr; gap: 3.5rem; } }
+.quip .q{
+  font-family: var(--serif); font-style: italic; font-size: var(--step-1);
+  color: rgba(245,244,239,.6);
+  margin-bottom: 1rem;
+}
+.quip .exchange{ display:flex; flex-direction:column; gap:.5rem; }
+.quip .line{
+  display:flex; gap:.6rem;
+}
+.quip .line .who{
+  font-size: .6875rem; letter-spacing:.04em; font-weight:600;
+  color: var(--accent);
+  padding-top:.3em; white-space:nowrap;
+}
+.quip .line.interviewer .who{ color: rgba(245,244,239,.4); }
+.quip .line .txt{
+  font-family: var(--serif); font-size: var(--step-1);
+}
+.quip .note{
+  margin-top:.75rem; font-size: var(--step--1); color: rgba(245,244,239,.5); font-style: italic;
 }
 
-.bento-medium {
-  grid-column: span 4;
-  min-height: 600px;
+/* ==========================================================
+   ABOUT
+   ========================================================== */
+#about .wrap{
+  display:grid; grid-template-columns: 1.1fr .9fr; gap: 4rem;
+}
+@media (max-width: 800px){ #about .wrap{ grid-template-columns: 1fr; gap:2.5rem; } }
+#about .statement{
+  font-family: var(--serif); font-size: var(--step-2); line-height:1.2;
+}
+.about-list{ list-style:none; margin:0; padding:0; }
+.about-list li{
+  display:flex; justify-content:space-between; gap:1rem;
+  padding: .95rem 0;
+  border-top: 1px solid var(--line);
+  font-size: var(--step--1);
+}
+.about-list li:last-child{ border-bottom: 1px solid var(--line); }
+.about-list li span:first-child{ color: var(--ink-45); }
+
+/* ==========================================================
+   AI — ACT 4
+   ========================================================== */
+#ai{ background: var(--paper-deep); }
+.ai-exchange{ max-width: 640px; }
+.ai-exchange .qa + .qa{ margin-top: 1.75rem; }
+
+/* ==========================================================
+   NERVOUS — ACT 5
+   ========================================================== */
+#nervous{ text-align: left; }
+#nervous .fourth-wall{
+  font-family: var(--serif); font-style: italic; font-size: var(--step-3);
+  line-height: 1.12; max-width: 16ch; margin: 1.5rem 0 2.5rem;
+}
+.dual-cta{ display:flex; gap: 1rem; flex-wrap: wrap; }
+
+/* ==========================================================
+   HIRE — ACT 6
+   ========================================================== */
+#hire{ background: var(--ink); color: var(--paper); }
+#hire .eyebrow{ color: rgba(245,244,239,.5); }
+#hire .qa .a .line{ color: var(--paper); max-width: 30ch; }
+#hire .qa .q .line{ color: var(--paper); }
+#hire .qa .q .who{ color: rgba(245,244,239,.4); }
+.cap-list{
+  margin-top: 4rem;
+  border-top: 1px solid rgba(245,244,239,.18);
+}
+.cap-row{
+  display:flex; justify-content: space-between; align-items:baseline;
+  padding: 1.15rem 0;
+  border-bottom: 1px solid rgba(245,244,239,.18);
+}
+.cap-row .yrs{
+  font-family: var(--serif); font-size: var(--step-2);
+}
+.cap-row .items{
+  display:flex; gap: clamp(1rem,3vw,2.5rem); flex-wrap:wrap;
+  font-size: var(--step--1); color: rgba(245,244,239,.6);
 }
 
-.bento-small {
-  grid-column: span 4;
-  min-height: 400px;
+/* ==========================================================
+   ENDING
+   ========================================================== */
+#ending{ text-align:left; }
+.ending-title{
+  font-family: var(--serif); font-size: var(--step-3);
+  margin: 0 0 .5rem;
+}
+.ending-sub{ color: var(--ink-70); }
+.ending-note{
+  font-style: italic; color: var(--ink-45); margin-top: .5rem;
+}
+.ending-ctas{ display:flex; gap: 1rem; flex-wrap: wrap; margin-top: 2.5rem; }
+.ending-contact{
+  margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid var(--line);
+  display:flex; justify-content:space-between; flex-wrap:wrap; gap: 1rem;
+  font-size: var(--step--1); color: var(--ink-70);
+}
+.ending-contact a{ color: var(--ink); font-weight:600; }
+.ending-contact a:hover{ color: var(--accent); }
+
+footer{
+  padding: 2.5rem var(--edge);
+  border-top: 1px solid var(--line);
+  display:flex; justify-content:space-between; flex-wrap:wrap; gap:.5rem;
+  font-size: var(--step--1); color: var(--ink-45);
 }
 
-.bento-wide {
-  grid-column: span 6;
-  min-height: 500px;
+/* ==========================================================
+   REVEAL ON SCROLL — one deliberate treatment, reused
+   ========================================================== */
+.reveal{
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path var(--dur-l) var(--ease);
 }
-
-.bento-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.bento-item:hover img {
-  transform: scale(1.08);
-}
-
-.bento-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 30%, rgba(0, 0, 0, 0.98) 100%);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 40px;
+.reveal.in{ clip-path: inset(0 0 0% 0); }
+.fade{
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: opacity var(--dur-l) var(--ease);
+}
+.fade.in{ opacity: 1; }
+
+/* ==========================================================
+   EASTER EGGS
+   ========================================================== */
+#cursor-note{
+  position: fixed; z-index: 250; pointer-events:none;
+  background: var(--ink); color: var(--paper);
+  font-size: .6875rem; letter-spacing:.02em; font-weight:600;
+  padding: .4rem .65rem;
+  transform: translate(-50%, -140%);
+  opacity: 0; transition: opacity var(--dur-s) var(--ease);
+  white-space: nowrap;
+}
+#cursor-note.show{ opacity: 1; }
+
+#toast{
+  position: fixed; left:50%; bottom: 2rem; z-index: 260;
+  transform: translate(-50%, 20px);
+  background: var(--ink); color: var(--paper);
+  font-size: var(--step--1); font-weight:500;
+  padding: .85rem 1.4rem;
+  opacity:0; transition: opacity var(--dur-m) var(--ease), transform var(--dur-m) var(--ease);
+  pointer-events:none;
+}
+#toast.show{ opacity:1; transform: translate(-50%, 0); }
+
+@media (max-width: 480px){
+  .nav-links{ gap: 1rem; }
+  .nav-mark{ font-size: .95rem; }
+}
+
+
+/* ==========================================================
+   V9 — CLEAN BLUE MOTION SYSTEM
+   ========================================================== */
+:root{
+  --blue-soft:#E7EEFF;
+  --blue-mid:#7EA5FF;
+  --blue-dark:#1747B8;
+  --shadow-blue:rgba(37,99,235,.16);
+}
+
+/* cleaner typography hierarchy */
+.serif{font-family:var(--serif);letter-spacing:-.045em}
+.intro-headline,.ending-title,.category-head .q,.quip .q,.quip .line .txt{
+  font-family:var(--sans);
+  letter-spacing:-.05em;
+}
+.intro-headline{font-weight:700;line-height:1.02}
+.intro-headline .flip{font-style:normal;color:var(--accent)}
+.intro-name{font-family:var(--sans);font-weight:700;letter-spacing:-.045em}
+
+/* hero: blue cursor + status system */
+#intro{position:relative;overflow:clip}
+#intro::before{
+  content:"";
+  position:absolute;right:8vw;top:20%;width:clamp(100px,13vw,190px);height:clamp(100px,13vw,190px);
+  border:1px solid var(--blue-mid);border-radius:50%;opacity:.35;
+  animation:orbitPulse 5s ease-in-out infinite;
+}
+#intro::after{
+  content:"";
+  position:absolute;right:calc(8vw + 48px);top:calc(20% + 48px);
+  width:7px;height:7px;border-radius:50%;background:var(--accent);
+  box-shadow:0 0 0 9px var(--shadow-blue);
+  animation:orbitDot 5s ease-in-out infinite;
+}
+@keyframes orbitPulse{50%{transform:scale(1.12);opacity:.18}100%{transform:scale(1);opacity:.35}}
+@keyframes orbitDot{50%{transform:translate(35px,18px)}100%{transform:translate(0,0)}}
+
+.intro-line{display:flex;align-items:center;gap:10px}
+.intro-line::before{content:"";width:28px;height:1px;background:var(--accent)}
+.intro-sub{border-left:2px solid var(--accent);padding-left:16px}
+.intro-foot{font-style:normal}
+.intro-foot::before{content:"↳ ";color:var(--accent)}
+
+/* smoother reveal: text lifts rather than gets chopped by a clip-path */
+.reveal{clip-path:none!important;opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+/* CTAs feel tactile */
+.cta{position:relative;overflow:hidden;isolation:isolate}
+.cta::before{
+  content:"";position:absolute;inset:0;background:var(--accent);
+  transform:translateX(-102%);transition:transform .45s var(--ease);z-index:-1;
+}
+.cta:hover::before{transform:translateX(0)}
+.cta:hover{border-color:var(--accent);transform:translateY(-2px)}
+.cta.ghost{background:transparent;color:var(--ink)}
+.cta.ghost:hover{color:#fff}
+
+/* category/work cards */
+.category-block{position:relative}
+.category-block::before{
+  content:"";position:absolute;right:var(--edge);top:clamp(3rem,6vw,5rem);
+  width:5px;height:5px;background:var(--accent);border-radius:50%;
+}
+.category-head .q{font-style:normal;font-weight:650}
+.category-tag{color:var(--accent)}
+.project-card{position:relative}
+.project-figure{border-color:#d2d1ca;box-shadow:0 0 0 0 transparent;transition:transform .55s var(--ease),box-shadow .55s var(--ease)}
+.project-card:hover .project-figure{transform:translateY(-5px);box-shadow:12px 14px 0 var(--blue-soft)}
+.project-card:hover .project-figure img{transform:scale(1.045)}
+.project-figure .hover-note{background:var(--accent);color:#fff;border-radius:999px;padding:.45rem .8rem}
+
+/* selected archive */
+.selected-grid .project-card{transition:transform .45s var(--ease)}
+.selected-grid .project-card:hover{transform:translateY(-7px)}
+.project-meta .name{font-family:var(--sans);font-weight:650;letter-spacing:-.03em}
+
+/* personality cards become little "interview cards" */
+.quip-grid{gap:1.5rem}
+.quip{
+  border:1px solid var(--line);padding:1.5rem;background:rgba(255,255,255,.28);
+  transition:transform .45s var(--ease),background .45s var(--ease),border-color .45s var(--ease);
+}
+.quip:hover{transform:translateY(-7px) rotate(-.4deg);background:#fff;border-color:var(--blue-mid)}
+.quip .q{color:var(--ink);font-style:normal;font-weight:600}
+.quip .line .who{color:var(--accent)}
+.quip .note{font-style:normal}
+
+/* About: tiny blue signal */
+#about .statement{font-family:var(--sans);font-weight:600;letter-spacing:-.045em}
+.about-list li{transition:padding-left .3s var(--ease),background .3s var(--ease)}
+.about-list li:hover{padding-left:10px;background:var(--blue-soft)}
+.about-list li span:first-child{color:var(--accent)}
+
+/* AI section */
+#ai{position:relative}
+#ai::before{
+  content:"AI ≠ MAGIC";position:absolute;right:var(--edge);top:3rem;
+  font:500 .625rem/1 DM Mono,monospace;color:var(--blue-dark);letter-spacing:.08em;
+}
+.ai-exchange .qa .a .who{color:var(--accent)}
+
+/* capability area */
+#hire{background:var(--ink)}
+#hire::before{
+  content:"";display:block;position:absolute;
+}
+.cap-row .items span{position:relative}
+.cap-row .items span::before{content:"•";color:var(--accent);margin-right:.45rem}
+
+/* ending */
+.ending-title{font-weight:700}
+.ending-title::after{
+  content:"";display:inline-block;width:.55em;height:.08em;background:var(--accent);
+  margin-left:.15em;vertical-align:.18em;animation:endingBlink 1.3s steps(2) infinite;
+}
+@keyframes endingBlink{50%{opacity:.2}}
+.ending-contact a:hover{color:var(--accent)}
+
+/* floating designer notes */
+#cursor-note{
+  background:var(--accent)!important;color:#fff!important;border-radius:999px;
+  box-shadow:5px 6px 0 var(--blue-soft);
+  padding:.45rem .8rem!important;
+}
+#toast{border-left:3px solid var(--accent)}
+
+/* responsive */
+@media(max-width:700px){
+  #intro::before,#intro::after{display:none}
+  .category-block::before{right:var(--edge)}
+}
+
+#progress-rail{--scroll-progress:0%}
+#progress-rail::before{
+  content:"";position:absolute;right:3px;top:0;height:100%;
+  width:1px;background:linear-gradient(to bottom,var(--accent) var(--scroll-progress),transparent var(--scroll-progress));
+  opacity:.22;pointer-events:none;
+}
+.project-figure{transform:translateY(12px);opacity:.92}
+.project-figure.figure-in{transform:none;opacity:1;transition:transform .9s var(--ease),opacity .9s var(--ease),box-shadow .55s var(--ease)}
+
+.progress-item .dot{transition:transform .3s var(--ease),background .3s var(--ease)}
+.progress-item:hover .dot{transform:scale(1.6);background:var(--accent)}
+.progress-item .label{transition:color .25s ease}
+.progress-item:hover .label{color:var(--accent)}
+
+.blue-note{color:var(--accent);font-style:normal}
+
+/* ==========================================================
+   V9 BUILD — TOOLKIT + QUIET FUN
+   ========================================================== */
+.toolkit-section{ background: var(--paper-deep); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.toolkit-head{ display:flex; justify-content:space-between; align-items:flex-end; gap:2rem; margin-bottom:2.5rem; }
+.toolkit-title{ margin:.5rem 0 0; font-family:var(--sans); font-size:clamp(2rem,3.8vw,4rem); line-height:1.04; font-weight:600; letter-spacing:-.035em; max-width:14ch; }
+.toolkit-status{ font-family:'DM Mono',monospace; font-size:.72rem; color:var(--ink-45); white-space:nowrap; padding-bottom:.25rem; }
+.status-dot{ display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--accent); margin-right:.5rem; box-shadow:0 0 0 4px rgba(37,99,235,.10); }
+.tool-grid{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); border-top:1px solid var(--line); border-left:1px solid var(--line); }
+.tool-card{ min-height:150px; padding:1.35rem; border-right:1px solid var(--line); border-bottom:1px solid var(--line); display:flex; flex-direction:column; justify-content:space-between; gap:1rem; background:rgba(245,244,239,.45); transition:transform var(--dur-m) var(--ease), background var(--dur-m) var(--ease), box-shadow var(--dur-m) var(--ease); position:relative; overflow:hidden; }
+.tool-card::after{ content:'↗'; position:absolute; right:1rem; top:1rem; font-family:'DM Mono',monospace; color:var(--ink-45); opacity:0; transform:translate(-5px,5px); transition:opacity var(--dur-s) var(--ease), transform var(--dur-s) var(--ease); }
+.tool-card:hover{ transform:translateY(-5px); background:var(--paper); box-shadow:0 14px 30px rgba(23,22,15,.07); }
+.tool-card:hover::after{ opacity:1; transform:none; }
+.tool-index{ font-family:'DM Mono',monospace; font-size:.66rem; color:var(--accent); letter-spacing:.04em; }
+.tool-card strong{ font-size:1.1rem; font-weight:600; letter-spacing:-.02em; }
+.tool-note{ font-size:.78rem; line-height:1.4; color:var(--ink-45); max-width:30ch; }
+.ai-tool strong::after{ content:' AI'; font-family:'DM Mono',monospace; font-size:.58rem; color:var(--accent); vertical-align:top; margin-left:.25rem; letter-spacing:.04em; }
+.code-tool{ background:rgba(37,99,235,.045); }
+.toolkit-footnote{ display:flex; justify-content:space-between; gap:2rem; padding-top:1.2rem; font-family:'DM Mono',monospace; font-size:.68rem; color:var(--ink-45); }
+.toolkit-footnote b{ color:var(--ink); font-weight:500; }
+.toolkit-micro{ text-align:right; }
+@media (max-width:900px){ .toolkit-head{ align-items:flex-start; flex-direction:column; } .tool-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); } .toolkit-footnote{ flex-direction:column; gap:.5rem; } .toolkit-micro{text-align:left;} }
+@media (max-width:560px){ .tool-grid{ grid-template-columns:1fr; } .tool-card{ min-height:125px; } .toolkit-status{ white-space:normal; } }
+
+/* Tiny interview-room details: visible enough to smile, restrained enough to hire. */
+#hire::before{ content:'FINAL REVIEW / NO FURTHER CHANGES'; position:absolute; top:1.75rem; right:var(--edge); font-family:'DM Mono',monospace; font-size:.58rem; color:var(--ink-45); letter-spacing:.06em; transform:rotate(-2deg); opacity:.7; }
+#ending .ending-note::after{ content:'  [yes, this is the final-final version]'; font-family:'DM Mono',monospace; font-size:.62em; color:var(--accent); font-style:normal; }
+
+/* ==========================================================
+   V12 — PROJECT MEDIA + HR QUESTION CARDS
+   ========================================================== */
+.project-figure{overflow:hidden;position:relative;aspect-ratio:16/10;background:#e8e7e1}
+.project-figure img,.project-figure video{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s var(--ease)}
+.project-figure.has-video{background:#111}
+.project-figure.has-video video{object-fit:cover}
+.project-card:hover .project-figure video{transform:scale(1.02)}
+.project-figure video::-webkit-media-controls-panel{background:linear-gradient(transparent,rgba(0,0,0,.72))}
+.hr-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;margin-bottom:2.5rem}
+.hr-title{font-family:var(--sans);font-size:clamp(2.4rem,5vw,5.5rem);line-height:.98;letter-spacing:-.055em;font-weight:650;max-width:11ch;margin:.45rem 0 0}
+.hr-meta{display:flex;align-items:center;gap:1rem;font-family:'DM Mono',monospace;font-size:.62rem;color:rgba(245,244,239,.45);white-space:nowrap;padding-bottom:.35rem}
+.hr-approved{border:1px solid rgba(245,244,239,.25);padding:.35rem .55rem;transform:rotate(-2deg);color:var(--accent)}
+.quip-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:rgba(245,244,239,.18);border:1px solid rgba(245,244,239,.18)}
+.quip{min-height:410px;border:0!important;border-radius:0!important;padding:1.5rem;background:var(--paper);color:var(--ink);position:relative;display:flex;flex-direction:column;transition:transform .45s var(--ease),background .45s var(--ease)}
+.quip:hover{transform:none;background:#fff}
+.quip-top{display:flex;justify-content:space-between;font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.08em;color:var(--accent);padding-bottom:1.25rem;border-bottom:1px solid var(--line)}
+.quip .q{font-family:var(--sans);font-size:clamp(1.35rem,2vw,2rem);line-height:1.08;letter-spacing:-.035em;margin:2rem 0 2.2rem;max-width:13ch}
+.quip .exchange{gap:.8rem}
+.quip .line{align-items:flex-start;gap:.75rem}
+.quip .line .who{font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.05em;min-width:6.5rem;padding-top:.25rem}
+.quip .line .txt{font-family:var(--sans);font-size:.95rem;line-height:1.35;font-weight:550}
+.quip .line.interviewer .txt{font-style:italic;opacity:.48}
+.quip .note{margin-top:auto;padding-top:2rem;font-family:'DM Mono',monospace;font-size:.64rem;color:var(--ink-45)}
+.quip-stamp{position:absolute;right:1.2rem;bottom:1.2rem;border:1px solid var(--blue-mid);color:var(--accent);font-family:'DM Mono',monospace;font-size:.55rem;padding:.35rem .5rem;transform:rotate(-5deg);opacity:.75}
+.hr-footnote{font-family:'DM Mono',monospace;font-size:.6rem;color:rgba(245,244,239,.35);margin-top:1rem}
+.ending-contact{flex-wrap:wrap}
+@media(max-width:900px){.hr-heading{align-items:flex-start;flex-direction:column}.quip-grid{grid-template-columns:1fr;gap:1px}.quip{min-height:330px}}
+@media(max-width:560px){.hr-title{font-size:2.7rem}.hr-meta{flex-wrap:wrap}.quip{min-height:300px}}
+
+/* ==========================================================
+   V12.1 — FULL-FRAME MEDIA VIEW
+   ========================================================== */
+body.lightbox-open{overflow:hidden}
+.project-figure{background:linear-gradient(145deg,#efeee8,#e2e1da);cursor:zoom-in}
+.project-figure img{object-fit:contain!important;object-position:center;transform:scale(.965);transition:transform .9s cubic-bezier(.2,.7,.2,1),filter .9s ease}
+.project-card:hover .project-figure img{transform:scale(1);filter:saturate(1.03)}
+.project-figure::after{content:'';position:absolute;inset:0;border:1px solid rgba(255,255,255,.34);pointer-events:none;opacity:.75}
+.media-index{position:absolute;z-index:3;left:.8rem;top:.7rem;padding:.28rem .48rem;background:rgba(255,255,255,.78);backdrop-filter:blur(8px);font-family:'DM Mono',monospace;font-size:.52rem;letter-spacing:.07em;color:var(--ink-45);opacity:0;transform:translateY(-5px);transition:opacity .35s ease,transform .35s ease}
+.project-figure:hover .media-index{opacity:1;transform:none}
+.view-full{position:absolute;z-index:3;right:.8rem;bottom:.8rem;padding:.42rem .62rem;background:rgba(23,22,15,.82);color:#fff;font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.04em;opacity:0;transform:translateY(6px);transition:opacity .35s ease,transform .35s ease}
+.project-figure:hover .view-full{opacity:1;transform:none}
+.project-figure.has-video{cursor:default}
+.project-figure.has-video video{object-fit:contain;background:#101010}
+
+#image-lightbox{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;visibility:hidden;opacity:0;transition:opacity .28s ease,visibility .28s ease}
+#image-lightbox.open{visibility:visible;opacity:1}
+.lightbox-backdrop{position:absolute;inset:0;background:rgba(12,13,14,.82);backdrop-filter:blur(12px)}
+.lightbox-shell{position:relative;z-index:1;width:min(94vw,1400px);height:min(92vh,1000px);display:flex;flex-direction:column;transform:translateY(18px) scale(.97);transition:transform .5s cubic-bezier(.2,.75,.2,1);color:#fff}
+#image-lightbox.open .lightbox-shell{transform:none}
+.lightbox-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0 0 .8rem;font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.04em;color:rgba(255,255,255,.65)}
+#lightbox-close{appearance:none;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.06);color:#fff;padding:.45rem .7rem;font:inherit;cursor:pointer;transition:background .2s ease,border-color .2s ease}
+#lightbox-close:hover{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.5)}
+.lightbox-media{min-height:0;flex:1;display:flex;align-items:center;justify-content:center;padding:1rem;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.035)}
+.lightbox-media img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block;animation:lightboxFloat .8s cubic-bezier(.2,.7,.2,1) both}
+@keyframes lightboxFloat{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+.lightbox-hint{padding-top:.7rem;font-family:'DM Mono',monospace;font-size:.55rem;color:rgba(255,255,255,.38)}
+@media(max-width:700px){.lightbox-shell{width:96vw;height:88vh}.lightbox-media{padding:.5rem}.media-index{opacity:1;transform:none}.view-full{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.project-figure img,.lightbox-shell,.lightbox-media img{transition:none;animation:none}}
+
+/* ==========================================================
+   V14 — HERO REFRAME
+   ========================================================== */
+#intro{min-height:100svh;padding-top:clamp(7rem,11vw,9rem);padding-bottom:clamp(5rem,8vw,7rem);justify-content:center;background:var(--paper)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(300px,.62fr);gap:clamp(3rem,7vw,7rem);align-items:center;position:relative;z-index:2}
+.hero-copy{min-width:0}
+.hero-kicker{display:flex;align-items:center;gap:.7rem;margin-bottom:1.35rem;font-size:.7rem;letter-spacing:.08em;font-weight:700;color:var(--ink-45);text-transform:uppercase}
+.hero-kicker-line{width:34px;height:1px;background:var(--accent);display:block}
+.hero-kicker-status{margin-left:auto;font-family:'DM Mono',monospace;font-size:.62rem;font-weight:400;color:var(--ink-45)}
+.intro-headline{font-size:clamp(3.5rem,6.8vw,7.5rem);max-width:10.5ch;line-height:.96;letter-spacing:-.065em}
+.intro-headline .flip{display:inline-block;position:relative}
+.intro-headline .flip::after{content:"";position:absolute;left:0;right:0;bottom:-.07em;height:.045em;background:var(--accent);transform:scaleX(.28);transform-origin:left;transition:transform .8s var(--ease)}
+#intro:hover .intro-headline .flip::after{transform:scaleX(1)}
+.hero-deck{font-size:clamp(1rem,1.25vw,1.18rem);line-height:1.5;max-width:52ch;color:var(--ink-70);margin:1.8rem 0 0}
+.intro-sub{margin-top:1.8rem;max-width:none}
+.intro-name{font-size:var(--step-1);margin-bottom:.1rem}
+.intro-meta{max-width:58ch}
+.hero-actions{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;margin-top:2rem}
+.hero-actions .cta{margin-top:0}
+.hero-aside{font-size:.7rem;line-height:1.5;color:var(--ink-45);font-family:'DM Mono',monospace}
+.hero-aside b{font-weight:400;color:var(--ink-70)}
+.hero-panel{min-height:clamp(390px,46vw,560px);background:var(--ink);color:var(--paper);position:relative;overflow:hidden;border-radius:2px;box-shadow:18px 22px 0 var(--blue-soft);transform:rotate(1.2deg);transition:transform .7s var(--ease),box-shadow .7s var(--ease)}
+.hero-panel:hover{transform:rotate(0deg) translateY(-7px);box-shadow:24px 30px 0 var(--blue-soft)}
+.hero-panel::before{content:"";position:absolute;inset:12px;border:1px solid rgba(245,244,239,.14);pointer-events:none}
+.hero-panel::after{content:"";position:absolute;right:-20%;bottom:-22%;width:72%;aspect-ratio:1;border:1px solid rgba(126,165,255,.38);border-radius:50%;box-shadow:0 0 0 42px rgba(126,165,255,.035),0 0 0 84px rgba(126,165,255,.025);animation:heroOrbit 8s ease-in-out infinite}
+@keyframes heroOrbit{50%{transform:translate(-20px,-16px) scale(1.04)}100%{transform:none}}
+.hero-panel-top,.hero-panel-bottom{position:absolute;left:1.25rem;right:1.25rem;display:flex;justify-content:space-between;align-items:center;font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.08em;color:rgba(245,244,239,.55);z-index:2}
+.hero-panel-top{top:1.2rem}.hero-panel-bottom{bottom:1.2rem}
+.hero-panel-core{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2.5rem;padding:4rem 2rem}
+.hero-ring{width:clamp(145px,16vw,205px);aspect-ratio:1;border:1px solid rgba(245,244,239,.28);border-radius:50%;display:grid;place-items:center;position:relative;font-family:'DM Mono',monospace;font-size:.63rem;letter-spacing:.18em;color:rgba(245,244,239,.65);animation:ringFloat 5s ease-in-out infinite}
+.hero-ring::before,.hero-ring::after{content:"";position:absolute;border-radius:50%;border:1px solid rgba(126,165,255,.42)}
+.hero-ring::before{inset:19px}.hero-ring::after{inset:39px;border-color:rgba(245,244,239,.12)}
+.hero-ring i{position:absolute;width:7px;height:7px;background:var(--accent);border-radius:50%;top:14px;right:31px;box-shadow:0 0 0 8px rgba(37,99,235,.16);animation:dotFloat 5s ease-in-out infinite}
+@keyframes ringFloat{50%{transform:translateY(-8px) rotate(2deg)}100%{transform:none}}
+@keyframes dotFloat{50%{transform:translate(-17px,29px)}100%{transform:none}}
+.hero-panel-copy{display:flex;flex-direction:column;align-items:center;text-align:center;max-width:280px}
+.panel-label{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.1em;color:rgba(245,244,239,.45);margin-bottom:.65rem}
+.hero-panel-copy strong{font-size:clamp(1.45rem,2.2vw,2.15rem);line-height:1.03;letter-spacing:-.045em;font-weight:700}
+.hero-panel-copy small{font-size:.72rem;line-height:1.45;color:rgba(245,244,239,.5);margin-top:.9rem}
+.hero-panel-bottom span:last-child{color:rgba(245,244,239,.75)}
+.hero-panel-bottom .status-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#7EA5FF;margin-right:5px;vertical-align:1px;animation:statusPulse 1.8s infinite}
+.hero-panel-mark{position:absolute;right:1.15rem;top:50%;font-size:clamp(5rem,9vw,8rem);font-weight:800;letter-spacing:-.12em;line-height:1;color:rgba(245,244,239,.045);transform:translateY(-50%);user-select:none}
+.hero-ticker{position:absolute;left:0;right:0;bottom:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);height:38px;display:flex;align-items:center;gap:1.25rem;padding:0 var(--edge);font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.09em;color:var(--ink-45);white-space:nowrap;overflow:hidden}
+.hero-ticker b{color:var(--accent);font-weight:400}
+.hero-ticker span{animation:tickerFade 4s ease-in-out infinite}
+.hero-ticker span:nth-of-type(2){animation-delay:.4s}.hero-ticker span:nth-of-type(3){animation-delay:.8s}.hero-ticker span:nth-of-type(4){animation-delay:1.2s}.hero-ticker span:nth-of-type(5){animation-delay:1.6s}
+@keyframes tickerFade{50%{color:var(--ink)} }
+@media(max-width:900px){
+  #intro{padding-top:7rem}
+  .hero-grid{grid-template-columns:1fr;gap:3rem}
+  .intro-headline{max-width:12ch}
+  .hero-panel{min-height:390px;max-width:520px;width:100%;margin-left:auto}
+  .hero-ticker{position:relative;margin-top:4rem}
+}
+@media(max-width:560px){
+  .hero-kicker-status{display:none}
+  .intro-headline{font-size:clamp(3rem,14vw,4.5rem)}
+  .hero-deck{font-size:1rem}
+  .hero-panel{min-height:340px;box-shadow:10px 14px 0 var(--blue-soft)}
+  .hero-actions{align-items:flex-start;flex-direction:column;gap:1rem}
+  .hero-aside{padding-left:.1rem}
+  .hero-ticker{margin-top:3rem}
 }
 
-.bento-item:hover .bento-overlay {
-  opacity: 1;
-}
-
-.bento-category {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 12px;
-}
-
-.bento-title {
-  font-size: 28px;
-  font-weight: 800;
-  letter-spacing: -1px;
-  margin-bottom: 12px;
-  color: var(--text);
-}
-
-.bento-description {
-  font-size: 15px;
-  color: var(--text-muted);
-  line-height: 1.6;
-}
-
-.view-full {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 16px;
-  padding: 10px 20px;
-  background: var(--accent);
-  color: #000;
-  border-radius: 50px;
-  font-size: 13px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  transition: all 0.3s;
-}
-
-.view-full:hover {
-  transform: translateX(4px);
-  box-shadow: 0 4px 20px rgba(0, 255, 136, 0.4);
-}
-
-.work-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.95);
-  z-index: 9999;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
-  backdrop-filter: blur(10px);
-}
-
-.work-modal.active {
-  display: flex;
-}
-
-.work-modal img {
-  max-width: 90%;
-  max-height: 90vh;
-  object-fit: contain;
-  border-radius: 12px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-}
-
-.modal-close {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  width: 48px;
-  height: 48px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 24px;
-  color: var(--text);
-  transition: all 0.3s;
-}
-
-.modal-close:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: rotate(90deg);
-}
-
-.horizontal-section {
-  position: relative;
-  background: #0a0a0a;
-  padding: 150px 0;
-}
-
-.gallery-header {
-  text-align: center;
-  margin-bottom: 60px;
-  padding: 0 48px;
-}
-
-.gallery-title {
-  font-size: clamp(48px, 7vw, 84px);
-  font-weight: 900;
-  letter-spacing: -3px;
-  margin-bottom: 20px;
-}
-
-.horizontal-wrapper {
-  position: relative;
-  max-width: 100%;
-  overflow: hidden;
-  padding: 0 48px;
-}
-
-.horizontal-track {
-  display: flex;
-  gap: 32px;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform;
-}
-
-.gallery-item {
-  flex-shrink: 0;
-  width: 550px;
-  height: 700px;
-  border-radius: 24px;
-  overflow: hidden;
-  position: relative;
-  cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.gallery-item:hover {
-  transform: scale(1.03);
-  border-color: var(--accent);
-  box-shadow: 0 30px 80px rgba(0, 255, 136, 0.3);
-  z-index: 10;
-}
-
-.gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s ease;
-}
-
-.gallery-item:hover img {
-  transform: scale(1.05);
-}
-
-.gallery-nav {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 60px;
-}
-
-.nav-arrow {
-  width: 60px;
-  height: 60px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  font-size: 24px;
-  color: var(--text);
-}
-
-.nav-arrow:hover {
-  background: var(--accent);
-  color: #000;
-  border-color: var(--accent);
-  transform: scale(1.1);
-}
-
-.nav-arrow:active {
-  transform: scale(0.95);
-}
-
-.nav-arrow.disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
-.gallery-progress {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 32px;
-}
-
-.progress-dot {
-  width: 8px;
-  height: 8px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  transition: all 0.3s ease;
-}
-
-.progress-dot.active {
-  background: var(--accent);
-  width: 32px;
-  border-radius: 4px;
-}
-
-.toolkit-section {
-  padding: 150px 48px;
-  background: #000;
-  position: relative;
-  overflow: hidden;
-}
-
-.toolkit-container {
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.toolkit-title {
-  font-size: clamp(48px, 7vw, 96px);
-  font-weight: 900;
-  letter-spacing: -4px;
-  margin-bottom: 80px;
-  text-align: center;
-}
-
-.tools-track-wrapper {
-  overflow: hidden;
-  position: relative;
-  padding: 40px 0;
-}
-
-.tools-track {
-  display: flex;
-  gap: 32px;
-  animation: toolScroll 30s linear infinite;
-  width: max-content;
-}
-
-@keyframes toolScroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(calc(-50% - 16px)); }
-}
-
-.tools-track:hover {
-  animation-play-state: paused;
-}
-
-.tool-item {
-  flex-shrink: 0;
-  width: 160px;
-  padding: 32px 24px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 20px;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
-  text-align: center;
-}
-
-.tool-item:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: var(--accent);
-  transform: translateY(-8px);
-}
-
-.tool-icon {
-  width: 64px;
-  height: 64px;
-  margin: 0 auto 20px;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.tool-icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.tool-name {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text);
-  letter-spacing: -0.3px;
-}
-
-.about-section {
-  padding: 150px 48px;
-  background: #0a0a0a;
-  position: relative;
-}
-
-.about-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 400px;
-  background: radial-gradient(circle at 50% 0%, rgba(0, 255, 136, 0.1), transparent);
-  pointer-events: none;
-}
-
-.about-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 100px;
-  align-items: center;
-}
-
-.about-text h2 {
-  font-size: clamp(42px, 6vw, 84px);
-  font-weight: 900;
-  letter-spacing: -3px;
-  line-height: 1;
-  margin-bottom: 32px;
-}
-
-.about-text p {
-  font-size: 20px;
-  color: var(--text-muted);
-  line-height: 1.7;
-  margin-bottom: 24px;
-}
-
-.about-image {
-  border-radius: 24px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  position: relative;
-}
-
-.about-image::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), transparent);
-  pointer-events: none;
-  z-index: 2;
-}
-
-.about-image img {
-  width: 100%;
-  display: block;
-  transition: transform 0.6s ease;
-}
-
-.about-section:hover .about-image img {
-  transform: scale(1.05);
-}
-
-.social-links {
-  display: flex;
-  gap: 16px;
-  margin-top: 48px;
-}
-
-.social-link {
-  padding: 16px 32px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 50px;
-  color: var(--text);
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 600;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-}
-
-.social-link:hover {
-  background: var(--accent);
-  color: #000;
-  border-color: var(--accent);
-  transform: translateY(-4px);
-}
-
-footer {
-  padding: 120px 48px 48px;
-  background: #000;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.footer-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.footer-title {
-  font-size: clamp(36px, 5vw, 64px);
-  font-weight: 900;
-  letter-spacing: -2px;
-  margin-bottom: 32px;
-  line-height: 1.2;
-}
-
-.footer-email {
-  font-size: 24px;
-  color: var(--accent);
-  text-decoration: none;
-  transition: opacity 0.3s;
-  display: inline-block;
-  margin-bottom: 80px;
-}
-
-.footer-email:hover {
-  opacity: 0.7;
-}
-
-.footer-bottom {
-  padding-top: 48px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  font-size: 13px;
-  color: var(--text-muted);
-}
-
-.loading-screen {
-  position: fixed;
-  inset: 0;
-  background: #000;
-  z-index: 10000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.6s ease, visibility 0.6s ease;
-}
-
-.loading-screen.hidden {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.loading-text {
-  font-size: 14px;
-  font-weight: 800;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--accent);
-  animation: loadPulse 1.5s ease-in-out infinite;
-}
-
-@keyframes loadPulse {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 1; }
-}
-
-@media (max-width: 1024px) {
-  .stats-grid {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-  
-  .about-container {
-    grid-template-columns: 1fr;
-    gap: 60px;
-  }
-  
-  .bento-grid {
-    grid-template-columns: repeat(6, 1fr);
-  }
-  
-  .bento-large,
-  .bento-medium,
-  .bento-small,
-  .bento-wide {
-    grid-column: span 6;
-    min-height: 400px;
-  }
-  
-  .gallery-item {
-    width: 450px;
-    height: 550px;
-  }
-}
-
-@media (max-width: 768px) {
-  nav {
-    padding: 16px 20px;
-  }
-  
-  .nav-logo {
-    font-size: 12px;
-  }
-  
-  .nav-menu {
-    gap: 16px;
-  }
-  
-  .nav-menu a {
-    font-size: 10px;
-  }
-  
-  .hero-section {
-    padding: 20px;
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
-  }
-  
-  .hero-video {
-    object-position: center;
-  }
-  
-  .hero-content {
-    padding: 0 20px;
-  }
-  
-  .hero-badge {
-    font-size: 9px;
-    padding: 8px 16px;
-    letter-spacing: 1.5px;
-  }
-  
-  .hero-title {
-    font-size: clamp(36px, 12vw, 52px);
-    letter-spacing: -2px;
-    margin-bottom: 20px;
-  }
-  
-  .hero-subtitle {
-    font-size: clamp(14px, 4vw, 18px);
-    margin-bottom: 32px;
-  }
-  
-  .cta-button {
-    padding: 14px 28px;
-    font-size: 13px;
-  }
-  
-  .ai-badge-section,
-  .stats-section {
-    padding: 80px 20px;
-  }
-  
-  .ai-badge-large {
-    padding: 16px 24px;
-    gap: 12px;
-    flex-direction: column;
-  }
-  
-  .ai-icon {
-    font-size: 28px;
-  }
-  
-  .ai-badge-text {
-    font-size: 14px;
-    text-align: center;
-  }
-  
-  .ai-title {
-    font-size: clamp(28px, 8vw, 48px);
-    letter-spacing: -2px;
-  }
-  
-  .ai-description {
-    font-size: 16px;
-  }
-  
-  .stat-item {
-    padding: 32px 20px;
-  }
-  
-  .stat-number {
-    font-size: 48px;
-  }
-  
-  .stat-label {
-    font-size: 16px;
-  }
-  
-  .featured-work-section,
-  .horizontal-section,
-  .toolkit-section,
-  .about-section {
-    padding: 80px 20px;
-  }
-  
-  footer {
-    padding: 80px 20px 40px;
-  }
-  
-  .section-header,
-  .gallery-header {
-    margin-bottom: 40px;
-    padding: 0 20px;
-  }
-  
-  .bento-grid {
-    grid-template-columns: 1fr;
-    padding: 0 20px;
-    gap: 16px;
-  }
-  
-  .bento-large,
-  .bento-medium,
-  .bento-small,
-  .bento-wide {
-    grid-column: span 1;
-    min-height: 300px;
-  }
-  
-  .bento-overlay {
-    padding: 24px;
-    opacity: 1;
-    background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.95) 100%);
-  }
-  
-  .bento-title {
-    font-size: 22px;
-  }
-  
-  .bento-description {
-    font-size: 14px;
-  }
-  
-  .horizontal-wrapper {
-    padding: 0 20px;
-  }
-  
-  .gallery-item {
-    width: 280px;
-    height: 380px;
-  }
-  
-  .nav-arrow {
-    width: 48px;
-    height: 48px;
-    font-size: 18px;
-  }
-  
-  .tool-item {
-    width: 140px;
-    padding: 24px 16px;
-  }
-  
-  .tool-icon {
-    width: 48px;
-    height: 48px;
-  }
-  
-  .about-container {
-    gap: 40px;
-  }
-  
-  .social-links {
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-  
-  .social-link {
-    padding: 12px 24px;
-    font-size: 12px;
-  }
-  
-  .footer-title {
-    font-size: clamp(28px, 8vw, 48px);
-  }
-  
-  .footer-email {
-    font-size: 18px;
-    margin-bottom: 60px;
-    word-break: break-all;
-  }
-  
-  .modal-close {
-    width: 40px;
-    height: 40px;
-    font-size: 20px;
-  }
-  
-  .work-modal {
-    padding: 20px;
-  }
-  
-  .work-modal img {
-    max-width: 95%;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-title {
-    font-size: clamp(32px, 10vw, 44px);
-  }
-  
-  .gallery-item {
-    width: 240px;
-    height: 320px;
-  }
-  
-  .tool-item {
-    width: 120px;
-  }
-}
 </style>
 </head>
 <body>
 
-<div class="loading-screen" id="loadingScreen">
-  <div class="loading-text">MADE WITH INTENT...</div>
+<!-- ============================================================
+     LOADER
+     ============================================================ -->
+<div id="loader" aria-hidden="true">
+  <p class="loader-line" id="loader-text">Finding FINAL_v7_REAL_FINAL.psd&hellip;</p>
+  <div class="loader-bar"></div>
 </div>
 
-<nav id="nav">
-  <div class="nav-logo">CHANDRASHEKAR</div>
-  <div class="nav-menu">
-    <a href="#work">WORK</a>
-    <a href="#about">ABOUT</a>
-    <a href="https://ik.imagekit.io/4367/CN_CV%20AI.pdf" target="_blank">RESUME</a>
+<!-- ============================================================
+     NAV
+     ============================================================ -->
+<header id="site-nav">
+  <div class="nav-inner">
+    <a href="#intro" class="nav-mark">Chandrashekar</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#toolkit">Toolkit</a>
+      <a href="#ending">Contact</a>
+    </nav>
   </div>
+</header>
+
+<nav id="progress-rail" aria-label="Interview progress">
+  <button class="progress-item" data-target="#intro"><span class="dot"></span><span class="label">01 Intro</span></button>
+  <button class="progress-item" data-target="#work"><span class="dot"></span><span class="label">02 Work</span></button>
+  <button class="progress-item" data-target="#ai"><span class="dot"></span><span class="label">03 AI</span></button>
+  <button class="progress-item" data-target="#toolkit"><span class="dot"></span><span class="label">04 Toolkit</span></button>
+  <button class="progress-item" data-target="#hire"><span class="dot"></span><span class="label">05 Capabilities</span></button>
+  <button class="progress-item" data-target="#ending"><span class="dot"></span><span class="label">06 Final question</span></button>
 </nav>
 
-<section class="hero-section">
-  <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="https://ik.imagekit.io/Chan/Website%2004.png">
-    <source src="https://ik.imagekit.io/Chan/Social%20Media/Whisk_0i2mkrjmifmmymgztewz3gtl3ktz00injntztug_2.mp4?updatedAt=1766744929961" type="video/mp4">
-  </video>
-  <div class="hero-content">
-    <div class="hero-badge">🤖 AI-POWERED DESIGN</div>
-    <h1 class="hero-title">
-      DESIGN <span class="gradient-text">SYSTEMS</span><br>
-      THAT SCALE.
-    </h1>
-    <p class="hero-subtitle">
-      Lead Graphic Designer leveraging AI to create visual systems that scale at the speed of innovation.
-    </p>
-    <div class="hero-cta">
-      <a href="#work" class="cta-button">
-        <span>EXPLORE WORK</span>
-        <span>→</span>
-      </a>
+<main>
+
+<!-- ============================================================
+     INTRO
+     ============================================================ -->
+<section id="intro">
+  <div class="hero-grid wrap">
+    <div class="hero-copy">
+      <div class="hero-kicker"><span class="hero-kicker-line"></span><span>A message from HR</span><span class="hero-kicker-status">PORTFOLIO / 2026</span></div>
+      <h1 class="intro-headline">
+        You have an interview.<br>
+        <span class="flip">Good. Let's talk design.</span>
+      </h1>
+      <p class="hero-deck">I’m Chandrashekar — a Lead Designer with 8 years of turning complicated briefs into clear, useful visual systems.</p>
+      <div class="intro-sub">
+        <p class="intro-name serif">Chandrashekar</p>
+        <p class="intro-role">Lead Designer</p>
+        <p class="intro-meta">Brand · Campaigns · Visual Systems · Digital · Motion · AI</p>
+      </div>
+      <div class="hero-actions">
+        <a href="#tell-me" class="cta" data-scroll>Start interview →</a>
+        <span class="hero-aside">Scroll to review the work<br><b>Estimated duration: longer than HR said.</b></span>
+      </div>
+    </div>
+
+    <div class="hero-panel" aria-label="Designer profile snapshot">
+      <div class="hero-panel-top"><span>CHANDRASHEKAR / 08</span><span>READY</span></div>
+      <div class="hero-panel-core">
+        <div class="hero-ring"><span>DESIGN</span><i></i></div>
+        <div class="hero-panel-copy"><span class="panel-label">CURRENT MODE</span><strong>Making the<br>brief make sense.</strong><small>Brand systems / campaigns / digital / motion</small></div>
+      </div>
+      <div class="hero-panel-bottom"><span>STATUS</span><span><i class="status-dot"></i> AVAILABLE FOR A GOOD BRIEF</span></div>
+      <div class="hero-panel-mark">CS</div>
+    </div>
+  </div>
+
+  <div class="hero-ticker" aria-hidden="true"><span>BRAND</span><b>→</b><span>CAMPAIGNS</span><b>→</b><span>VISUAL SYSTEMS</span><b>→</b><span>MOTION</span><b>→</b><span>AI-ASSISTED CREATIVE</span></div>
+  <div class="scroll-cue"><span class="stem"></span> Scroll</div>
+</section>
+
+<!-- ============================================================
+     ACT 1 — TELL ME ABOUT YOURSELF
+     ============================================================ -->
+<section id="tell-me" class="qa-section">
+  <div class="wrap">
+    <div class="qa reveal-group">
+      <div class="q">
+        <span class="who">Interviewer</span>
+        <span class="line typed" data-type>Tell me about yourself.</span>
+      </div>
+      <div class="a">
+        <span class="who">Chandrashekar</span>
+        <span class="line">
+          8 years designing things.<br>
+          Some beautiful.<br>
+          Some complicated.<br>
+          Some that started with:
+          <small>&ldquo;Can you make it pop?&rdquo;</small>
+        </span>
+      </div>
+    </div>
+
+    <div class="qa" style="margin-top:2.75rem;">
+      <div class="a">
+        <span class="who">&nbsp;</span>
+        <span class="line">Anyway.<br>I'll show you.</span>
+      </div>
+    </div>
+
+    <a href="#work" class="cta" data-scroll>Show me the work →</a>
+  </div>
+</section>
+
+<!-- ============================================================
+     ACT 2 — THE WORK
+     ============================================================ -->
+<section id="work">
+  <div class="wrap" style="margin-bottom: 1rem;">
+    <span class="eyebrow">Featured work</span>
+  </div>
+
+  <div id="category-container">
+    <!-- Populated by the inlined portfolio scripts. One block per
+         category, each opening with its interview question. -->
+  </div>
+
+  <p class="wrap scroll-nudge fade" aria-hidden="true">
+    Keep going.<br>I'm not done showing off. <span class="blue-note">(Respectfully.)</span>
+  </p>
+</section>
+
+<section id="selected-work" class="section-tight">
+  <div class="wrap">
+    <span class="eyebrow">Selected work</span>
+    <h2 class="serif" style="font-size:var(--step-2); font-weight:400; margin:.5rem 0 0;">The smaller, quieter archive.</h2>
+    <div class="selected-grid" id="selected-grid">
+      <!-- Populated by the inlined portfolio script -->
     </div>
   </div>
 </section>
 
-<section class="ai-badge-section">
-  <div class="ai-container">
-    <div class="ai-badge-large">
-      <div class="ai-icon">⚡</div>
-      <div class="ai-badge-text">AI-First Design Approach</div>
+<!-- ============================================================
+     ACT 3 — PERSONALITY
+     ============================================================ -->
+<section id="personality">
+  <div class="wrap">
+    <div class="hr-heading">
+      <div>
+        <span class="eyebrow">HR / mandatory questions</span>
+        <h2 class="hr-title">A few questions HR insisted on.</h2>
+      </div>
+      <div class="hr-meta"><span>INTERVIEW FORM</span><span>03 / 03</span><span class="hr-approved">APPROVED*</span></div>
     </div>
-    <h2 class="ai-title">
-      I integrate AI into<br>everything I create.
-    </h2>
-    <p class="ai-description">
-      From concept to execution, artificial intelligence amplifies my design process—enabling faster iteration, smarter decisions, and limitless creative possibilities. This is design at the intersection of human intuition and machine intelligence.
-    </p>
+
+    <div class="quip-grid">
+      <div class="quip">
+        <div class="quip-top"><span>01</span><span>WEAKNESS</span></div>
+        <div class="q">&ldquo;What's your biggest weakness?&rdquo;</div>
+        <div class="exchange">
+          <div class="line"><span class="who">CHANDRASHEKAR</span><span class="txt">Kerning.</span></div>
+        </div>
+        <p class="note">It's never &ldquo;just 2 pixels.&rdquo;</p>
+        <span class="quip-stamp">NOTED</span>
+      </div>
+
+      <div class="quip">
+        <div class="quip-top"><span>02</span><span>PRESSURE</span></div>
+        <div class="q">&ldquo;Can you work under pressure?&rdquo;</div>
+        <div class="exchange">
+          <div class="line"><span class="who">CHANDRASHEKAR</span><span class="txt">Yes.</span></div>
+          <div class="line interviewer"><span class="who">INTERVIEWER</span><span class="txt">How much pressure?</span></div>
+          <div class="line"><span class="who">CHANDRASHEKAR</span><span class="txt">&ldquo;We need this in 30 minutes.&rdquo;</span></div>
+        </div>
+        <p class="note">&hellip;show me the brief.</p>
+        <span class="quip-stamp">HANDLED</span>
+      </div>
+
+      <div class="quip">
+        <div class="quip-top"><span>03</span><span>FEEDBACK</span></div>
+        <div class="q">&ldquo;How do you handle feedback?&rdquo;</div>
+        <div class="exchange">
+          <div class="line"><span class="who">CHANDRASHEKAR</span><span class="txt">Depends.</span></div>
+          <div class="line interviewer"><span class="who">INTERVIEWER</span><span class="txt">On?</span></div>
+          <div class="line"><span class="who">CHANDRASHEKAR</span><span class="txt">Whether it's feedback or a completely different brief.</span></div>
+        </div>
+        <p class="note">Same file. New brief.</p>
+        <span class="quip-stamp">REVISED</span>
+      </div>
+    </div>
+    <p class="hr-footnote">*Approved by nobody in particular. But the alignment is excellent.</p>
   </div>
 </section>
 
-<section class="stats-section">
-  <div class="stats-container">
-    <div class="stats-grid">
-      <div class="stat-item">
-        <div class="stat-number">Clarity</div>
-        <div class="stat-label">Turning complexity into clear, usable design.</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">Structure</div>
-        <div class="stat-label">Systems that scale without losing consistency or intent.</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">Impact</div>
-        <div class="stat-label">Work that drives outcomes – not just attention.</div>
-      </div>
+<!-- ============================================================
+     ABOUT
+     ============================================================ -->
+<section id="about" class="section-tight">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Off the record</span>
+      <p class="statement">8 years of turning complicated ideas into clear visual communication.</p>
     </div>
+    <ul class="about-list">
+      <li><span>Brand</span><span>Identity systems and the guidelines that keep them honest</span></li>
+      <li><span>Campaigns</span><span>Concept through to execution, across formats</span></li>
+      <li><span>Digital</span><span>Web, social, email, product</span></li>
+      <li><span>Motion</span><span>When static isn't enough</span></li>
+      <li><span>Marketing</span><span>Communication that's built to be understood, not just seen</span></li>
+      <li><span>Fintech &amp; wealth management</span><span>Making serious money look like it was designed by someone, not a spreadsheet</span></li>
+      <li><span>AI-assisted workflows</span><span>A faster route to the same good idea</span></li>
+    </ul>
   </div>
 </section>
 
-<section class="featured-work-section" id="work">
-  <div class="section-header">
-    <h2 class="section-title">Featured Work</h2>
-    <p class="section-subtitle">Click any project to view full resolution</p>
-  </div>
-
-  <div class="bento-grid">
-    <!-- Row 1: Large + Medium -->
-    <div class="bento-item bento-large" data-image="https://ik.imagekit.io/Chan/Firefly_Enhance%20only%20the%20background%20behind%20the%20dual-form%20depiction%20of%20Lord%20Shiva,%20keeping%20the%20496643.png">
-      <img src="https://ik.imagekit.io/Chan/Firefly_Enhance%20only%20the%20background%20behind%20the%20dual-form%20depiction%20of%20Lord%20Shiva,%20keeping%20the%20496643.png" alt="Lord Shiva AI Art">
-      <div class="bento-overlay">
-        <div class="bento-category">AI GENERATED • FEATURED</div>
-        <div class="bento-title">Dual Form Deity</div>
-        <div class="bento-description">AI-enhanced spiritual artwork blending traditional iconography with modern digital techniques.</div>
-        <div class="view-full">View Full →</div>
+<!-- ============================================================
+     TOOLKIT — THE ACTUAL SOFTWARE
+     ============================================================ -->
+<section id="toolkit" class="section-tight toolkit-section">
+  <div class="wrap">
+    <div class="toolkit-head">
+      <div>
+        <span class="eyebrow">Toolkit / loaded</span>
+        <h2 class="toolkit-title">The software behind the work.</h2>
       </div>
+      <div class="toolkit-status"><span class="status-dot"></span><span id="tool-status">No plugins required.</span></div>
     </div>
 
-    <div class="bento-item bento-medium" data-image="https://ik.imagekit.io/Chan/Firefly_Enhance%20the%20existing%20close-up%20split%20face%20portrait%20_%20left%20half%20inspired%20by%20Spider-Man,%20954623.png">
-      <img src="https://ik.imagekit.io/Chan/Firefly_Enhance%20the%20existing%20close-up%20split%20face%20portrait%20_%20left%20half%20inspired%20by%20Spider-Man,%20954623.png" alt="Spider-Man Split Portrait">
-      <div class="bento-overlay">
-        <div class="bento-category">AI GENERATED</div>
-        <div class="bento-title">Hero Split Portrait</div>
-        <div class="bento-description">AI-powered character design exploration</div>
-        <div class="view-full">View Full →</div>
-      </div>
+    <div class="tool-grid" aria-label="Design tools">
+      <div class="tool-card"><span class="tool-index">01</span><strong>Adobe Photoshop</strong><span class="tool-note">Retouching · compositing · campaign craft</span></div>
+      <div class="tool-card"><span class="tool-index">02</span><strong>Adobe Illustrator</strong><span class="tool-note">Identity · vector systems · artwork</span></div>
+      <div class="tool-card"><span class="tool-index">03</span><strong>Figma</strong><span class="tool-note">Digital · layouts · collaborative systems</span></div>
+      <div class="tool-card"><span class="tool-index">04</span><strong>Premiere Pro</strong><span class="tool-note">Motion · edits · social video</span></div>
+      <div class="tool-card"><span class="tool-index">05</span><strong>CorelDRAW</strong><span class="tool-note">Production · print · large-format artwork</span></div>
+      <div class="tool-card ai-tool"><span class="tool-index">06</span><strong>Midjourney</strong><span class="tool-note">Exploration · image direction · ideation</span></div>
+      <div class="tool-card ai-tool"><span class="tool-index">07</span><strong>Veo</strong><span class="tool-note">AI video · motion experiments · concepts</span></div>
+      <div class="tool-card ai-tool"><span class="tool-index">08</span><strong>Adobe Firefly</strong><span class="tool-note">Generative workflows · variations · production</span></div>
+      <div class="tool-card code-tool"><span class="tool-index">09</span><strong>HTML / CSS</strong><span class="tool-note">Portfolio builds · prototypes · design-to-browser</span></div>
     </div>
 
-    <!-- Row 2: Three Small Items -->
-    <div class="bento-item bento-small" data-image="https://ik.imagekit.io/Chan/W%20creatives-12.png">
-      <img src="https://ik.imagekit.io/Chan/W%20creatives-12.png" alt="Premium Screen Ad">
-      <div class="bento-overlay">
-        <div class="bento-category">PREMIUM AD</div>
-        <div class="bento-title">HNI Screen Campaign</div>
-        <div class="bento-description">Luxury advertising for high net worth individuals</div>
-        <div class="view-full">View Full →</div>
-      </div>
-    </div>
-
-    <div class="bento-item bento-small" data-image="https://ik.imagekit.io/Chan/WIR%20creatives%20(1)%20gif-01.gif">
-      <img src="https://ik.imagekit.io/Chan/WIR%20creatives%20(1)%20gif-01.gif" alt="Animated Ad">
-      <div class="bento-overlay">
-        <div class="bento-category">ANIMATED AD</div>
-        <div class="bento-title">Motion Graphics Campaign</div>
-        <div class="bento-description">Dynamic GIF ad for premium audience</div>
-        <div class="view-full">View Full →</div>
-      </div>
-    </div>
-
-    <div class="bento-item bento-small" data-image="https://ik.imagekit.io/Chan/Whisk_480b7193e6c1340ad6f4e6ba91d1148ddr.jpeg?updatedAt=1766845579398">
-      <img src="https://ik.imagekit.io/Chan/Whisk_480b7193e6c1340ad6f4e6ba91d1148ddr.jpeg?updatedAt=1766845579398" alt="Namma Ooru">
-      <div class="bento-overlay">
-        <div class="bento-category">SOCIAL MEDIA</div>
-        <div class="bento-title">Namma Ooru Stories</div>
-        <div class="bento-description">Cultural storytelling campaign</div>
-        <div class="view-full">View Full →</div>
-      </div>
-    </div>
-
-    <!-- Row 3: Two Wide Items -->
-    <div class="bento-item bento-wide" data-image="https://ik.imagekit.io/Chan/WIR%20creatives-12.png">
-      <img src="https://ik.imagekit.io/Chan/WIR%20creatives-12.png" alt="Premium Ad Campaign">
-      <div class="bento-overlay">
-        <div class="bento-category">PREMIUM CAMPAIGN</div>
-        <div class="bento-title">Wealth Management Ad</div>
-        <div class="bento-description">Strategic advertising for affluent clientele</div>
-        <div class="view-full">View Full →</div>
-      </div>
-    </div>
-
-    <div class="bento-item bento-wide" data-image="https://ik.imagekit.io/Chan/Whisk_8222ae2b7b7b63eaebc4f483e10b4ea7dr.jpeg?updatedAt=1766845579714">
-      <img src="https://ik.imagekit.io/Chan/Whisk_8222ae2b7b7b63eaebc4f483e10b4ea7dr.jpeg?updatedAt=1766845579714" alt="Google Ads">
-      <div class="bento-overlay">
-        <div class="bento-category">AI GENERATED</div>
-        <div class="bento-title">Google Ads Campaign</div>
-        <div class="bento-description">AI-powered advertising creative optimization</div>
-        <div class="view-full">View Full →</div>
-      </div>
-    </div>
-
-    <!-- Row 4: Medium + Two Small -->
-    <div class="bento-item bento-medium" data-image="https://ik.imagekit.io/Chan/WIR%20creatives-10.png">
-      <img src="https://ik.imagekit.io/Chan/WIR%20creatives-10.png" alt="Investment Ad">
-      <div class="bento-overlay">
-        <div class="bento-category">PREMIUM AD</div>
-        <div class="bento-title">Investment Campaign</div>
-        <div class="bento-description">High-impact advertising for HNIs</div>
-        <div class="view-full">View Full →</div>
-      </div>
-    </div>
-
-    <div class="bento-item bento-small" data-image="https://ik.imagekit.io/Chan/Whisk_14fa99db596c3a2ac8047675c2caa01bdr.jpeg?updatedAt=1766845578941">
-      <img src="https://ik.imagekit.io/Chan/Whisk_14fa99db596c3a2ac8047675c2caa01bdr.jpeg?updatedAt=1766845578941" alt="Heritage Campaign">
-      <div class="bento-overlay">
-        <div class="bento-category">SOCIAL MEDIA</div>
-        <div class="bento-title">Heritage Campaign</div>
-        <div class="bento-description">Cultural identity design</div>
-        <div class="view-full">View Full →</div>
-      </div>
-    </div>
-
-    <div class="bento-item bento-small" data-image="https://ik.imagekit.io/Chan/Whisk_a675877dc7d4ee9b60c4817909eceeacdr.jpeg">
-      <img src="https://ik.imagekit.io/Chan/Whisk_a675877dc7d4ee9b60c4817909eceeacdr.jpeg" alt="Creative Work">
-      <div class="bento-overlay">
-        <div class="bento-category">CREATIVE</div>
-        <div class="bento-title">Visual Exploration</div>
-        <div class="bento-description">Experimental design work</div>
-        <div class="view-full">View Full →</div>
-      </div>
-    </div>
-
-    <!-- Row 5: Three Small Items -->
-    <div class="bento-item bento-small" data-image="https://ik.imagekit.io/Chan/Social%20Media/GA_MF_NEW09.jpg?updatedAt=1766651273215">
-      <img src="https://ik.imagekit.io/Chan/Social%20Media/GA_MF_NEW09.jpg?updatedAt=1766651273215" alt="Marketing Campaign">
-      <div class="bento-overlay">
-        <div class="bento-category">SOCIAL MEDIA</div>
-        <div class="bento-title">Marketing Campaign</div>
-        <div class="bento-description">Multi-platform execution</div>
-        <div class="view-full">View Full →</div>
-      </div>
-    </div>
-
-    <div class="bento-item bento-small" data-image="https://ik.imagekit.io/Chan/Emailers/60fd43205793231.66c20b32ce8ab.png?updatedAt=1765700803875">
-      <img src="https://ik.imagekit.io/Chan/Emailers/60fd43205793231.66c20b32ce8ab.png?updatedAt=1765700803875" alt="Email Design">
-      <div class="bento-overlay">
-        <div class="bento-category">EMAIL DESIGN</div>
-        <div class="bento-title">Email Campaign</div>
-        <div class="bento-description">Conversion-focused design</div>
-        <div class="view-full">View Full →</div>
-      </div>
-    </div>
-
-    <div class="bento-item bento-small" data-image="https://ik.imagekit.io/Chan/Social%20Media/TW-GA-02-1200X628%20(2).jpg?updatedAt=1766651273979">
-      <img src="https://ik.imagekit.io/Chan/Social%20Media/TW-GA-02-1200X628%20(2).jpg?updatedAt=1766651273979" alt="Twitter Campaign">
-      <div class="bento-overlay">
-        <div class="bento-category">SOCIAL MEDIA</div>
-        <div class="bento-title">Twitter Campaign</div>
-        <div class="bento-description">Social media advertising</div>
-        <div class="view-full">View Full →</div>
-      </div>
+    <div class="toolkit-footnote">
+      <span>Current status: <b>making the pixels behave.</b></span>
+      <span class="toolkit-micro">Alt text is written. Layers are named. Mostly.</span>
     </div>
   </div>
 </section>
 
-<div class="work-modal" id="workModal">
-  <div class="modal-close" id="modalClose">×</div>
-  <img id="modalImage" src="" alt="Full view">
-</div>
-
-<section class="horizontal-section">
-  <div class="gallery-header">
-    <h2 class="gallery-title">More Work</h2>
-  </div>
-  
-  <div class="horizontal-wrapper">
-    <div class="horizontal-track" id="horizontalTrack">
-      <div class="gallery-item" data-image="https://ik.imagekit.io/Chan/Social%20Media/TW-GA-02-1200X628%20(2).jpg?updatedAt=1766651273979">
-        <img src="https://ik.imagekit.io/Chan/Social%20Media/TW-GA-02-1200X628%20(2).jpg?updatedAt=1766651273979" alt="Twitter Campaign">
+<!-- ============================================================
+     ACT 4 — AI
+     ============================================================ -->
+<section id="ai">
+  <div class="wrap">
+    <span class="eyebrow">AI Magic / Act four</span>
+    <div class="ai-exchange" style="margin-top:1.5rem;">
+      <div class="qa">
+        <div class="q"><span class="who">Interviewer</span><span class="line">Do you use AI?</span></div>
+        <div class="a"><span class="who">Chandrashekar</span><span class="line">Yes.</span></div>
       </div>
-      <div class="gallery-item" data-image="https://ik.imagekit.io/Chan/Social%20Media/d0dad1149177181.66c207282b1f2.jpg?updatedAt=1765700778428">
-        <img src="https://ik.imagekit.io/Chan/Social%20Media/d0dad1149177181.66c207282b1f2.jpg?updatedAt=1765700778428" alt="Brand Design">
+      <div class="qa">
+        <div class="q"><span class="who">Interviewer</span><span class="line">Does AI replace designers?</span></div>
+        <div class="a"><span class="who">Chandrashekar</span><span class="line">No.</span></div>
       </div>
-      <div class="gallery-item" data-image="https://ik.imagekit.io/Chan/Social%20Media/7fe07d149177181.66c207282b6ba.png?updatedAt=1765700778317">
-        <img src="https://ik.imagekit.io/Chan/Social%20Media/7fe07d149177181.66c207282b6ba.png?updatedAt=1765700778317" alt="Social Media">
-      </div>
-      <div class="gallery-item" data-image="https://ik.imagekit.io/Chan/Social%20Media/141b2d149177181.66c207277d975.jpg?updatedAt=1765700778297">
-        <img src="https://ik.imagekit.io/Chan/Social%20Media/141b2d149177181.66c207277d975.jpg?updatedAt=1765700778297" alt="Marketing">
-      </div>
-      <div class="gallery-item" data-image="https://ik.imagekit.io/Chan/Social%20Media/f86f9c149177181.66c20728dd2be.png?updatedAt=1765700778188">
-        <img src="https://ik.imagekit.io/Chan/Social%20Media/f86f9c149177181.66c20728dd2be.png?updatedAt=1765700778188" alt="Campaign">
-      </div>
-      <div class="gallery-item" data-image="https://ik.imagekit.io/Chan/Social%20Media/a0ddec149177181.66c20728ddb8a.png?updatedAt=1765700778067">
-        <img src="https://ik.imagekit.io/Chan/Social%20Media/a0ddec149177181.66c20728ddb8a.png?updatedAt=1765700778067" alt="Social Content">
-      </div>
-      <div class="gallery-item" data-image="https://ik.imagekit.io/Chan/Social%20Media/79c4e3149177181.66c20729a7159.jpg?updatedAt=1765700778021">
-        <img src="https://ik.imagekit.io/Chan/Social%20Media/79c4e3149177181.66c20729a7159.jpg?updatedAt=1765700778021" alt="Creative Work">
-      </div>
-      <div class="gallery-item" data-image="https://ik.imagekit.io/Chan/Social%20Media/5ae192149177181.66c2072392ea9.jpg?updatedAt=1765700777949">
-        <img src="https://ik.imagekit.io/Chan/Social%20Media/5ae192149177181.66c2072392ea9.jpg?updatedAt=1765700777949" alt="Design Work">
-      </div>
-      <div class="gallery-item" data-image="https://ik.imagekit.io/Chan/Social%20Media/3cac67149177181.66c20725bfa64.jpg?updatedAt=1765700777893">
-        <img src="https://ik.imagekit.io/Chan/Social%20Media/3cac67149177181.66c20725bfa64.jpg?updatedAt=1765700777893" alt="Visual Design">
-      </div>
-      <div class="gallery-item" data-image="https://ik.imagekit.io/Chan/Social%20Media/96c082149177181.66c20725bec60.jpg?updatedAt=1765700777864">
-        <img src="https://ik.imagekit.io/Chan/Social%20Media/96c082149177181.66c20725bec60.jpg?updatedAt=1765700777864" alt="Marketing Design">
-      </div>
-      <div class="gallery-item" data-image="https://ik.imagekit.io/Chan/Social%20Media/e3848a149177181.66c20725bf577.jpg?updatedAt=1765700777886">
-        <img src="https://ik.imagekit.io/Chan/Social%20Media/e3848a149177181.66c20725bf577.jpg?updatedAt=1765700777886" alt="Campaign Work">
-      </div>
-      <div class="gallery-item" data-image="https://ik.imagekit.io/Chan/Emailers/c01f55205793231.66c20b31274d4.png?updatedAt=1765700803354">
-        <img src="https://ik.imagekit.io/Chan/Emailers/c01f55205793231.66c20b31274d4.png?updatedAt=1765700803354" alt="Email Template">
-      </div>
-      <div class="gallery-item" data-image="https://ik.imagekit.io/Chan/Emailers/ac05ee205793231.66c20b3126ed2.png?updatedAt=1765700803310">
-        <img src="https://ik.imagekit.io/Chan/Emailers/ac05ee205793231.66c20b3126ed2.png?updatedAt=1765700803310" alt="Email Design">
-      </div>
-      <div class="gallery-item" data-image="https://ik.imagekit.io/Chan/Emailers/b948b8205793231.66c20b32cdca1.png?updatedAt=1765700803059">
-        <img src="https://ik.imagekit.io/Chan/Emailers/b948b8205793231.66c20b32cdca1.png?updatedAt=1765700803059" alt="Email Marketing">
-      </div>
-      <div class="gallery-item" data-image="https://ik.imagekit.io/Chan/3.jpeg?updatedAt=1765386745387">
-        <img src="https://ik.imagekit.io/Chan/3.jpeg?updatedAt=1765386745387" alt="Abstract Design 1">
-      </div>
-      <div class="gallery-item" data-image="https://ik.imagekit.io/Chan/1.png?updatedAt=1765386746199">
-        <img src="https://ik.imagekit.io/Chan/1.png?updatedAt=1765386746199" alt="Abstract Design 2">
-      </div>
-      <div class="gallery-item" data-image="https://ik.imagekit.io/Chan/7.jpeg?updatedAt=1765386745190">
-        <img src="https://ik.imagekit.io/Chan/7.jpeg?updatedAt=1765386745190" alt="Abstract Design 3">
-      </div>
-      <div class="gallery-item" data-image="https://ik.imagekit.io/Chan/6.jpeg?updatedAt=1765386745764">
-        <img src="https://ik.imagekit.io/Chan/6.jpeg?updatedAt=1765386745764" alt="Abstract Design 4">
-      </div>
-      <div class="gallery-item" data-image="https://ik.imagekit.io/Chan/Screenshot%202025-12-27%20at%2019.27.43.png?updatedAt=1766845580169">
-        <img src="https://ik.imagekit.io/Chan/Screenshot%202025-12-27%20at%2019.27.43.png?updatedAt=1766845580169" alt="Portfolio Screenshot 1">
-      </div>
-      <div class="gallery-item" data-image="https://ik.imagekit.io/Chan/Screenshot%202025-12-27%20at%2019.27.55.png?updatedAt=1766845580000">
-        <img src="https://ik.imagekit.io/Chan/Screenshot%202025-12-27%20at%2019.27.55.png?updatedAt=1766845580000" alt="Portfolio Screenshot 2">
-      </div>
-      <div class="gallery-item" data-image="https://ik.imagekit.io/Chan/Screenshot%202025-12-27%20at%2019.28.04.png?updatedAt=1766845579561">
-        <img src="https://ik.imagekit.io/Chan/Screenshot%202025-12-27%20at%2019.28.04.png?updatedAt=1766845579561" alt="Portfolio Screenshot 3">
-      </div>
-      <div class="gallery-item" data-image="https://ik.imagekit.io/Chan/Screenshot%202025-12-27%20at%2019.28.13.png?updatedAt=1766845579216">
-        <img src="https://ik.imagekit.io/Chan/Screenshot%202025-12-27%20at%2019.28.13.png?updatedAt=1766845579216" alt="Portfolio Screenshot 4">
-      </div>
-      <div class="gallery-item" data-image="https://ik.imagekit.io/Chan/Screenshot%202025-12-27%20at%2019.27.26.png?updatedAt=1766845578818">
-        <img src="https://ik.imagekit.io/Chan/Screenshot%202025-12-27%20at%2019.27.26.png?updatedAt=1766845578818" alt="Portfolio Screenshot 5">
-      </div>
-      <div class="gallery-item" data-image="https://ik.imagekit.io/Chan/Screenshot%202025-12-27%20at%2019.28.22.png?updatedAt=1766845578718">
-        <img src="https://ik.imagekit.io/Chan/Screenshot%202025-12-27%20at%2019.28.22.png?updatedAt=1766845578718" alt="Portfolio Screenshot 6">
+      <div class="qa">
+        <div class="q"><span class="who">Interviewer</span><span class="line">Then what does it do?</span></div>
+        <div class="a"><span class="who">Chandrashekar</span><span class="line">It replaces the 47 tabs I used to have open.</span></div>
       </div>
     </div>
+
+    <div class="project-grid" id="ai-grid" style="margin-top:3.5rem;">
+      <!-- Populated by the inlined portfolio script -->
+    </div>
   </div>
-  
-  <div class="gallery-nav">
-    <div class="nav-arrow" id="prevBtn">←</div>
-    <div class="nav-arrow" id="nextBtn">→</div>
-  </div>
-  
-  <div class="gallery-progress" id="progressDots"></div>
 </section>
 
-<section class="toolkit-section">
-  <div class="toolkit-container">
-    <h2 class="toolkit-title">The Arsenal</h2>
-    <div class="tools-track-wrapper">
-      <div class="tools-track" id="toolsTrack">
-        <div class="tool-item">
-          <div class="tool-icon">
-            <img src="https://ik.imagekit.io/Chan/Web%20icons-05.jpg?updatedAt=1765348130469" alt="Illustrator">
-          </div>
-          <div class="tool-name">Illustrator</div>
-        </div>
-        <div class="tool-item">
-          <div class="tool-icon">
-            <img src="https://ik.imagekit.io/Chan/Web%20icons-06.jpg?updatedAt=1765348132940" alt="Photoshop">
-          </div>
-          <div class="tool-name">Photoshop</div>
-        </div>
-        <div class="tool-item">
-          <div class="tool-icon">
-            <img src="https://ik.imagekit.io/Chan/Web%20icons-07.jpg?updatedAt=1765348131586" alt="CorelDRAW">
-          </div>
-          <div class="tool-name">CorelDRAW</div>
-        </div>
-        <div class="tool-item">
-          <div class="tool-icon">
-            <img src="https://ik.imagekit.io/Chan/Web%20icons-08.jpg?updatedAt=1765348130457" alt="Premiere Pro">
-          </div>
-          <div class="tool-name">Premiere Pro</div>
-        </div>
-        <div class="tool-item">
-          <div class="tool-icon">
-            <img src="https://ik.imagekit.io/Chan/Web%20icons-09.jpg?updatedAt=1765348132639" alt="Figma">
-          </div>
-          <div class="tool-name">Figma</div>
-        </div>
-        <div class="tool-item">
-          <div class="tool-icon">
-            <img src="https://ik.imagekit.io/Chan/Web%20icons-10.jpg?updatedAt=1765348132704" alt="HTML">
-          </div>
-          <div class="tool-name">HTML/CSS</div>
-        </div>
-        <div class="tool-item">
-          <div class="tool-icon">
-            <img src="https://ik.imagekit.io/Chan/Web%20icons-11.jpg?updatedAt=1765348132963" alt="MidJourney">
-          </div>
-          <div class="tool-name">MidJourney</div>
-        </div>
-        <div class="tool-item">
-          <div class="tool-icon">
-            <img src="https://ik.imagekit.io/Chan/Web%20icons-12.jpg?updatedAt=1765348132967" alt="Veo">
-          </div>
-          <div class="tool-name">Veo AI</div>
-        </div>
-        <div class="tool-item">
-          <div class="tool-icon">
-            <img src="https://ik.imagekit.io/Chan/Web%20icons-13.jpg?updatedAt=1765348132911" alt="Firefly">
-          </div>
-          <div class="tool-name">Firefly</div>
-        </div>
+<!-- ============================================================
+     ACT 5 — THE INTERVIEWER GETS NERVOUS
+     ============================================================ -->
+<section id="nervous">
+  <div class="wrap">
+    <div class="qa">
+      <div class="q"><span class="who">Interviewer</span><span class="line">Do you have any questions for us?</span></div>
+      <div class="a"><span class="who">Chandrashekar</span><span class="line">Actually, yes.</span></div>
+    </div>
+    <p class="fourth-wall">Why are you still scrolling?</p>
+    <div class="dual-cta">
+      <a href="#hire" class="cta" data-scroll data-track="like-work">I like the work →</a>
+      <a href="#hire" class="cta ghost" data-scroll data-track="curious">Just curious →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ACT 6 — WHY SHOULD WE HIRE YOU?
+     ============================================================ -->
+<section id="hire">
+  <div class="wrap">
+    <div class="qa">
+      <div class="q"><span class="who">Interviewer</span><span class="line">Why should we hire you?</span></div>
+      <div class="a">
+        <span class="who">Chandrashekar</span>
+        <span class="line">Because I don't just make the thing.<br><em style="font-style:italic; color:rgba(245,244,239,.6);">I figure out what the thing needs to be.</em></span>
+      </div>
+    </div>
+
+    <div class="cap-list">
+      <div class="cap-row">
+        <span class="yrs serif">8 years</span>
+        <span class="items">
+          <span>Brand</span><span>Campaigns</span><span>Digital</span>
+          <span>Motion</span><span>Visual Systems</span><span>AI-Assisted Creative</span>
+        </span>
       </div>
     </div>
   </div>
 </section>
 
-<section class="about-section" id="about">
-  <div class="about-container">
-    <div class="about-text">
-      <h2>Building systems,<br>not just designs.</h2>
-      <p>Lead Graphic Designer with expertise in creating scalable visual systems that empower high-growth brands.</p>
-      <p>I bridge strategy and execution—designing frameworks that enable teams to move fast while maintaining brand integrity across every touchpoint. Every system I build is optimized for velocity, consistency, and impact.</p>
-      <p>With AI integration at the core of my process, I'm pushing the boundaries of what's possible in design—from concept to final delivery.</p>
-      <div class="social-links">
-        <a href="https://www.linkedin.com/in/csndesigner/" target="_blank" class="social-link">LinkedIn</a>
-        <a href="https://ik.imagekit.io/Chan/CN_CV.pdf?updatedAt=1765712145077" target="_blank" class="social-link">Resume</a>
-        <a href="mailto:chandrashekar96.n@gmail.com" class="social-link">Email</a>
-      </div>
+<!-- ============================================================
+     ENDING
+     ============================================================ -->
+<section id="ending">
+  <div class="wrap">
+    <h2 class="ending-title serif">Interview complete.</h2>
+    <p class="ending-sub">Thank you for your time.</p>
+    <p class="ending-note">You may now pretend this was just another portfolio review.</p>
+
+    <div class="ending-ctas">
+      <a href="mailto:chandrashekar96.n@gmail.com?subject=I%20have%20a%20brief" class="cta">I have a brief →</a>
+      <a href="mailto:chandrashekar96.n@gmail.com?subject=Let's%20talk" class="cta ghost">Let's talk →</a>
     </div>
-    <div class="about-image">
-      <img src="https://ik.imagekit.io/Chan/Website%2004.png" alt="Chandrashekar">
+
+    <div class="ending-contact">
+      <span>Bengaluru, India</span>
+      <a href="mailto:chandrashekar96.n@gmail.com">chandrashekar96.n@gmail.com</a>
+      <a href="tel:+918431049783">+91 84310 49783</a>
     </div>
   </div>
 </section>
+
+</main>
 
 <footer>
-  <div class="footer-container">
-    <h2 class="footer-title">Let's build something<br>extraordinary together.</h2>
-    <a href="mailto:chandrashekar96.n@gmail.com" class="footer-email">chandrashekar96.n@gmail.com</a>
-    <div class="footer-bottom">
-      © 2025 Chandrashekar. Powered by AI. Built for the future.
-    </div>
-  </div>
+  <span>&copy; <span id="year"></span> Chandrashekar</span>
+  <span>Designed, mostly on purpose. <span class="blue-note">●</span></span>
 </footer>
 
+<!-- Full-frame image viewer -->
+<div id="image-lightbox" aria-hidden="true">
+  <div class="lightbox-backdrop"></div>
+  <div class="lightbox-shell" role="dialog" aria-modal="true" aria-label="Full project image">
+    <div class="lightbox-top">
+      <span id="lightbox-title">Project image</span>
+      <button id="lightbox-close" type="button" aria-label="Close image">Close ×</button>
+    </div>
+    <div class="lightbox-media"><img id="lightbox-image" src="" alt=""></div>
+    <div class="lightbox-hint">ESC to close · Full frame preserved</div>
+  </div>
+</div>
+
+<!-- Easter egg surfaces -->
+<div id="cursor-note" role="status" aria-hidden="true"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
 <script>
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    document.getElementById('loadingScreen').classList.add('hidden');
-  }, 1500);
-});
-
-const heroVideo = document.querySelector('.hero-video');
-if (heroVideo) {
-  heroVideo.play().catch(err => {
-    console.log('Video autoplay prevented:', err);
-  });
-  
-  document.addEventListener('touchstart', function playVideo() {
-    heroVideo.play();
-    document.removeEventListener('touchstart', playVideo);
-  }, { once: true });
-}
-
-const bentoItems = document.querySelectorAll('.bento-item');
-const galleryItems = document.querySelectorAll('.gallery-item');
-const modal = document.getElementById('workModal');
-const modalImage = document.getElementById('modalImage');
-const modalClose = document.getElementById('modalClose');
-
-function openModal(imageSrc) {
-  modalImage.src = imageSrc;
-  modal.classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeModal() {
-  modal.classList.remove('active');
-  document.body.style.overflow = 'auto';
-}
-
-bentoItems.forEach(item => {
-  item.addEventListener('click', () => {
-    const imageSrc = item.getAttribute('data-image');
-    openModal(imageSrc);
-  });
-});
-
-galleryItems.forEach(item => {
-  item.addEventListener('click', () => {
-    const imageSrc = item.getAttribute('data-image');
-    openModal(imageSrc);
-  });
-});
-
-modalClose.addEventListener('click', closeModal);
-modal.addEventListener('click', (e) => {
-  if (e.target === modal) {
-    closeModal();
+/* Inlined from js/data.js */
+/**
+ * Portfolio project data — V12
+ * Titles and descriptions are written to reflect the actual supplied work.
+ */
+const PROJECTS = [
+  {
+    slug: "brand-wealth-app",
+    title: "Wealth, Reimagined",
+    category: "brand",
+    year: "2026",
+    client: "Wealth / Private Wealth",
+    description: "A premium visual direction for a wealth platform, using product screens, restrained luxury cues and a dark editorial palette to make sophisticated investing feel modern and tangible.",
+    role: "Brand Designer / Visual Designer",
+    scope: "Visual direction, campaign creative, product-led brand communication",
+    approach: "Built the story around the product itself: strong device compositions, a controlled luxury palette and clear hierarchy that lets the interface become the hero.",
+    tools: ["Photoshop", "Illustrator", "Figma"],
+    hero: "https://ik.imagekit.io/Chan/W%20creatives-12.png?updatedAt=1769950118340",
+    gallery: ["https://ik.imagekit.io/Chan/W%20creatives-12.png?updatedAt=1769950118340"],
+    video: "",
+    credits: "",
+    featured: true
+  },
+  {
+    slug: "brand-fundsindia-private-wealth",
+    title: "Greater Possibilities",
+    category: "brand",
+    year: "2026",
+    client: "FundsIndia Private Wealth",
+    description: "A premium brand communication piece positioning private wealth around discipline, expertise and a more certain tomorrow — with an understated, aspirational visual language.",
+    role: "Brand Designer",
+    scope: "Brand communication, art direction, typography, image selection and layout",
+    approach: "Balanced a calm architectural image with generous typography and a restrained green-and-gold palette to create a sophisticated wealth-management expression.",
+    tools: ["Photoshop", "Illustrator", "Figma"],
+    hero: "https://ik.imagekit.io/Chan/PW_Brand.png",
+    gallery: ["https://ik.imagekit.io/Chan/PW_Brand.png"],
+    video: "",
+    credits: "",
+    featured: true
+  },
+  {
+    slug: "campaign-zero-brokerage",
+    title: "Zero Brokerage, Zero Friction",
+    category: "campaign",
+    year: "2024",
+    client: "Fisdom",
+    description: "A high-contrast acquisition emailer built around a simple promotional promise: zero brokerage. The visual turns the offer into an immediate, memorable hook.",
+    role: "Graphic Designer",
+    scope: "Email creative, visual concept, typography, illustration treatment and CTA design",
+    approach: "Made the offer impossible to miss by turning the '0' into the central visual character, then kept the supporting copy and CTA highly scannable for an email environment.",
+    tools: ["Photoshop", "Illustrator"],
+    hero: "https://ik.imagekit.io/Chan/Emailers/60fd43205793231.66c20b32ce8ab.png?updatedAt=1765700803875",
+    gallery: ["https://ik.imagekit.io/Chan/Emailers/60fd43205793231.66c20b32ce8ab.png?updatedAt=1765700803875"],
+    video: "",
+    credits: "",
+    featured: true
+  },
+  {
+    slug: "campaign-wealth-goes-further",
+    title: "Wealth That Goes Further",
+    category: "campaign",
+    year: "2026",
+    client: "FundsIndia Private Wealth",
+    description: "A premium emailer for private wealth, designed to communicate bespoke wealth management through a calm, aspirational editorial experience.",
+    role: "Creative / Brand Designer",
+    scope: "Email campaign, art direction, visual hierarchy, CTA and responsive communication system",
+    approach: "Used a luxury residential setting, restrained typography and a modular benefit section to move the reader from aspiration to proof to action.",
+    tools: ["Photoshop", "Illustrator", "Figma"],
+    hero: "https://ik.imagekit.io/Chan/Emailers/PW_emailer.png",
+    gallery: ["https://ik.imagekit.io/Chan/Emailers/PW_emailer.png"],
+    video: "",
+    credits: "",
+    featured: true
+  },
+  {
+    slug: "digital-mutual-fund",
+    title: "Mutual Funds, Made More Visible",
+    category: "digital",
+    year: "2026",
+    client: "FundsIndia",
+    description: "A digital communication asset for mutual-fund marketing, designed to make a financial message easier to notice and understand in a fast-scrolling environment.",
+    role: "Digital Designer",
+    scope: "Social creative, campaign adaptation, typography, composition and CTA hierarchy",
+    approach: "Focused on a single visual idea and a strong information hierarchy so the creative could communicate quickly without becoming another generic finance post.",
+    tools: ["Photoshop", "Illustrator"],
+    hero: "https://ik.imagekit.io/Chan/Social%20Media/GA_MF_NEW11.jpg?updatedAt=1766651272448",
+    gallery: ["https://ik.imagekit.io/Chan/Social%20Media/GA_MF_NEW11.jpg?updatedAt=1766651272448"],
+    video: "",
+    credits: "",
+    featured: true
+  },
+  {
+    slug: "digital-ga-social",
+    title: "Growth Advertising, Built to Scroll",
+    category: "digital",
+    year: "2026",
+    client: "FundsIndia",
+    description: "A social-first advertising creative developed for a performance-minded digital environment, balancing message clarity with a stronger visual hook.",
+    role: "Digital / Campaign Designer",
+    scope: "Social ad creative, layout, visual system and campaign adaptation",
+    approach: "Designed around the dimensions and behaviour of social feeds: one dominant message, strong visual entry point and supporting information arranged for quick scanning.",
+    tools: ["Photoshop", "Illustrator"],
+    hero: "https://ik.imagekit.io/Chan/Social%20Media/TW-GA-02-1200X628%20(2).jpg?updatedAt=1766651273979",
+    gallery: ["https://ik.imagekit.io/Chan/Social%20Media/TW-GA-02-1200X628%20(2).jpg?updatedAt=1766651273979"],
+    video: "",
+    credits: "",
+    featured: true
+  },
+  {
+    slug: "motion-japan-event",
+    title: "Japan Event — Motion Identity",
+    category: "motion",
+    year: "2026",
+    client: "FundsIndia",
+    description: "An event-focused motion piece created to give a live moment a stronger visual identity and a more cinematic digital presence.",
+    role: "Motion Designer",
+    scope: "Concept, storyboard, animation, typography and final edit",
+    approach: "Built the motion around pacing and reveal — using movement to guide attention rather than simply animating every element on screen.",
+    tools: ["Premiere Pro", "After Effects"],
+    hero: "",
+    gallery: [],
+    video: "https://ik.imagekit.io/Chan/Japan%20Event-01.mp4",
+    credits: "",
+    featured: true
+  },
+  {
+    slug: "motion-debt-pms",
+    title: "Debt PMS — Teaser",
+    category: "motion",
+    year: "2026",
+    client: "FundsIndia",
+    description: "A teaser built to introduce a debt PMS proposition with a concise, premium motion language suited to financial audiences.",
+    role: "Motion Designer",
+    scope: "Concept, edit, typography, transitions and final delivery",
+    approach: "Kept the story compact and information-led, using rhythm, typography and controlled transitions to build curiosity without overloading the viewer.",
+    tools: ["Premiere Pro", "After Effects"],
+    hero: "",
+    gallery: [],
+    video: "https://ik.imagekit.io/Chan/Debt%20PMS%20Teaser%20Video.mp4",
+    credits: "",
+    featured: true
+  },
+  {
+    slug: "motion-independence-day",
+    title: "Independence Day — A Moving Story",
+    category: "motion",
+    year: "2026",
+    client: "FundsIndia Private Wealth",
+    description: "A 12-second Independence Day concept where three colours travel through Indian landmarks before resolving into the national flag.",
+    role: "Motion Designer / Creative Designer",
+    scope: "Concept, storyboard, visual development, animation and final edit",
+    approach: "Created a simple visual metaphor: three coloured balls become a continuous journey through the Taj Mahal, India Gate and the Himalayas, finally transforming into the flag.",
+    tools: ["Illustrator", "Premiere Pro", "AI-assisted creative tools"],
+    hero: "",
+    gallery: ["https://ik.imagekit.io/Chan/Social%20Media/ChatGPT%20Image%20Jul%2031,%202026,%2011_28_27%20PM.png"],
+    video: "https://ik.imagekit.io/Chan/Independence%20Day.mp4",
+    credits: "",
+    featured: true
+  },
+  {
+    slug: "motion-shakti",
+    title: "Shakti — Celebrating Strength",
+    category: "motion",
+    year: "2026",
+    client: "FundsIndia",
+    description: "A short-form motion piece built around the theme of Shakti, using visual movement to create an emotive and culturally resonant message.",
+    role: "Motion Designer",
+    scope: "Creative concept, visual treatment, animation and edit",
+    approach: "Focused on expressive pacing and visual transitions so the emotional idea could land quickly in a social-first format.",
+    tools: ["Premiere Pro", "After Effects"],
+    hero: "",
+    gallery: [],
+    video: "https://ik.imagekit.io/Chan/shakti%20video%2021-02_6.mp4",
+    credits: "",
+    featured: true
+  },
+  {
+    slug: "motion-elevate-ncd",
+    title: "Elevate NCD — Product Teaser",
+    category: "motion",
+    year: "2026",
+    client: "FundsIndia",
+    description: "A motion-led teaser for an NCD communication, designed to make a financial product feel clearer, more approachable and more dynamic.",
+    role: "Motion / Digital Designer",
+    scope: "Storyboarding, animation, typography, product communication and edit",
+    approach: "Structured the message in short visual beats, using motion to establish hierarchy and keep the financial information digestible.",
+    tools: ["Premiere Pro", "After Effects"],
+    hero: "",
+    gallery: [],
+    video: "https://ik.imagekit.io/Chan/ELevate%20NCD%20Fix_6_1.mp4",
+    credits: "",
+    featured: true
+  },
+  {
+    slug: "motion-fifa-spain",
+    title: "FIFA — Spain",
+    category: "motion",
+    year: "2026",
+    client: "FundsIndia",
+    description: "A sports-led motion creative built around Spain and the energy of FIFA, translating a high-interest moment into branded social content.",
+    role: "Motion Designer",
+    scope: "Concept, motion graphics, edit, typography and social adaptation",
+    approach: "Used sports energy, quick pacing and graphic transitions to create a piece that feels native to social while retaining brand discipline.",
+    tools: ["Premiere Pro", "After Effects"],
+    hero: "",
+    gallery: [],
+    video: "https://ik.imagekit.io/Chan/FIFA_Spain.mp4",
+    credits: "",
+    featured: true
+  },
+  {
+    slug: "motion-ideathon",
+    title: "Ideathon — From Idea to Energy",
+    category: "motion",
+    year: "2026",
+    client: "FundsIndia",
+    description: "A motion communication piece for an ideathon, designed to create momentum around participation and the idea of turning concepts into action.",
+    role: "Motion Designer",
+    scope: "Concept, storyboard, motion graphics, edit and final delivery",
+    approach: "Built a fast, energetic visual rhythm that gives the communication a sense of movement and keeps the viewer moving through the message.",
+    tools: ["Premiere Pro", "After Effects"],
+    hero: "",
+    gallery: [],
+    video: "https://ik.imagekit.io/Chan/Ideathon%20video%203.mp4",
+    credits: "",
+    featured: true
+  },
+  {
+    slug: "motion-10k-family",
+    title: "10K Family Accounts — Milestone",
+    category: "motion",
+    year: "2026",
+    client: "FundsIndia",
+    description: "A milestone-led social video celebrating the growth of family accounts, turning a business number into a simple piece of brand communication.",
+    role: "Motion / Social Designer",
+    scope: "Concept, typography, motion graphics, edit and social delivery",
+    approach: "Made the milestone the hero, then built the motion around a clear progression so the achievement reads instantly even without sound.",
+    tools: ["Premiere Pro", "After Effects"],
+    hero: "",
+    gallery: [],
+    video: "https://ik.imagekit.io/Chan/linkedin%20Post%2010K%20Family%20accounts.mp4",
+    credits: "",
+    featured: true
+  },
+  {
+    slug: "motion-10k-teaser",
+    title: "10K — The Teaser",
+    category: "motion",
+    year: "2026",
+    client: "FundsIndia",
+    description: "A teaser version of the 10K milestone communication, built to create anticipation before the full reveal.",
+    role: "Motion / Social Designer",
+    scope: "Concept, teaser edit, typography, motion graphics and final delivery",
+    approach: "Withheld the full reveal and used timing, scale and movement to create a short-form build-up around the milestone.",
+    tools: ["Premiere Pro", "After Effects"],
+    hero: "",
+    gallery: [],
+    video: "https://ik.imagekit.io/Chan/10k%20video%20teaser-01_4_1).mp4",
+    credits: "",
+    featured: true
+  },
+  {
+    slug: "selected-mutual-fund-analysis",
+    title: "Portfolio Clarity",
+    category: "digital",
+    year: "2026",
+    client: "Wealth",
+    description: "A dark, product-led creative promoting a mutual-fund portfolio analysis experience and its promise of clearer investment insight.",
+    role: "Digital Designer",
+    scope: "Campaign creative, product visualisation, typography and CTA",
+    approach: "Combined a strong diagnostic headline with a product-report visual to make an otherwise technical financial proposition feel immediate.",
+    tools: ["Photoshop", "Illustrator"],
+    hero: "https://ik.imagekit.io/Chan/WIR%20creatives-17.png?updatedAt=1769950115385",
+    gallery: ["https://ik.imagekit.io/Chan/WIR%20creatives-17.png?updatedAt=1769950115385"],
+    video: "",
+    credits: "",
+    featured: false
+  },
+  {
+    slug: "selected-namma-ooru",
+    title: "Stories of Namma Ooru",
+    category: "brand",
+    year: "2026",
+    client: "Independent Visual Exploration",
+    description: "A visual storytelling exploration celebrating everyday life, people and the warmth of Namma Ooru through an illustrated narrative frame.",
+    role: "Creative Designer / Visual Storyteller",
+    scope: "Concept, art direction, AI-assisted illustration and composition",
+    approach: "Built a single narrative image with multiple characters and environmental cues so the artwork feels like a story rather than a static poster.",
+    tools: ["AI-assisted creative tools", "Photoshop"],
+    hero: "https://ik.imagekit.io/Chan/Whisk_4804262381c7e36b4954518eb18e7c4cdr.jpeg?updatedAt=1766845579970",
+    gallery: ["https://ik.imagekit.io/Chan/Whisk_4804262381c7e36b4954518eb18e7c4cdr.jpeg?updatedAt=1766845579970"],
+    video: "",
+    credits: "",
+    featured: false
+  },
+  {
+    slug: "selected-debt-pms",
+    title: "Debt PMS — The Proposition",
+    category: "campaign",
+    year: "2026",
+    client: "FundsIndia",
+    description: "A supporting communication for the Debt PMS proposition, designed as a focused financial-information asset with a premium visual treatment.",
+    role: "Campaign Designer",
+    scope: "Concept, layout, typography, financial communication and campaign adaptation",
+    approach: "Prioritised clarity and visual confidence, giving the product proposition a clean structure that can be understood at a glance.",
+    tools: ["Photoshop", "Illustrator", "Figma"],
+    hero: "https://ik.imagekit.io/Chan/Social%20Media/Debt%20PMS_1-01.png",
+    gallery: ["https://ik.imagekit.io/Chan/Social%20Media/Debt%20PMS_1-01.png"],
+    video: "",
+    credits: "",
+    featured: false
+  },
+  {
+    slug: "selected-jadecaps",
+    title: "JadeCaps — From Idle to Income",
+    category: "campaign",
+    year: "2026",
+    client: "FundsIndia Private Wealth × JadeCaps",
+    description: "A partner communication explaining how idle real estate can become an income-generating asset through professionally managed hospitality operations.",
+    role: "Campaign / Brand Designer",
+    scope: "One-pager, visual hierarchy, information design, iconography and partner communication",
+    approach: "Structured a dense proposition into clear sections — promise, benefits, proof points and next steps — while maintaining the Private Wealth visual language.",
+    tools: ["Photoshop", "Illustrator", "Figma"],
+    hero: "https://ik.imagekit.io/Chan/Social%20Media/Jadecaps%201%20pager-01.png",
+    gallery: ["https://ik.imagekit.io/Chan/Social%20Media/Jadecaps%201%20pager-01.png"],
+    video: "",
+    credits: "",
+    featured: false
+  },
+  {
+    slug: "ai-debt-pms-teaser",
+    title: "AI Magic — Debt PMS Teaser",
+    category: "ai",
+    year: "2026",
+    client: "FundsIndia",
+    description: "An AI-assisted visual exploration for a Debt PMS teaser, using generative imagery as a starting point for a polished financial communication.",
+    role: "AI-assisted Creative Designer",
+    scope: "Visual ideation, image generation, art direction, compositing and final design",
+    approach: "Used generative tools to accelerate visual exploration, then applied conventional design judgement to bring the output into a usable campaign direction.",
+    tools: ["Midjourney", "Adobe Firefly", "Photoshop"],
+    hero: "https://ik.imagekit.io/Chan/Social%20Media/Debt%20PMS_1-02.png",
+    gallery: ["https://ik.imagekit.io/Chan/Social%20Media/Debt%20PMS_1-02.png"],
+    video: "",
+    credits: "",
+    featured: false
+  },
+  {
+    slug: "ai-private-wealth-storyboard",
+    title: "AI Magic — Private Wealth Storyboard",
+    category: "ai",
+    year: "2026",
+    client: "FundsIndia Private Wealth",
+    description: "A storyboard exploration using AI-generated lifestyle imagery to develop a tactile, human narrative for a Private Wealth product communication.",
+    role: "AI Creative Director / Designer",
+    scope: "Concept development, prompt direction, storyboard, image generation and visual sequencing",
+    approach: "Started with the narrative beat rather than the image: each generated frame was designed to support a simple reveal sequence and a coherent brand world.",
+    tools: ["AI image generation", "Photoshop", "Illustrator"],
+    hero: "https://ik.imagekit.io/Chan/Social%20Media/ChatGPT%20Image%20Sep%205,%202026,%2005_51_20%20PM.png",
+    gallery: ["https://ik.imagekit.io/Chan/Social%20Media/ChatGPT%20Image%20Sep%205,%202026,%2005_51_20%20PM.png"],
+    video: "",
+    credits: "",
+    featured: false
+  },
+  {
+    slug: "ai-independence-storyboard",
+    title: "AI Magic — Independence Day Storyboard",
+    category: "ai",
+    year: "2026",
+    client: "FundsIndia Private Wealth",
+    description: "A storyboard for a 12-second Independence Day animation, using AI-assisted visual development to test the narrative before production.",
+    role: "AI-assisted Creative Designer / Motion Concept",
+    scope: "Concept, storyboard, visual exploration and motion planning",
+    approach: "Mapped the complete 12-second sequence first — timing, landmarks, colour movement and final flag reveal — so production had a clear visual blueprint.",
+    tools: ["AI image generation", "Illustrator", "Premiere Pro"],
+    hero: "https://ik.imagekit.io/Chan/Social%20Media/ChatGPT%20Image%20Jul%2031,%202026,%2011_28_27%20PM.png",
+    gallery: ["https://ik.imagekit.io/Chan/Social%20Media/ChatGPT%20Image%20Jul%2031,%202026,%2011_28_27%20PM.png"],
+    video: "",
+    credits: "",
+    featured: false
   }
-});
+];
 
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    closeModal();
-  }
-});
+const CATEGORY_INTROS = {
+  brand: { question: "Can you handle brand design?", sub: "Identity systems, visual direction and the details that make a brand feel intentional." },
+  campaign: { question: "Can you build campaigns?", sub: "Concept through to execution, across formats and audiences." },
+  digital: { question: "Digital?", sub: "Social, email and performance creative built for attention and clarity." },
+  motion: { question: "Motion?", sub: "When static isn't enough, the idea gets to move." },
+  ai: { question: "And AI?", sub: "A production advantage — not a substitute for design judgement." }
+};
 
-const horizontalTrack = document.getElementById('horizontalTrack');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
-const progressDots = document.getElementById('progressDots');
+const CATEGORY_LABELS = {
+  brand: "Brand Design",
+  campaign: "Campaign",
+  digital: "Digital",
+  motion: "Motion",
+  ai: "AI Magic"
+};
 
-let currentIndex = 0;
-const itemWidth = 550 + 32;
-const totalItems = document.querySelectorAll('.gallery-item').length;
-const itemsToShow = Math.floor(window.innerWidth / itemWidth);
-const maxIndex = Math.max(0, totalItems - itemsToShow);
-
-for (let i = 0; i <= maxIndex; i++) {
-  const dot = document.createElement('div');
-  dot.classList.add('progress-dot');
-  if (i === 0) dot.classList.add('active');
-  progressDots.appendChild(dot);
-}
-
-function updateGallery() {
-  const translateX = -currentIndex * itemWidth;
-  horizontalTrack.style.transform = `translateX(${translateX}px)`;
-  
-  document.querySelectorAll('.progress-dot').forEach((dot, i) => {
-    dot.classList.toggle('active', i === currentIndex);
-  });
-  
-  prevBtn.classList.toggle('disabled', currentIndex === 0);
-  nextBtn.classList.toggle('disabled', currentIndex >= maxIndex);
-}
-
-prevBtn.addEventListener('click', () => {
-  if (currentIndex > 0) {
-    currentIndex--;
-    updateGallery();
-  }
-});
-
-nextBtn.addEventListener('click', () => {
-  if (currentIndex < maxIndex) {
-    currentIndex++;
-    updateGallery();
-  }
-});
-
-document.addEventListener('keydown', (e) => {
-  if (!modal.classList.contains('active')) {
-    if (e.key === 'ArrowLeft') {
-      prevBtn.click();
-    } else if (e.key === 'ArrowRight') {
-      nextBtn.click();
-    }
-  }
-});
-
-window.addEventListener('resize', () => {
-  const newItemsToShow = Math.floor(window.innerWidth / itemWidth);
-  const newMaxIndex = Math.max(0, totalItems - newItemsToShow);
-  if (currentIndex > newMaxIndex) {
-    currentIndex = newMaxIndex;
-  }
-  updateGallery();
-});
-
-updateGallery();
-
-const bentoObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry, index) => {
-    if (entry.isIntersecting) {
-      setTimeout(() => {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-      }, index * 80);
-      bentoObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.1 });
-
-bentoItems.forEach(item => {
-  item.style.opacity = '0';
-  item.style.transform = 'translateY(50px)';
-  item.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
-  bentoObserver.observe(item);
-});
-
-const statItems = document.querySelectorAll('.stat-item');
-
-const statsObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry, index) => {
-    if (entry.isIntersecting) {
-      setTimeout(() => {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-      }, index * 150);
-      statsObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.2 });
-
-statItems.forEach(item => {
-  item.style.opacity = '0';
-  item.style.transform = 'translateY(50px)';
-  item.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
-  statsObserver.observe(item);
-});
-
-const sections = document.querySelectorAll('.ai-container, .about-container');
-
-const sectionObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
-      sectionObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.15 });
-
-sections.forEach(section => {
-  section.style.opacity = '0';
-  section.style.transform = 'translateY(60px)';
-  section.style.transition = 'all 1s cubic-bezier(0.4, 0, 0.2, 1)';
-  sectionObserver.observe(section);
-});
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  });
-});
-
-const heroContent = document.querySelector('.hero-content');
-
-window.addEventListener('scroll', () => {
-  const scrolled = window.pageYOffset;
-  
-  if (scrolled < window.innerHeight && heroContent) {
-    heroContent.style.transform = `translateY(${scrolled * 0.5}px)`;
-    heroContent.style.opacity = 1 - (scrolled / window.innerHeight) * 0.7;
-  }
-}, { passive: true });
-
-console.log('%c🚀 PORTFOLIO LOADED', 'font-size: 24px; font-weight: bold; color: #00ff88; background: #000; padding: 12px 24px; border-radius: 8px;');
-console.log('%cChandrashekar - AI-Powered Design Systems', 'font-size: 16px; color: #00ff88;');
-console.log('%cPortfolio © 2025', 'font-size: 12px; color: #999;');
 </script>
+<script>
+/* Inlined from js/main.js */
+(function () {
+  "use strict";
 
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ============================================================
+     FULL-FRAME IMAGE VIEWER
+     ============================================================ */
+  function initLightbox() {
+    var modal = document.getElementById("image-lightbox");
+    var modalImg = document.getElementById("lightbox-image");
+    var modalTitle = document.getElementById("lightbox-title");
+    var close = document.getElementById("lightbox-close");
+    if (!modal || !modalImg) return;
+
+    function openLightbox(img) {
+      modalImg.src = img.currentSrc || img.src;
+      modalImg.alt = img.alt || "Full project image";
+      if (modalTitle) modalTitle.textContent = img.alt || "Project image";
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("lightbox-open");
+    }
+
+    function closeLightbox() {
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("lightbox-open");
+      setTimeout(function(){ modalImg.src = ""; }, 250);
+    }
+
+    document.addEventListener("click", function(e) {
+      var img = e.target.closest(".project-figure img, .detail-gallery img");
+      if (img) {
+        e.preventDefault();
+        e.stopPropagation();
+        openLightbox(img);
+        return;
+      }
+      if (e.target.closest("#lightbox-close") || e.target.closest(".lightbox-backdrop")) closeLightbox();
+    });
+
+    if (close) close.addEventListener("click", closeLightbox);
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape" && modal.classList.contains("open")) closeLightbox();
+    });
+  }
+  initLightbox();
+
+  /* ============================================================
+     LOADER
+     ============================================================ */
+  (function loader() {
+    var loaderEl = document.getElementById("loader");
+    var textEl = document.getElementById("loader-text");
+    if (!loaderEl) return;
+
+    document.body.classList.add("lock");
+
+    var delay = reduceMotion ? 250 : 1000;
+    setTimeout(function () {
+      if (textEl) textEl.textContent = "Could not locate. Proceeding anyway.";
+    }, delay);
+
+    setTimeout(function () {
+      loaderEl.classList.add("hidden");
+      document.body.classList.remove("lock");
+    }, delay + (reduceMotion ? 150 : 850));
+  })();
+
+  /* ============================================================
+     RENDER PROJECT SECTIONS FROM data.js
+     ============================================================ */
+  function fieldOrPlaceholder(value, label) {
+    if (value && String(value).trim().length) {
+      return { text: value, empty: false };
+    }
+    return { text: "[ADD " + label.toUpperCase() + "]", empty: true };
+  }
+
+  function figureMarkup(project) {
+    var media = '';
+    if (project.video) {
+      media = '<video class="project-video" src="' + project.video + '" muted loop playsinline preload="metadata" controls aria-label="' + (project.title || 'Motion project') + '"></video>';
+    } else {
+      media = '<img src="' + project.hero + '" alt="' +
+        (project.title || "Untitled project") +
+        '" loading="lazy" onerror="this.style.display=\'none\'; this.nextElementSibling.style.display=\'flex\';">' +
+        '<div class="ph" style="display:none;">' +
+          '<span class="ph-label">Hero image</span>' +
+          '<span class="ph-path">' + project.hero + '</span>' +
+        '</div>';
+    }
+    return (
+      '<div class="project-figure' + (project.video ? ' has-video' : '') + '" data-slug="' + project.slug + '">' +
+        '<span class="media-index">' + (project.video ? 'MOTION / PLAY' : 'IMAGE / FULL FRAME') + '</span>' +
+        media +
+        (!project.video ? '<span class="view-full">View full frame ↗</span>' : '') +
+        '<span class="hover-note">' + (project.video ? 'Press play. I made this.' : 'Open full frame.') + '</span>' +
+      '</div>'
+    );
+  }
+
+  // Force-check placeholder immediately (avoid waiting on the image
+  // network error, which can flash a broken-image icon first).
+  function markMissingImages(root) {
+    var imgs = root.querySelectorAll(".project-figure img");
+    imgs.forEach(function (img) {
+      var testImg = new Image();
+      testImg.onerror = function () {
+        img.style.display = "none";
+        var ph = img.nextElementSibling;
+        if (ph) ph.style.display = "flex";
+      };
+      testImg.src = img.getAttribute("src");
+    });
+  }
+
+  function detailField(label, value) {
+    var f = fieldOrPlaceholder(value, label);
+    return (
+      '<div class="detail-field">' +
+        '<div class="label">' + label + '</div>' +
+        '<div class="value">' + (f.empty ? '<em>' + f.text + '</em>' : f.text) + '</div>' +
+      '</div>'
+    );
+  }
+
+  function projectCard(project, opts) {
+    opts = opts || {};
+    var titleF = fieldOrPlaceholder(project.title, "project title");
+    var descF = fieldOrPlaceholder(project.description, "description");
+    var toolsText = (project.tools && project.tools.length) ? project.tools.join(", ") : "";
+
+    var card =
+      '<article class="project-card" data-slug="' + project.slug + '" tabindex="0" role="button" aria-expanded="false">' +
+        figureMarkup(project) +
+        '<div class="project-meta">' +
+          '<span class="name serif">' + titleF.text + '</span>' +
+          '<span class="yr">' + (project.year || "&mdash;") + '</span>' +
+        '</div>' +
+        (opts.showDesc !== false ? '<p class="project-desc">' + descF.text + '</p>' : '') +
+        '<div class="project-detail">' +
+          '<p class="detail-q">&ldquo;What did you actually do?&rdquo;</p>' +
+          '<div class="detail-grid">' +
+            detailField("Role", project.role) +
+            detailField("Scope", project.scope) +
+            detailField("Approach", project.approach || project.description) +
+          '</div>' +
+          (toolsText ? '<p class="small-note" style="margin-bottom:1.5rem;">Tools &mdash; ' + toolsText + '</p>' : '') +
+          (project.client ? '<p class="small-note" style="margin-bottom:1.5rem;">Client &mdash; ' + project.client + '</p>' : '') +
+          (project.gallery && project.gallery.length
+            ? '<div class="detail-gallery">' + project.gallery.map(function (g) {
+                return '<div class="project-figure"><img src="' + g + '" alt="" loading="lazy"><div class="ph" style="display:none;"><span class="ph-label">Gallery image</span><span class="ph-path">' + g + '</span></div></div>';
+              }).join("") + '</div>'
+            : '') +
+        '</div>' +
+      '</article>';
+
+    return card;
+  }
+
+  function renderWork() {
+    var container = document.getElementById("category-container");
+    if (!container || typeof PROJECTS === "undefined") return;
+
+    var order = ["brand", "campaign", "digital", "motion"];
+    var featured = PROJECTS.filter(function (p) { return p.featured; });
+
+    var html = "";
+    order.forEach(function (cat) {
+      var items = featured.filter(function (p) { return p.category === cat; });
+      if (!items.length) return;
+      var intro = CATEGORY_INTROS[cat] || { question: "", sub: "" };
+      html +=
+        '<div class="category-block" id="cat-' + cat + '">' +
+          '<div class="wrap">' +
+            '<div class="category-head">' +
+              '<div>' +
+                '<span class="category-tag">' + CATEGORY_LABELS[cat] + '</span>' +
+                '<p class="q serif">' + intro.question + '</p>' +
+              '</div>' +
+              '<p class="sub">' + intro.sub + '</p>' +
+            '</div>' +
+            '<div class="project-grid">' +
+              items.map(function (p) { return projectCard(p); }).join("") +
+            '</div>' +
+          '</div>' +
+        '</div>';
+    });
+    container.innerHTML = html;
+    markMissingImages(container);
+  }
+
+  function renderSelected() {
+    var grid = document.getElementById("selected-grid");
+    if (!grid || typeof PROJECTS === "undefined") return;
+    var items = PROJECTS.filter(function (p) { return !p.featured && p.category !== "ai"; });
+    grid.innerHTML = items.map(function (p) { return projectCard(p, { showDesc: false }); }).join("");
+    markMissingImages(grid);
+  }
+
+  function renderAI() {
+    var grid = document.getElementById("ai-grid");
+    if (!grid || typeof PROJECTS === "undefined") return;
+    var items = PROJECTS.filter(function (p) { return p.category === "ai"; });
+    grid.innerHTML = items.map(function (p) { return projectCard(p); }).join("");
+    markMissingImages(grid);
+  }
+
+  renderWork();
+  renderSelected();
+  renderAI();
+
+  /* ============================================================
+     PROJECT CARD EXPAND / COLLAPSE
+     ============================================================ */
+  document.addEventListener("click", function (e) {
+    var card = e.target.closest(".project-card");
+    if (!card) return;
+    var detail = card.querySelector(".project-detail");
+    if (!detail) return;
+    var isOpen = detail.classList.toggle("open");
+    card.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    var card = e.target.closest(".project-card");
+    if (!card) return;
+    e.preventDefault();
+    card.click();
+  });
+
+  /* ============================================================
+     SMOOTH SCROLL FOR data-scroll LINKS
+     ============================================================ */
+  document.addEventListener("click", function (e) {
+    var link = e.target.closest("[data-scroll]");
+    if (!link) return;
+    var targetId = link.getAttribute("href");
+    if (!targetId || targetId.charAt(0) !== "#") return;
+    var target = document.querySelector(targetId);
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+
+    // The two Act 5 buttons ("I like the work" / "Just curious")
+    // lead to the same place with slightly different framing.
+    var track = link.getAttribute("data-track");
+    if (track === "curious") {
+      showToast("Fair enough. Let's keep it professional.");
+    }
+  });
+
+  /* ============================================================
+     NAV: scrolled state + scroll-spy for progress rail
+     ============================================================ */
+  var navEl = document.getElementById("site-nav");
+  var progressItems = Array.prototype.slice.call(document.querySelectorAll(".progress-item"));
+  var progressTargets = progressItems.map(function (btn) {
+    return document.querySelector(btn.getAttribute("data-target"));
+  });
+
+  progressItems.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var targetSel = btn.getAttribute("data-target");
+      var target = document.querySelector(targetSel);
+      if (target) target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+    });
+  });
+
+  function onScroll() {
+    if (navEl) navEl.classList.toggle("scrolled", window.scrollY > 12);
+
+    var mid = window.scrollY + window.innerHeight * 0.35;
+    var activeIndex = 0;
+    progressTargets.forEach(function (el, i) {
+      if (el && el.offsetTop <= mid) activeIndex = i;
+    });
+    progressItems.forEach(function (btn, i) {
+      btn.classList.toggle("active", i === activeIndex);
+    });
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  /* ============================================================
+     REVEAL ON SCROLL (single deliberate treatment)
+     ============================================================ */
+  function initReveal() {
+    var els = document.querySelectorAll(".project-figure, .fade");
+    if (!("IntersectionObserver" in window) || reduceMotion) {
+      els.forEach(function (el) { el.classList.add("reveal", "in"); });
+      return;
+    }
+    els.forEach(function (el) {
+      if (el.classList.contains("project-figure")) el.classList.add("reveal");
+    });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2, rootMargin: "0px 0px -8% 0px" });
+    document.querySelectorAll(".reveal, .fade").forEach(function (el) { io.observe(el); });
+  }
+  initReveal();
+
+  /* ============================================================
+     TYPED HEADLINE (one moment, on the first interview question)
+     ============================================================ */
+  function typeOnce() {
+    var el = document.querySelector("[data-type]");
+    if (!el || reduceMotion) {
+      if (el) el.classList.add("done");
+      return;
+    }
+    var full = el.textContent;
+    el.textContent = "";
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        io.disconnect();
+        var i = 0;
+        var interval = setInterval(function () {
+          i++;
+          el.textContent = full.slice(0, i);
+          if (i >= full.length) {
+            clearInterval(interval);
+            el.classList.add("done");
+          }
+        }, 28);
+      });
+    }, { threshold: 0.6 });
+    io.observe(el);
+  }
+  typeOnce();
+
+  /* ============================================================
+     EASTER EGG — cursor note on selected elements
+     ============================================================ */
+  var cursorNote = document.getElementById("cursor-note");
+  var noteTargets = document.querySelectorAll(".nav-mark, footer");
+  noteTargets.forEach(function (el) {
+    el.addEventListener("mouseenter", function () {
+      if (!cursorNote) return;
+      cursorNote.textContent = "This is a portfolio. Please behave.";
+      cursorNote.classList.add("show");
+    });
+    el.addEventListener("mousemove", function (e) {
+      if (!cursorNote) return;
+      cursorNote.style.left = e.clientX + "px";
+      cursorNote.style.top = e.clientY + "px";
+    });
+    el.addEventListener("mouseleave", function () {
+      if (cursorNote) cursorNote.classList.remove("show");
+    });
+  });
+
+  /* ============================================================
+     EASTER EGG — Cmd/Ctrl+Z
+     ============================================================ */
+  window.addEventListener("keydown", function (e) {
+    var isUndo = (e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "z";
+    if (!isUndo) return;
+    showToast("Nice try.");
+  });
+
+  var toastTimer = null;
+  function showToast(message) {
+    var toast = document.getElementById("toast");
+    if (!toast) return;
+    toast.textContent = message;
+    toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toast.classList.remove("show"); }, 2200);
+  }
+
+  /* ============================================================
+     TOOLKIT — small live status line, no interaction required
+     ============================================================ */
+  var toolStatus = document.getElementById("tool-status");
+  if (toolStatus && !reduceMotion) {
+    var statuses = [
+      "No plugins required.",
+      "Layers are behaving.",
+      "Brief understood. Suspiciously clear.",
+      "Export settings checked.",
+      "One last revision. Probably."
+    ];
+    var statusIndex = 0;
+    setInterval(function(){
+      statusIndex = (statusIndex + 1) % statuses.length;
+      toolStatus.style.opacity = "0";
+      setTimeout(function(){
+        toolStatus.textContent = statuses[statusIndex];
+        toolStatus.style.opacity = "1";
+      }, 160);
+    }, 3200);
+    toolStatus.style.transition = "opacity 160ms ease";
+  }
+
+  /* ============================================================
+     FOOTER YEAR
+     ============================================================ */
+  var yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+})();
+
+
+/* ============================================================
+   V9 — MICRO INTERACTIONS
+   ============================================================ */
+(function(){
+  if (reduceMotion) return;
+
+  /* Scroll progress becomes a tiny blue signal in the browser tab-like rail. */
+  var rail=document.getElementById("progress-rail");
+  if(rail){
+    window.addEventListener("scroll",function(){
+      var max=document.documentElement.scrollHeight-window.innerHeight;
+      var pct=max>0 ? window.scrollY/max : 0;
+      rail.style.setProperty("--scroll-progress",(pct*100)+"%");
+    },{passive:true});
+  }
+
+  /* Cursor notes: small, occasional, context-aware — never constant noise. */
+  var note=document.getElementById("cursor-note");
+  var phrases=["Move 2px →","Good. Leave it.","Hierarchy checked.","Client said: 'make it pop.'","Yes, that's intentional.","One more revision.","Saved. Probably."];
+  var last=0;
+  document.addEventListener("mousemove",function(e){
+    if(!note || window.innerWidth<900) return;
+    note.style.left=e.clientX+"px";
+    note.style.top=e.clientY+"px";
+    var now=Date.now();
+    if(now-last>2600 && Math.random()<.018){
+      note.textContent=phrases[Math.floor(Math.random()*phrases.length)];
+      note.classList.add("show");
+      last=now;
+      setTimeout(function(){note.classList.remove("show")},900);
+    }
+  },{passive:true});
+
+  /* Gentle parallax on the intro name/role, capped so it never becomes distracting. */
+  var intro=document.getElementById("intro");
+  if(intro){
+    var name=intro.querySelector(".intro-sub");
+    window.addEventListener("scroll",function(){
+      if(window.scrollY<window.innerHeight && name){
+        name.style.transform="translateY("+Math.min(window.scrollY*.08,24)+"px)";
+      }
+    },{passive:true});
+  }
+
+  /* Give project figures a directional reveal when entering the viewport. */
+  var figures=document.querySelectorAll(".project-figure");
+  var figIO=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add("figure-in");
+        figIO.unobserve(entry.target);
+      }
+    });
+  },{threshold:.12});
+  figures.forEach(function(f){figIO.observe(f)});
+
+  /* Clickable personality cards get a tiny acknowledgement. */
+  document.querySelectorAll(".quip").forEach(function(card){
+    card.addEventListener("click",function(){
+      var toast=document.getElementById("toast");
+      if(!toast) return;
+      toast.textContent="Answer recorded. Very professional.";
+      toast.classList.add("show");
+      setTimeout(function(){toast.classList.remove("show")},1300);
+    });
+  });
+})();
+
+</script>
 </body>
 </html>
