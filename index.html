@@ -3,15 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chandrashekar — Lead Designer. You have an interview.</title>
-<meta name="description" content="Chandrashekar, Lead Designer — 8 years in brand, campaigns, visual systems, digital, motion and AI-assisted creative. This portfolio is also, unfortunately, an interview.">
+<title>Chandrashekar — Lead Designer. I make complicated things look simple.</title>
+<meta name="description" content="Chandrashekar, Lead Designer — 8 years across brand, campaigns, digital, motion and AI-assisted creative.">
 
 <meta property="og:title" content="Chandrashekar — Lead Designer">
-<meta property="og:description" content="You have an interview. Unfortunately, you're interviewing me.">
+<meta property="og:description" content="I make complicated things look simple. Brand, campaigns, digital, motion and AI-assisted creative.">
 <meta property="og:type" content="website">
 
 <style>
-/* Inlined from css/style.css */
 /* ==========================================================
    THE DESIGN INTERVIEW — Chandrashekar
    ========================================================== */
@@ -718,7 +717,7 @@ footer{
 }
 .intro-headline{font-weight:700;line-height:1.02}
 .intro-headline .flip{font-style:normal;color:var(--accent)}
-.intro-name{font-family:var(--sans);font-weight:700;letter-spacing:-.045em}
+.intro-name{font-family:var(--sans);font-weight:700;letter-spacing:-.035em}
 
 /* hero: blue cursor + status system */
 #intro{position:relative;overflow:clip}
@@ -740,7 +739,7 @@ footer{
 
 .intro-line{display:flex;align-items:center;gap:10px}
 .intro-line::before{content:"";width:28px;height:1px;background:var(--accent)}
-.intro-sub{border-left:2px solid var(--accent);padding-left:16px}
+.intro-sub{padding-left:0}
 .intro-foot{font-style:normal}
 .intro-foot::before{content:"↳ ";color:var(--accent)}
 
@@ -938,160 +937,104 @@ body.lightbox-open{overflow:hidden}
 @media(max-width:700px){.lightbox-shell{width:96vw;height:88vh}.lightbox-media{padding:.5rem}.media-index{opacity:1;transform:none}.view-full{opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){.project-figure img,.lightbox-shell,.lightbox-media img{transition:none;animation:none}}
 
+
+/* V14 hero refinement */
+.intro-headline{max-width:15ch;letter-spacing:-.055em;}
+.intro-headline .flip{color:var(--ink);position:relative;}
+.intro-headline .flip::after{content:"";position:absolute;left:0;right:0;bottom:-.08em;height:3px;background:var(--accent);transform:scaleX(.22);transform-origin:left;opacity:.9;}
+.intro-sub{margin-top:2.25rem;}
+.intro-role{margin-top:.25rem;font-weight:600;}
+.intro-meta{max-width:42rem;color:var(--muted);}
+@media (max-width:700px){.intro-headline{max-width:12ch;}.intro-headline .flip::after{height:2px;}}
+
 /* ==========================================================
-   V14 — HERO REFRAME
+   BLUE RHYTHM — two deliberate colour breaks
    ========================================================== */
-#intro{min-height:100svh;padding-top:clamp(7rem,11vw,9rem);padding-bottom:clamp(5rem,8vw,7rem);justify-content:center;background:var(--paper)}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(300px,.62fr);gap:clamp(3rem,7vw,7rem);align-items:center;position:relative;z-index:2}
-.hero-copy{min-width:0}
-.hero-kicker{display:flex;align-items:center;gap:.7rem;margin-bottom:1.35rem;font-size:.7rem;letter-spacing:.08em;font-weight:700;color:var(--ink-45);text-transform:uppercase}
-.hero-kicker-line{width:34px;height:1px;background:var(--accent);display:block}
-.hero-kicker-status{margin-left:auto;font-family:'DM Mono',monospace;font-size:.62rem;font-weight:400;color:var(--ink-45)}
-.intro-headline{font-size:clamp(3.5rem,6.8vw,7.5rem);max-width:10.5ch;line-height:.96;letter-spacing:-.065em}
-.intro-headline .flip{display:inline-block;position:relative}
-.intro-headline .flip::after{content:"";position:absolute;left:0;right:0;bottom:-.07em;height:.045em;background:var(--accent);transform:scaleX(.28);transform-origin:left;transition:transform .8s var(--ease)}
-#intro:hover .intro-headline .flip::after{transform:scaleX(1)}
-.hero-deck{font-size:clamp(1rem,1.25vw,1.18rem);line-height:1.5;max-width:52ch;color:var(--ink-70);margin:1.8rem 0 0}
-.intro-sub{margin-top:1.8rem;max-width:none}
-.intro-name{font-size:var(--step-1);margin-bottom:.1rem}
-.intro-meta{max-width:58ch}
-.hero-actions{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;margin-top:2rem}
-.hero-actions .cta{margin-top:0}
-.hero-aside{font-size:.7rem;line-height:1.5;color:var(--ink-45);font-family:'DM Mono',monospace}
-.hero-aside b{font-weight:400;color:var(--ink-70)}
-.hero-panel{min-height:clamp(390px,46vw,560px);background:var(--ink);color:var(--paper);position:relative;overflow:hidden;border-radius:2px;box-shadow:18px 22px 0 var(--blue-soft);transform:rotate(1.2deg);transition:transform .7s var(--ease),box-shadow .7s var(--ease)}
-.hero-panel:hover{transform:rotate(0deg) translateY(-7px);box-shadow:24px 30px 0 var(--blue-soft)}
-.hero-panel::before{content:"";position:absolute;inset:12px;border:1px solid rgba(245,244,239,.14);pointer-events:none}
-.hero-panel::after{content:"";position:absolute;right:-20%;bottom:-22%;width:72%;aspect-ratio:1;border:1px solid rgba(126,165,255,.38);border-radius:50%;box-shadow:0 0 0 42px rgba(126,165,255,.035),0 0 0 84px rgba(126,165,255,.025);animation:heroOrbit 8s ease-in-out infinite}
-@keyframes heroOrbit{50%{transform:translate(-20px,-16px) scale(1.04)}100%{transform:none}}
-.hero-panel-top,.hero-panel-bottom{position:absolute;left:1.25rem;right:1.25rem;display:flex;justify-content:space-between;align-items:center;font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.08em;color:rgba(245,244,239,.55);z-index:2}
-.hero-panel-top{top:1.2rem}.hero-panel-bottom{bottom:1.2rem}
-.hero-panel-core{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2.5rem;padding:4rem 2rem}
-.hero-ring{width:clamp(145px,16vw,205px);aspect-ratio:1;border:1px solid rgba(245,244,239,.28);border-radius:50%;display:grid;place-items:center;position:relative;font-family:'DM Mono',monospace;font-size:.63rem;letter-spacing:.18em;color:rgba(245,244,239,.65);animation:ringFloat 5s ease-in-out infinite}
-.hero-ring::before,.hero-ring::after{content:"";position:absolute;border-radius:50%;border:1px solid rgba(126,165,255,.42)}
-.hero-ring::before{inset:19px}.hero-ring::after{inset:39px;border-color:rgba(245,244,239,.12)}
-.hero-ring i{position:absolute;width:7px;height:7px;background:var(--accent);border-radius:50%;top:14px;right:31px;box-shadow:0 0 0 8px rgba(37,99,235,.16);animation:dotFloat 5s ease-in-out infinite}
-@keyframes ringFloat{50%{transform:translateY(-8px) rotate(2deg)}100%{transform:none}}
-@keyframes dotFloat{50%{transform:translate(-17px,29px)}100%{transform:none}}
-.hero-panel-copy{display:flex;flex-direction:column;align-items:center;text-align:center;max-width:280px}
-.panel-label{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.1em;color:rgba(245,244,239,.45);margin-bottom:.65rem}
-.hero-panel-copy strong{font-size:clamp(1.45rem,2.2vw,2.15rem);line-height:1.03;letter-spacing:-.045em;font-weight:700}
-.hero-panel-copy small{font-size:.72rem;line-height:1.45;color:rgba(245,244,239,.5);margin-top:.9rem}
-.hero-panel-bottom span:last-child{color:rgba(245,244,239,.75)}
-.hero-panel-bottom .status-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#7EA5FF;margin-right:5px;vertical-align:1px;animation:statusPulse 1.8s infinite}
-.hero-panel-mark{position:absolute;right:1.15rem;top:50%;font-size:clamp(5rem,9vw,8rem);font-weight:800;letter-spacing:-.12em;line-height:1;color:rgba(245,244,239,.045);transform:translateY(-50%);user-select:none}
-.hero-ticker{position:absolute;left:0;right:0;bottom:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);height:38px;display:flex;align-items:center;gap:1.25rem;padding:0 var(--edge);font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.09em;color:var(--ink-45);white-space:nowrap;overflow:hidden}
-.hero-ticker b{color:var(--accent);font-weight:400}
-.hero-ticker span{animation:tickerFade 4s ease-in-out infinite}
-.hero-ticker span:nth-of-type(2){animation-delay:.4s}.hero-ticker span:nth-of-type(3){animation-delay:.8s}.hero-ticker span:nth-of-type(4){animation-delay:1.2s}.hero-ticker span:nth-of-type(5){animation-delay:1.6s}
-@keyframes tickerFade{50%{color:var(--ink)} }
-@media(max-width:900px){
-  #intro{padding-top:7rem}
-  .hero-grid{grid-template-columns:1fr;gap:3rem}
-  .intro-headline{max-width:12ch}
-  .hero-panel{min-height:390px;max-width:520px;width:100%;margin-left:auto}
-  .hero-ticker{position:relative;margin-top:4rem}
+#about{
+  background: var(--accent);
+  color: #fff;
+  overflow: hidden;
 }
+#about .eyebrow,
+#about .about-list li span:first-child{
+  color: rgba(255,255,255,.68);
+}
+#about .about-list li{
+  border-color: rgba(255,255,255,.24);
+}
+#about .about-list li:last-child{
+  border-bottom-color: rgba(255,255,255,.24);
+}
+#about .about-list li:hover{
+  background: rgba(255,255,255,.08);
+}
+#about::after{
+  content:'03 / OFF THE RECORD';
+  position:absolute;
+  right:var(--edge);
+  bottom:2rem;
+  font:500 .62rem/1 'DM Mono',monospace;
+  letter-spacing:.12em;
+  color:rgba(255,255,255,.42);
+}
+
+#ai{
+  background: #DCE8FF;
+  color: var(--ink);
+}
+#ai .eyebrow{ color: rgba(23,22,15,.52); }
+#ai .ai-exchange .qa .a .who{ color: var(--accent); }
+#ai .project-card{
+  background:#fff;
+  border-color:rgba(23,22,15,.12);
+}
+#ai .project-card:hover{
+  box-shadow:12px 14px 0 rgba(37,99,235,.18);
+}
+#ai::before{ color:var(--accent); }
+
+/* ============================================================
+   V16 — VISUAL RHYTHM / DESIGN DESK
+   ============================================================ */
+#desk{background:#eeece5;overflow:hidden}
+.desk-intro{display:grid;grid-template-columns:1.15fr .65fr;gap:clamp(2rem,7vw,7rem);align-items:end;margin-bottom:clamp(2.5rem,5vw,4rem)}
+.desk-intro h2{font-family:var(--sans);font-size:clamp(2.2rem,4.8vw,5rem);line-height:.98;letter-spacing:-.055em;font-weight:650;max-width:12ch;margin:.5rem 0 0}
+.desk-intro p{font-size:var(--step--1);line-height:1.55;color:var(--ink-70);max-width:34ch;margin:0 0 .35rem}
+.design-desk{border:1px solid #c9c7bf;background:#d9d7d0;box-shadow:18px 18px 0 rgba(37,99,235,.10);position:relative}
+.desk-windowbar{height:44px;border-bottom:1px solid #bcbab3;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;padding:0 14px;font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.06em;color:#5d5c57;background:#e4e2dc}
+.desk-dots{display:flex;gap:5px}.desk-dots i{width:7px;height:7px;border-radius:50%;background:#aaa79f;display:block}.desk-file{text-align:center}.desk-mode{text-align:right}
+.desk-body{display:grid;grid-template-columns:46px 1fr 210px;min-height:clamp(360px,42vw,590px)}
+.desk-tools{border-right:1px solid #bbb9b1;display:flex;flex-direction:column;align-items:center;gap:1rem;padding-top:1rem;font:600 .7rem/1 var(--sans);color:#77756f}
+.desk-tools span{width:26px;height:26px;display:grid;place-items:center;border:1px solid #c0beb7;background:#e0ded8}
+.desk-canvas{position:relative;margin:clamp(18px,3vw,38px);background:#f7f6f1;overflow:hidden;min-height:320px;border:1px solid #cfcdc5}
+.canvas-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(37,99,235,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,.055) 1px,transparent 1px);background-size:24px 24px}
+.canvas-card{position:absolute;background:#fff;border:1px solid #dedcd5;padding:14px 16px;box-shadow:8px 9px 0 rgba(20,20,16,.08);display:flex;flex-direction:column;gap:7px;animation:deskFloat 5s ease-in-out infinite}
+.canvas-card span{font:500 .56rem/1 'DM Mono',monospace;color:#777}.canvas-card strong{font:650 clamp(1rem,1.7vw,1.5rem)/1 var(--sans);letter-spacing:-.035em}.canvas-card-a{left:12%;top:20%;transform:rotate(-4deg)}.canvas-card-b{right:11%;bottom:19%;transform:rotate(3deg);animation-delay:-2s}
+.canvas-shape{position:absolute;width:clamp(110px,16vw,220px);height:clamp(110px,16vw,220px);border-radius:50%;background:var(--accent);right:24%;top:20%;mix-blend-mode:multiply;opacity:.92;animation:shapePulse 6s ease-in-out infinite}
+.canvas-cursor{position:absolute;left:51%;top:51%;width:30px;height:30px;animation:cursorMove 6s ease-in-out infinite;z-index:3}.canvas-cursor:before{content:"";position:absolute;left:2px;top:1px;width:0;height:0;border-left:11px solid #111;border-top:7px solid transparent;border-bottom:7px solid transparent;transform:rotate(-28deg)}.canvas-cursor span{position:absolute;left:14px;top:15px;width:7px;height:7px;background:var(--accent);border-radius:50%;box-shadow:0 0 0 5px rgba(37,99,235,.14)}
+.canvas-note{position:absolute;right:8%;top:10%;font:500 .6rem/1.3 'DM Mono',monospace;color:#6e6c66;transform:rotate(2deg)}.canvas-note b{color:var(--blue-dark);font-weight:600}
+.desk-layers{border-left:1px solid #bbb9b1;background:#dfddd7;padding:1rem}.layers-head{display:flex;justify-content:space-between;font:500 .58rem/1 'DM Mono',monospace;color:#77756f;padding-bottom:.9rem;border-bottom:1px solid #c4c2bb}.layer{display:grid;grid-template-columns:14px 1fr auto;gap:7px;align-items:center;padding:.8rem 0;border-bottom:1px solid #cbc9c2;font:500 .58rem/1.15 'DM Mono',monospace;color:#77756f}.layer b{font-weight:600;color:#282722}.layer em{font-style:normal;color:#aaa79f}.layer.active{color:var(--blue-dark);background:rgba(255,255,255,.35);margin:0 -.5rem;padding-left:.5rem;padding-right:.5rem}.layer.active b{color:#111}
+.desk-status{display:flex;justify-content:space-between;border-top:1px solid #bbb9b1;padding:9px 13px;font:500 .58rem/1 'DM Mono',monospace;color:#74716a;background:#e4e2dc}.desk-status>span:first-child{color:var(--accent);margin-right:.35rem}.desk-status-right{color:#99968e}
+.process-strip{display:flex;align-items:center;gap:clamp(.7rem,2vw,1.5rem);position:relative;margin-top:2.2rem;padding:1rem 0;border-top:1px solid #c9c7bf;border-bottom:1px solid #c9c7bf;overflow:hidden;font:600 .66rem/1 'DM Mono',monospace;letter-spacing:.1em;color:#5f5d57}.process-strip b{color:var(--accent);font-weight:500}.process-strip i{position:absolute;width:54px;height:2px;background:var(--accent);left:-60px;animation:processScan 5s linear infinite}
+@keyframes deskFloat{0%,100%{translate:0 0}50%{translate:0 -9px}}@keyframes shapePulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08) rotate(5deg)}}@keyframes cursorMove{0%,100%{transform:translate(0,0)}30%{transform:translate(75px,-35px)}60%{transform:translate(-40px,55px)}80%{transform:translate(40px,20px)}}@keyframes processScan{to{left:105%}}
+.scroll-next{display:flex;align-items:center;gap:12px;margin-top:3.5rem;font:500 .62rem/1 'DM Mono',monospace;letter-spacing:.08em;color:var(--ink-45)}.scroll-next i{width:42px;height:1px;background:var(--accent);position:relative}.scroll-next i:after{content:"";position:absolute;right:-1px;top:-3px;width:6px;height:6px;border-radius:50%;background:var(--accent);animation:nextDot 2s ease-in-out infinite}@keyframes nextDot{50%{right:100%;transform:translateX(6px)}}
+/* Reduce CTA repetition: the final actions have different jobs. */
+.ending-ctas .cta{min-width:220px;text-align:center}.ending-ctas .cta.ghost{background:transparent}
+/* Make work feel more like a designed system than a gallery. */
+#work{position:relative}.category-block{overflow:hidden}.category-block + .category-block{border-top:0}.category-block + .category-block:before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--line)}
+.project-figure:after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.24) 50%,transparent 65%);transform:translateX(-120%);transition:transform .8s var(--ease);pointer-events:none}.project-card:hover .project-figure:after{transform:translateX(120%)}
+@media(max-width:800px){.desk-intro{grid-template-columns:1fr}.desk-body{grid-template-columns:34px 1fr}.desk-layers{display:none}.desk-windowbar{grid-template-columns:1fr auto}.desk-mode{display:none}.desk-status-right{display:none}}
+@media(prefers-reduced-motion:reduce){.canvas-card,.canvas-shape,.canvas-cursor,.process-strip i,.canvas-cursor span{animation:none!important}}
+
+/* V17 — give project captions breathing room from the card edges */
+.project-card{background:#fff;}
+.project-card .project-meta{margin:0;padding:1.2rem 1.25rem 0;align-items:flex-start;}
+.project-card .project-desc{margin:.45rem 0 0;padding:0 1.25rem 1.35rem;max-width:52ch;}
+.project-card .project-meta .name{line-height:1.08;}
+.project-card .project-meta .yr{padding-top:.18rem;flex:none;}
 @media(max-width:560px){
-  .hero-kicker-status{display:none}
-  .intro-headline{font-size:clamp(3rem,14vw,4.5rem)}
-  .hero-deck{font-size:1rem}
-  .hero-panel{min-height:340px;box-shadow:10px 14px 0 var(--blue-soft)}
-  .hero-actions{align-items:flex-start;flex-direction:column;gap:1rem}
-  .hero-aside{padding-left:.1rem}
-  .hero-ticker{margin-top:3rem}
-}
-
-
-/* ==========================================================
-   V15 — MOBILE CALM + SMOOTH MOTION
-   ========================================================== */
-@media (max-width: 700px){
-  html{scroll-behavior:smooth;scroll-padding-top:76px}
-  body{font-size:15px}
-  .wrap{padding-left:18px;padding-right:18px}
-
-  /* Give every section more breathing room; mobile should feel editorial, not stacked. */
-  section{padding-top:clamp(4.5rem,16vw,6rem);padding-bottom:clamp(4.5rem,16vw,6rem)}
-
-  /* Hero: one clear message, then one visual. */
-  #intro{min-height:auto;padding-top:6.7rem;padding-bottom:0;justify-content:flex-start;overflow:hidden}
-  .hero-grid{display:flex;flex-direction:column;gap:2.2rem;align-items:stretch}
-  .hero-kicker{margin-bottom:1rem;font-size:.62rem;gap:.55rem}
-  .hero-kicker-line{width:25px}
-  .intro-headline{font-size:clamp(2.85rem,13.8vw,4.25rem);line-height:.98;letter-spacing:-.058em;max-width:9.8ch}
-  .hero-deck{font-size:.98rem;line-height:1.55;margin-top:1.25rem;max-width:34ch}
-  .intro-sub{margin-top:1.35rem}
-  .intro-name{font-size:1.05rem}
-  .intro-meta{font-size:.77rem;line-height:1.5}
-  .hero-actions{margin-top:1.5rem;gap:.8rem;align-items:stretch}
-  .hero-actions .cta{width:100%;justify-content:center}
-  .hero-aside{font-size:.62rem;line-height:1.5;text-align:center}
-
-  .hero-panel{order:2;min-height:295px;height:295px;max-width:none;margin:0;transform:none!important;box-shadow:9px 11px 0 var(--blue-soft);border-radius:3px}
-  .hero-panel:hover{transform:none!important;box-shadow:9px 11px 0 var(--blue-soft)}
-  .hero-panel::before{inset:9px}
-  .hero-panel-core{gap:1.45rem;padding:3rem 1.25rem}
-  .hero-ring{width:116px;font-size:.52rem}
-  .hero-ring::before{inset:15px}.hero-ring::after{inset:31px}
-  .hero-ring i{width:5px;height:5px;top:10px;right:23px}
-  .hero-panel-copy{max-width:230px}
-  .hero-panel-copy strong{font-size:1.35rem}
-  .hero-panel-copy small{font-size:.64rem;margin-top:.55rem}
-  .hero-panel-top,.hero-panel-bottom{left:.85rem;right:.85rem;font-size:.49rem}
-  .hero-panel-top{top:.85rem}.hero-panel-bottom{bottom:.85rem}
-  .hero-panel-mark{font-size:5rem;right:.5rem}
-
-  .hero-ticker{position:relative;left:auto;right:auto;margin-top:2.8rem;height:34px;padding:0 18px;font-size:.5rem;gap:.8rem}
-
-  /* Work cards: no forced desktop-height feeling. */
-  .project-grid{grid-template-columns:1fr!important;gap:1px}
-  .project-card{min-width:0}
-  .project-figure{min-height:0!important;height:auto!important;aspect-ratio:4/3}
-  .project-figure img,.project-figure video{object-fit:contain!important;padding:10px}
-  .project-card:hover .project-figure img{transform:none;filter:none}
-  .media-index,.view-full{opacity:1;transform:none}
-  .view-full{font-size:.5rem;bottom:.55rem;right:.55rem}
-
-  /* Project detail becomes a clean reading block instead of a dense wall. */
-  .project-info,.detail-grid{gap:1.25rem!important}
-  .detail-grid{grid-template-columns:1fr!important}
-  .detail-grid > div{padding-top:.75rem}
-
-  /* Toolkit: compact rows, not tall cards. */
-  .tool-grid{grid-template-columns:1fr!important;gap:1px!important}
-  .tool-card{min-height:92px!important;padding:1rem!important}
-  .toolkit-head{margin-bottom:1.8rem!important;gap:1rem!important}
-  .toolkit-title{font-size:2.25rem!important}
-  .toolkit-footnote{gap:.65rem!important}
-
-  /* HR cards: horizontal rhythm, fewer oversized blocks. */
-  .hr-title{font-size:clamp(2.2rem,11vw,3rem)!important;line-height:1!important}
-  .quip-grid{gap:1px!important}
-  .quip{min-height:0!important;padding:1.25rem!important}
-  .quip .line .who{min-width:5.2rem;font-size:.48rem}
-  .quip .line .txt{font-size:.88rem}
-  .quip .note{padding-top:1.3rem;font-size:.56rem}
-
-  /* Lightbox uses almost the whole screen while keeping a safe frame. */
-  #image-lightbox .lightbox-shell{width:100vw;height:100svh;padding:10px}
-  #image-lightbox .lightbox-top{padding:0 2px .55rem;font-size:.5rem}
-  #image-lightbox .lightbox-media{padding:.35rem;min-height:0}
-  #image-lightbox .lightbox-hint{padding:.45rem 2px 0;font-size:.48rem}
-}
-
-/* Scroll-in motion: restrained, smooth, and disabled for reduced-motion users. */
-@media (prefers-reduced-motion:no-preference){
-  .mobile-reveal{opacity:0;transform:translate3d(0,22px,0);transition:opacity .75s cubic-bezier(.16,.8,.24,1),transform .85s cubic-bezier(.16,.8,.24,1)}
-  .mobile-reveal.is-visible{opacity:1;transform:none}
-  .hero-panel{animation:heroBreath 7s ease-in-out infinite}
-  @keyframes heroBreath{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-  @media(max-width:700px){
-    .hero-panel{animation:heroBreathMobile 7s ease-in-out infinite!important}
-    @keyframes heroBreathMobile{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
-    .hero-ring{animation:ringFloatMobile 6s ease-in-out infinite}
-    @keyframes ringFloatMobile{50%{transform:translateY(-5px) rotate(1deg)}100%{transform:none}}
-  }
+  .project-card .project-meta{padding:1rem 1rem 0;}
+  .project-card .project-desc{padding:0 1rem 1.1rem;}
 }
 
 </style>
@@ -1136,37 +1079,23 @@ body.lightbox-open{overflow:hidden}
      INTRO
      ============================================================ -->
 <section id="intro">
-  <div class="hero-grid wrap">
-    <div class="hero-copy">
-      <div class="hero-kicker"><span class="hero-kicker-line"></span><span>A message from HR</span><span class="hero-kicker-status">PORTFOLIO / 2026</span></div>
-      <h1 class="intro-headline">
-        You have an interview.<br>
-        <span class="flip">Good. Let's talk design.</span>
-      </h1>
-      <p class="hero-deck">I’m Chandrashekar — a Lead Designer with 8 years of turning complicated briefs into clear, useful visual systems.</p>
-      <div class="intro-sub">
-        <p class="intro-name serif">Chandrashekar</p>
-        <p class="intro-role">Lead Designer</p>
-        <p class="intro-meta">Brand · Campaigns · Visual Systems · Digital · Motion · AI</p>
-      </div>
-      <div class="hero-actions">
-        <a href="#tell-me" class="cta" data-scroll>Start interview →</a>
-        <span class="hero-aside">Scroll to review the work<br><b>Estimated duration: longer than HR said.</b></span>
-      </div>
+  <div class="wrap">
+    <p class="intro-line">A message from HR</p>
+    <h1 class="intro-headline">
+      I make complicated things<br>
+      <span class="flip">look simple.</span>
+    </h1>
+
+    <div class="intro-sub">
+      <p class="intro-name">Chandrashekar</p>
+      <p class="intro-role">Lead Designer · 8 years</p>
+      <p class="intro-meta">Brand · Campaigns · Digital · Motion · AI-assisted creative</p>
     </div>
 
-    <div class="hero-panel" aria-label="Designer profile snapshot">
-      <div class="hero-panel-top"><span>CHANDRASHEKAR / 08</span><span>READY</span></div>
-      <div class="hero-panel-core">
-        <div class="hero-ring"><span>DESIGN</span><i></i></div>
-        <div class="hero-panel-copy"><span class="panel-label">CURRENT MODE</span><strong>Making the<br>brief make sense.</strong><small>Brand systems / campaigns / digital / motion</small></div>
-      </div>
-      <div class="hero-panel-bottom"><span>STATUS</span><span><i class="status-dot"></i> AVAILABLE FOR A GOOD BRIEF</span></div>
-      <div class="hero-panel-mark">CS</div>
-    </div>
+    <a href="#tell-me" class="cta" data-scroll>See how I work →</a>
+    <p class="intro-foot">A portfolio for people who prefer the work over the pitch. <span class="blue-note">(HR can catch up.)</span></p>
   </div>
 
-  <div class="hero-ticker" aria-hidden="true"><span>BRAND</span><b>→</b><span>CAMPAIGNS</span><b>→</b><span>VISUAL SYSTEMS</span><b>→</b><span>MOTION</span><b>→</b><span>AI-ASSISTED CREATIVE</span></div>
   <div class="scroll-cue"><span class="stem"></span> Scroll</div>
 </section>
 
@@ -1199,7 +1128,53 @@ body.lightbox-open{overflow:hidden}
       </div>
     </div>
 
-    <a href="#work" class="cta" data-scroll>Show me the work →</a>
+  </div>
+</section>
+
+<!-- ============================================================
+     DESIGN DESK — VISUAL INTERLUDE
+     ============================================================ -->
+<section id="desk" class="desk-section">
+  <div class="wrap">
+    <div class="desk-intro">
+      <div>
+        <span class="eyebrow">Behind the work / live file</span>
+        <h2>There is usually a brief hiding underneath the pixels.</h2>
+      </div>
+      <p>Concept, hierarchy, movement, then the part where someone asks for one last change.</p>
+    </div>
+
+    <div class="design-desk" aria-label="A visual representation of a design workspace">
+      <div class="desk-windowbar">
+        <span class="desk-dots"><i></i><i></i><i></i></span>
+        <span class="desk-file">CAMPAIGN_FINAL_v8.fig</span>
+        <span class="desk-mode">RGB / 16-bit</span>
+      </div>
+      <div class="desk-body">
+        <div class="desk-tools"><span>V</span><span>T</span><span>□</span><span>◌</span><span>↗</span></div>
+        <div class="desk-canvas">
+          <div class="canvas-grid"></div>
+          <div class="canvas-card canvas-card-a"><span>01 / BRIEF</span><strong>Make it clear.</strong></div>
+          <div class="canvas-card canvas-card-b"><span>02 / TYPE</span><strong>Give it room.</strong></div>
+          <div class="canvas-shape"></div>
+          <div class="canvas-cursor"><span></span></div>
+          <div class="canvas-note">looks good.<br><b>don't touch.</b></div>
+        </div>
+        <div class="desk-layers">
+          <div class="layers-head"><span>LAYERS</span><span>⌄</span></div>
+          <div class="layer active"><span>◉</span><b>FINAL DIRECTION</b><em>01</em></div>
+          <div class="layer"><span>◉</span>IMAGE / HERO<em>02</em></div>
+          <div class="layer"><span>◉</span>TYPE SYSTEM<em>03</em></div>
+          <div class="layer"><span>◉</span>BLUE ACCENT<em>04</em></div>
+          <div class="layer"><span>◉</span>BRIEF<em>05</em></div>
+        </div>
+      </div>
+      <div class="desk-status"><span>●</span> Autosaved 2 min ago <span class="desk-status-right">5 layers · 1 good idea · 0 panic</span></div>
+    </div>
+
+    <div class="process-strip" aria-hidden="true">
+      <span>BRIEF</span><b>→</b><span>THINK</span><b>→</b><span>MAKE</span><b>→</b><span>MOVE</span><b>→</b><span>SHIP</span><i></i>
+    </div>
   </div>
 </section>
 
@@ -1212,7 +1187,7 @@ body.lightbox-open{overflow:hidden}
   </div>
 
   <div id="category-container">
-    <!-- Populated by the inlined portfolio scripts. One block per
+    <!-- Populated by js/main.js from js/data.js. One block per
          category, each opening with its interview question. -->
   </div>
 
@@ -1226,7 +1201,7 @@ body.lightbox-open{overflow:hidden}
     <span class="eyebrow">Selected work</span>
     <h2 class="serif" style="font-size:var(--step-2); font-weight:400; margin:.5rem 0 0;">The smaller, quieter archive.</h2>
     <div class="selected-grid" id="selected-grid">
-      <!-- Populated by the inlined portfolio script -->
+      <!-- Populated by js/main.js -->
     </div>
   </div>
 </section>
@@ -1358,7 +1333,7 @@ body.lightbox-open{overflow:hidden}
     </div>
 
     <div class="project-grid" id="ai-grid" style="margin-top:3.5rem;">
-      <!-- Populated by the inlined portfolio script -->
+      <!-- Populated by js/main.js -->
     </div>
   </div>
 </section>
@@ -1373,10 +1348,7 @@ body.lightbox-open{overflow:hidden}
       <div class="a"><span class="who">Chandrashekar</span><span class="line">Actually, yes.</span></div>
     </div>
     <p class="fourth-wall">Why are you still scrolling?</p>
-    <div class="dual-cta">
-      <a href="#hire" class="cta" data-scroll data-track="like-work">I like the work →</a>
-      <a href="#hire" class="cta ghost" data-scroll data-track="curious">Just curious →</a>
-    </div>
+    <div class="scroll-next"><span>KEEP SCROLLING</span><i></i><span>THE GOOD PART IS AHEAD</span></div>
   </div>
 </section>
 
@@ -1415,8 +1387,8 @@ body.lightbox-open{overflow:hidden}
     <p class="ending-note">You may now pretend this was just another portfolio review.</p>
 
     <div class="ending-ctas">
-      <a href="mailto:chandrashekar96.n@gmail.com?subject=I%20have%20a%20brief" class="cta">I have a brief →</a>
-      <a href="mailto:chandrashekar96.n@gmail.com?subject=Let's%20talk" class="cta ghost">Let's talk →</a>
+      <a href="mailto:chandrashekar96.n@gmail.com?subject=I%20have%20a%20brief" class="cta">Send a brief →</a>
+      <a href="tel:+918431049783" class="cta ghost">Call me →</a>
     </div>
 
     <div class="ending-contact">
@@ -1452,7 +1424,6 @@ body.lightbox-open{overflow:hidden}
 <div id="toast" role="status" aria-live="polite"></div>
 
 <script>
-/* Inlined from js/data.js */
 /**
  * Portfolio project data — V12
  * Titles and descriptions are written to reflect the actual supplied work.
@@ -1852,7 +1823,6 @@ const CATEGORY_LABELS = {
 
 </script>
 <script>
-/* Inlined from js/main.js */
 (function () {
   "use strict";
 
@@ -2099,12 +2069,8 @@ const CATEGORY_LABELS = {
     e.preventDefault();
     target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
 
-    // The two Act 5 buttons ("I like the work" / "Just curious")
-    // lead to the same place with slightly different framing.
     var track = link.getAttribute("data-track");
-    if (track === "curious") {
-      showToast("Fair enough. Let's keep it professional.");
-    }
+    if (track === "curious") showToast("Fair enough. Let's keep it professional.");
   });
 
   /* ============================================================
@@ -2334,33 +2300,6 @@ const CATEGORY_LABELS = {
   });
 })();
 
-
-
-/* ============================================================
-   V15 — MOBILE REVEAL ENGINE
-   ============================================================ */
-(function(){
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var mobile=window.matchMedia('(max-width: 700px)').matches;
-  if(!mobile) return;
-  var selectors=[
-    '#intro .hero-kicker','#intro .intro-headline','#intro .hero-deck','#intro .intro-sub','#intro .hero-actions','#intro .hero-aside','#intro .hero-panel',
-    '#work .section-heading','.project-card','#about .section-heading','#about .about-grid','.quip','#ai .section-heading','.ai-grid',
-    '.toolkit-section .toolkit-head','.tool-card','.ending-contact'
-  ];
-  var els=[];
-  selectors.forEach(function(sel){document.querySelectorAll(sel).forEach(function(el){if(els.indexOf(el)<0){el.classList.add('mobile-reveal');els.push(el)}})});
-  els.forEach(function(el,i){el.style.transitionDelay=Math.min((i%5)*70,280)+'ms'});
-  var io=new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(entry.isIntersecting){
-        entry.target.classList.add('is-visible');
-        io.unobserve(entry.target);
-      }
-    });
-  },{rootMargin:'0px 0px -10% 0px',threshold:.08});
-  els.forEach(function(el){io.observe(el)});
-})();
 </script>
 </body>
 </html>
